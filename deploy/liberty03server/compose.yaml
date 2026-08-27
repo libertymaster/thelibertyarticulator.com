@@ -1,0 +1,269 @@
+name: liberty03
+
+x-security: &security
+  restart: unless-stopped
+  init: true
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: json-file
+    options:
+      max-size: 20m
+      max-file: "5"
+
+services:
+  prometheus:
+    image: ${PROMETHEUS_IMAGE:-dhi.io/prometheus:3.14.0-debian13}
+    <<: *security
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-30d}
+      - --storage.tsdb.retention.size=${PROMETHEUS_RETENTION_SIZE:-80GB}
+      - --web.enable-remote-write-receiver
+      - --web.enable-lifecycle
+      - --web.external-url=${PROMETHEUS_EXTERNAL_URL:-http://127.0.0.1:9090}
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - monitoring
+      - egress
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:9090:9090
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://127.0.0.1:9090/-/ready
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    stop_grace_period: 90s
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+          cpus: "3.00"
+
+  alertmanager:
+    image: ${ALERTMANAGER_IMAGE:-dhi.io/alertmanager:0.34.0-debian13}
+    <<: *security
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+      - --storage.path=/alertmanager
+      - --web.external-url=${ALERTMANAGER_EXTERNAL_URL:-http://127.0.0.1:9093}
+    volumes:
+      - ${ALERTMANAGER_CONFIG_FILE:-./alertmanager/alertmanager.yml}:/etc/alertmanager/alertmanager.yml:ro
+      - ${ALERTMANAGER_SMTP_PASSWORD_FILE:?Set ALERTMANAGER_SMTP_PASSWORD_FILE}:/run/secrets/smtp_password:ro
+      - alertmanager_data:/alertmanager
+    networks:
+      - monitoring
+      - egress
+    ports:
+      - ${OBSERVABILITY_BIND_ADDRESS:-127.0.0.1}:9093:9093
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://127.0.0.1:9093/-/ready
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  loki:
+    image: ${LOKI_IMAGE:-dhi.io/loki:3.7.6-debian13}
+    <<: *security
+    command:
+      - -config.file=/etc/loki/loki.yml
+    volumes:
+      - ./loki/loki.yml:/etc/loki/loki.yml:ro
+      - loki_data:/loki
+    networks:
+      - monitoring
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:3100:3100
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://127.0.0.1:3100/ready
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 30s
+    stop_grace_period: 90s
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+          cpus: "2.00"
+
+  grafana:
+    image: ${GRAFANA_IMAGE:-grafana/grafana-enterprise:13.0.7-distroless}
+    <<: *security
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-liberty-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD}
+      GF_SECURITY_COOKIE_SECURE: "true"
+      GF_SECURITY_COOKIE_SAMESITE: strict
+      GF_SECURITY_DISABLE_GRAVATAR: "true"
+      GF_SECURITY_CONTENT_SECURITY_POLICY: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: ${GRAFANA_ROOT_URL:-https://grafana.internal}
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_METRICS_ENABLED: "true"
+      GF_LOG_MODE: console
+      GF_LOG_FORMAT: json
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      prometheus:
+        condition: service_healthy
+      loki:
+        condition: service_healthy
+    networks:
+      - monitoring
+    ports:
+      - ${OBSERVABILITY_BIND_ADDRESS:-127.0.0.1}:3000:3000
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://127.0.0.1:3000/api/health
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "1.00"
+
+  blackbox_exporter:
+    image: ${BLACKBOX_EXPORTER_IMAGE:-dhi.io/blackbox-exporter:0.28.0-alpine3.24}
+    <<: *security
+    command:
+      - --config.file=/etc/blackbox/blackbox.yml
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox/blackbox.yml:ro
+    networks:
+      - monitoring
+      - egress
+    expose:
+      - "9115"
+
+  node_exporter:
+    image: ${NODE_EXPORTER_IMAGE:-dhi.io/node-exporter:1.12.1-alpine3.24}
+    command:
+      - --path.rootfs=/host
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    pid: host
+    volumes:
+      - /:/host:ro,rslave
+    networks:
+      - monitoring
+    expose:
+      - "9100"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  cadvisor:
+    image: ${CADVISOR_IMAGE:-gcr.io/cadvisor/cadvisor:v0.52.1}
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=30s
+      - --store_container_labels=false
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    networks:
+      - monitoring
+    expose:
+      - "8080"
+    restart: unless-stopped
+    read_only: true
+    privileged: false
+    security_opt:
+      - no-new-privileges:true
+
+  alloy:
+    image: ${ALLOY_IMAGE:-dhi.io/alloy:1.18.1-debian13}
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    environment:
+      HOST_NAME: liberty03server
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy_data:/var/lib/alloy/data
+    depends_on:
+      - node_exporter
+      - cadvisor
+      - prometheus
+      - loki
+    networks:
+      - monitoring
+    expose:
+      - "12345"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+
+networks:
+  monitoring:
+    name: liberty03_monitoring
+    internal: true
+  egress:
+    name: liberty03_egress
+
+volumes:
+  prometheus_data:
+  alertmanager_data:
+  loki_data:
+  grafana_data:
+  alloy_data:
+

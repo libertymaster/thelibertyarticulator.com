@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Publications{% endblock %}
+{% block meta_description %}Essays, research, reviews, and commentary from The Liberty Articulator.{% endblock %}
+{% block body_class %}publication-index-page{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/publications.css' %}">{% endblock %}
+
+{% block content %}
+<header class="page-hero page-hero--archive">
+  <div class="shell">
+    <nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><span aria-current="page">Publications</span></li></ol></nav>
+    <div class="page-hero__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">The journal</p>
+        <h1>Publications</h1>
+      </div>
+      <p>Original essays, historical investigations, reviews, and commentary grounded in evidence and sharpened by the question of liberty.</p>
+    </div>
+  </div>
+</header>
+
+<div class="shell archive-layout section-pad">
+  <aside class="filter-panel" aria-labelledby="filter-heading">
+    <div class="filter-panel__heading">
+      <h2 id="filter-heading">Refine the archive</h2>
+      {% if request.GET %}<a href="{% url 'publications:index' %}">Clear all</a>{% endif %}
+    </div>
+    <form method="get" action="{% url 'publications:index' %}" class="filter-form" data-filter-form>
+      <div class="field">
+        <label for="publication-search">Search within publications</label>
+        <div class="search-field">
+          <input id="publication-search" name="q" type="search" value="{% firstof request.GET.q query '' %}" placeholder="Title, author, keyword…">
+          <button type="submit" aria-label="Search publications">→</button>
+        </div>
+      </div>
+      {% if publication_types %}
+      <fieldset>
+        <legend>Publication type</legend>
+        {% for value, label in publication_types %}
+          <label class="check-option"><input type="checkbox" name="type" value="{{ value }}"{% if value in selected_types or request.GET.type == value %} checked{% endif %}><span>{{ label }}</span></label>
+        {% endfor %}
+      </fieldset>
+      {% endif %}
+      {% if categories %}
+      <div class="field">
+        <label for="category-filter">Subject</label>
+        <select id="category-filter" name="category">
+          <option value="">All subjects</option>
+          {% for category in categories %}<option value="{{ category.slug }}"{% if request.GET.category == category.slug or selected_category.slug == category.slug %} selected{% endif %}>{{ category.name }}</option>{% endfor %}
+        </select>
+      </div>
+      {% endif %}
+      {% if series_list %}
+      <div class="field">
+        <label for="series-filter">Series</label>
+        <select id="series-filter" name="series">
+          <option value="">All series</option>
+          {% for series in series_list %}<option value="{{ series.slug }}"{% if request.GET.series == series.slug %} selected{% endif %}>{{ series.title }}</option>{% endfor %}
+        </select>
+      </div>
+      {% endif %}
+      {% if keywords %}
+      <div class="field">
+        <label for="keyword-filter">Keyword</label>
+        <select id="keyword-filter" name="keyword">
+          <option value="">All keywords</option>
+          {% for keyword in keywords %}<option value="{{ keyword.slug }}"{% if request.GET.keyword == keyword.slug %} selected{% endif %}>{{ keyword.name }}</option>{% endfor %}
+        </select>
+      </div>
+      {% endif %}
+      {% if years %}
+      <div class="field">
+        <label for="year-filter">Year</label>
+        <select id="year-filter" name="year"><option value="">All years</option>{% for year in years %}<option value="{{ year }}"{% if request.GET.year == year|stringformat:'s' %} selected{% endif %}>{{ year }}</option>{% endfor %}</select>
+      </div>
+      {% endif %}
+      <button class="button button--navy button--full" type="submit">Apply filters</button>
+    </form>
+  </aside>
+
+  <section class="archive-results" aria-labelledby="results-heading" aria-live="polite">
+    <header class="archive-results__header">
+      <div>
+        <p class="eyebrow">Archive</p>
+        <h2 id="results-heading">{% if query or request.GET.q %}Results for “{% firstof query request.GET.q %}”{% else %}Latest scholarship{% endif %}</h2>
+      </div>
+      {% if page_obj %}<p>{{ page_obj.paginator.count }} publication{{ page_obj.paginator.count|pluralize }}</p>{% elif publications %}<p>{{ publications|length }} publication{{ publications|length|pluralize }}</p>{% endif %}
+    </header>
+    {% with items=page_obj|default:publications %}
+      {% if items %}
+        <div class="publication-list">
+          {% for publication in items %}{% include "includes/publication_card.html" with publication=publication %}{% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <span aria-hidden="true">⌕</span>
+          <h3>No publications found</h3>
+          <p>Try a broader search or clear the current filters.</p>
+          <a class="button button--outline" href="{% url 'publications:index' %}">Reset the archive</a>
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% include "includes/pagination.html" with page_obj=page_obj query=query %}
+  </section>
+</div>
+{% endblock %}

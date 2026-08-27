@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Source Library{% endblock %}
+{% block meta_description %}Browse the books, articles, archives, documents, and primary evidence cited by The Liberty Articulator.{% endblock %}
+{% block body_class %}source-list-page{% endblock %}
+
+{% block content %}
+<header class="page-hero page-hero--sources">
+  <div class="shell">
+    <nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><span aria-current="page">Sources</span></li></ol></nav>
+    <div class="page-hero__grid"><div><p class="eyebrow eyebrow--light">The evidentiary record</p><h1>Source library</h1></div><p>Our arguments remain connected to their foundations. Browse the books, articles, archives, and primary documents cited across the journal.</p></div>
+  </div>
+</header>
+
+<div class="shell source-layout section-pad">
+  <aside class="source-note">
+    <p class="section-number" aria-hidden="true">Citation standard</p>
+    <h2>Follow the evidence.</h2>
+    <p>Every source is preserved in a consistent scholarly record. DOI and external links lead to the publisher or holding institution when available.</p>
+  </aside>
+  <section class="source-catalogue" aria-labelledby="source-heading">
+    <form method="get" action="{% url 'references:list' %}" class="catalogue-search">
+      <div class="field"><label for="source-query">Search the source library</label><div class="search-field"><input id="source-query" type="search" name="q" value="{% firstof query request.GET.q '' %}" placeholder="Author, title, publisher…"><button type="submit" aria-label="Search sources">→</button></div></div>
+      {% if source_types %}<div class="field field--compact"><label for="source-type">Type</label><select id="source-type" name="type"><option value="">All sources</option>{% for value, label in source_types %}<option value="{{ value }}"{% if request.GET.type == value %} selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>{% endif %}
+    </form>
+    <header class="catalogue-heading"><div><p class="eyebrow">Bibliography</p><h2 id="source-heading">{% if query or request.GET.q %}Matching sources{% else %}All sources{% endif %}</h2></div>{% if page_obj %}<p>{{ page_obj.paginator.count }} record{{ page_obj.paginator.count|pluralize }}</p>{% endif %}</header>
+    {% with items=page_obj|default:sources %}
+      {% if items %}<ol class="source-list" start="{% if page_obj %}{{ page_obj.start_index }}{% else %}1{% endif %}">
+        {% for source in items %}
+        <li>
+          <article class="source-record">
+            <div class="source-record__top"><span class="eyebrow">{% firstof source.get_source_type_display source.get_type_display source.source_type source.type "Source" %}</span>{% if source.year %}<span>{{ source.year }}</span>{% elif source.publication_year %}<span>{{ source.publication_year }}</span>{% endif %}</div>
+            <h3><a href="{{ source.get_absolute_url }}">{{ source.title }}</a></h3>
+            <p>{% if source.authors %}{% for author in source.authors %}{% if author.given %}{{ author.given }} {% endif %}{% firstof author.family author.literal author %}{% if not forloop.last %}, {% endif %}{% endfor %}. {% endif %}{% if source.container_title %}<em>{{ source.container_title }}</em>. {% endif %}{% if source.publisher %}{{ source.publisher }}{% endif %}</p>
+            <div class="source-record__links">
+              {% if source.doi %}<a href="{% if 'http' in source.doi %}{{ source.doi }}{% else %}https://doi.org/{{ source.doi }}{% endif %}" rel="external">DOI: {{ source.doi }}</a>{% endif %}
+              {% if source.url %}<a href="{{ source.url }}" rel="external">Open source <span aria-hidden="true">↗</span></a>{% endif %}
+              {% if source.cited_by.count %}<span>Cited by {{ source.cited_by.count }} publication{{ source.cited_by.count|pluralize }}</span>{% endif %}
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </ol>{% else %}<div class="empty-state"><span aria-hidden="true">⌕</span><h3>No sources found</h3><p>Try another author, title, or source type.</p><a class="button button--outline" href="{% url 'references:list' %}">Clear search</a></div>{% endif %}
+    {% endwith %}
+    {% include "includes/pagination.html" with page_obj=page_obj query=query %}
+  </section>
+</div>
+{% endblock %}

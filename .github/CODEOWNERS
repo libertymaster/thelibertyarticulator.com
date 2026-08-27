@@ -1,0 +1,10 @@
+# Replace this team slug if repository ownership differs.
+* @the-liberty-articulator/maintainers
+
+/apps/ @the-liberty-articulator/editors @the-liberty-articulator/maintainers
+/config/ @the-liberty-articulator/maintainers
+/deploy/ @the-liberty-articulator/operations @the-liberty-articulator/maintainers
+/ops/ @the-liberty-articulator/operations @the-liberty-articulator/maintainers
+/.github/ @the-liberty-articulator/maintainers
+/docs/ @the-liberty-articulator/editors
+

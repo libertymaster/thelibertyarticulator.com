@@ -1,0 +1,273 @@
+name: liberty01
+
+x-app: &app
+  image: ${APP_IMAGE:?Set APP_IMAGE to an immutable image tag or digest}
+  env_file:
+    - ${APP_ENV_FILE:-/etc/liberty/app.env}
+  environment:
+    DJANGO_SETTINGS_MODULE: config.settings.production
+  networks:
+    - application
+  restart: unless-stopped
+  init: true
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  stop_grace_period: 45s
+  logging:
+    driver: json-file
+    options:
+      max-size: 20m
+      max-file: "5"
+
+x-web: &web
+  <<: *app
+  command: ["gunicorn", "--config", "config/gunicorn.conf.py", "config.wsgi:application"]
+  expose:
+    - "8000"
+  healthcheck:
+    test:
+      - CMD
+      - python
+      - -c
+      - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/', timeout=4)"
+    interval: 15s
+    timeout: 5s
+    retries: 5
+    start_period: 45s
+  labels:
+    traefik.enable: "true"
+    traefik.http.routers.liberty.rule: Host(`${PUBLIC_HOSTNAME:?Set PUBLIC_HOSTNAME}`)
+    traefik.http.routers.liberty.entrypoints: web
+    traefik.http.routers.liberty.middlewares: security-chain@file
+    traefik.http.routers.liberty-metrics.rule: Host(`${PUBLIC_HOSTNAME:?Set PUBLIC_HOSTNAME}`) && Path(`/metrics/`)
+    traefik.http.routers.liberty-metrics.entrypoints: web
+    traefik.http.routers.liberty-metrics.priority: "100"
+    traefik.http.routers.liberty-metrics.middlewares: metrics-private@file
+    traefik.http.routers.liberty-metrics.service: liberty
+    traefik.http.services.liberty.loadbalancer.server.port: "8000"
+    traefik.http.services.liberty.loadbalancer.healthcheck.path: /health/
+    traefik.http.services.liberty.loadbalancer.healthcheck.interval: 15s
+
+services:
+  traefik:
+    image: ${TRAEFIK_IMAGE:-dhi.io/traefik:3.7.11-alpine3.24}
+    command:
+      - --configFile=/etc/traefik/traefik.yml
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic:/etc/traefik/dynamic:ro
+    networks:
+      - edge
+      - application
+    expose:
+      - "8000"
+      - "8082"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "0.50"
+
+  cloudflared:
+    image: ${CLOUDFLARED_IMAGE:-cloudflare/cloudflared:2026.8.2}
+    command:
+      - tunnel
+      - --config
+      - /etc/cloudflared/config.yml
+      - run
+      - ${CLOUDFLARE_TUNNEL_ID:?Set CLOUDFLARE_TUNNEL_ID}
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml:ro
+      - ${CLOUDFLARE_CREDENTIALS_FILE:?Set CLOUDFLARE_CREDENTIALS_FILE}:/run/secrets/cloudflared-credentials.json:ro
+    networks:
+      - edge
+    depends_on:
+      traefik:
+        condition: service_healthy
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    healthcheck:
+      test: ["CMD", "cloudflared", "tunnel", "--metrics", "127.0.0.1:2000", "ready"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 192m
+          cpus: "0.50"
+
+  web_a:
+    <<: *web
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "1.50"
+
+  web_b:
+    <<: *web
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "1.50"
+
+  celery_worker:
+    <<: *app
+    command:
+      - celery
+      - -A
+      - config
+      - worker
+      - --loglevel=INFO
+      - --queues=default,publications,search
+      - --hostname=worker@%h
+      - --concurrency=${CELERY_CONCURRENCY:-4}
+      - --max-tasks-per-child=${CELERY_MAX_TASKS_PER_CHILD:-500}
+    stop_grace_period: 90s
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A config inspect ping --destination worker@$$HOSTNAME --timeout 5 | grep -q pong"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "2.00"
+
+  celery_beat:
+    <<: *app
+    command:
+      - celery
+      - -A
+      - config
+      - beat
+      - --loglevel=INFO
+      - --scheduler=django_celery_beat.schedulers:DatabaseScheduler
+      - --pidfile=/tmp/celerybeat.pid
+    # This service must remain a singleton. Never scale celery_beat above one.
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.50"
+
+  node_exporter:
+    image: ${NODE_EXPORTER_IMAGE:-dhi.io/node-exporter:1.12.1-alpine3.24}
+    command:
+      - --path.rootfs=/host
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    pid: host
+    volumes:
+      - /:/host:ro,rslave
+    networks:
+      - monitoring
+    expose:
+      - "9100"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  cadvisor:
+    image: ${CADVISOR_IMAGE:-gcr.io/cadvisor/cadvisor:v0.52.1}
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=30s
+      - --store_container_labels=false
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    networks:
+      - monitoring
+    expose:
+      - "8080"
+    restart: unless-stopped
+    read_only: true
+    privileged: false
+    security_opt:
+      - no-new-privileges:true
+
+  alloy:
+    image: ${ALLOY_IMAGE:-dhi.io/alloy:1.18.1-debian13}
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    environment:
+      HOST_NAME: liberty01server
+      PROMETHEUS_REMOTE_WRITE_URL: ${PROMETHEUS_REMOTE_WRITE_URL:?Set PROMETHEUS_REMOTE_WRITE_URL}
+      LOKI_PUSH_URL: ${LOKI_PUSH_URL:?Set LOKI_PUSH_URL}
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy_data:/var/lib/alloy/data
+    networks:
+      - monitoring
+      - application
+      - egress
+    depends_on:
+      - node_exporter
+      - cadvisor
+    expose:
+      - "12345"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+
+networks:
+  edge:
+    name: liberty01_edge
+  application:
+    name: liberty01_application
+    internal: true
+  monitoring:
+    name: liberty01_monitoring
+    internal: true
+  egress:
+    name: liberty01_egress
+
+volumes:
+  alloy_data:

@@ -1,0 +1,281 @@
+name: CI and delivery
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+concurrency:
+  group: liberty-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+env:
+  PYTHON_VERSION: "3.14"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  lint:
+    name: "1 / lint"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install development dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Run static checks
+        run: |
+          ruff check apps config tests
+          ruff format --check apps config tests
+          mypy apps config
+
+  security:
+    name: "2 / security"
+    needs: lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install audited dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Audit Python and source
+        run: |
+          pip-audit --strict .
+          bandit -r apps config -x tests -c pyproject.toml
+
+      - name: Scan repository for committed secrets
+        run: |
+          docker run --rm \
+            -v "$PWD:/repo:ro" \
+            ghcr.io/gitleaks/gitleaks:v8.28.0 \
+            detect --source=/repo --no-banner --redact
+
+  test:
+    name: "3 / test"
+    needs: security
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: liberty_test
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d liberty_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install test dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Generate ephemeral test settings
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_ENV"
+          import secrets
+          print(f"DJANGO_SECRET_KEY={secrets.token_urlsafe(64)}")
+          PY
+          printf '%s\n' 'DATABASE_URL=postgresql://postgres@127.0.0.1:5432/liberty_test' >> "$GITHUB_ENV"
+          printf '%s\n' 'CACHE_URL=redis://127.0.0.1:6379/0' >> "$GITHUB_ENV"
+          printf '%s\n' 'CELERY_BROKER_URL=redis://127.0.0.1:6379/1' >> "$GITHUB_ENV"
+          printf '%s\n' 'CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/2' >> "$GITHUB_ENV"
+
+      - name: Check migrations and configuration
+        run: |
+          python manage.py makemigrations --check --dry-run
+          python manage.py check
+
+      - name: Run tests with branch coverage
+        run: |
+          coverage run -m pytest
+          coverage report
+          coverage xml
+
+  build:
+    name: "4 / build and scan"
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_repository: ${{ steps.image.outputs.repository }}
+      image_tag: ${{ steps.image.outputs.tag }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Compute image name
+        id: image
+        shell: bash
+        run: |
+          repository="ghcr.io/${GITHUB_REPOSITORY,,}"
+          tag="${repository}:sha-${GITHUB_SHA}"
+          printf 'repository=%s\n' "$repository" >> "$GITHUB_OUTPUT"
+          printf 'tag=%s\n' "$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
+
+      - name: Authenticate to the DHI registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        with:
+          registry: dhi.io
+          username: ${{ secrets.DHI_USERNAME }}
+          password: ${{ secrets.DHI_TOKEN }}
+
+      - name: Authenticate to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build application image
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: .
+          build-args: |
+            PYTHON_BUILDER_IMAGE=${{ github.event_name == 'pull_request' && 'python:3.14-slim' || 'dhi.io/python:3.14.7-debian13-dev' }}
+            PYTHON_RUNTIME_IMAGE=${{ github.event_name == 'pull_request' && 'python:3.14-slim' || 'dhi.io/python:3.14.7-debian13' }}
+          load: true
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.image.outputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: mode=max
+          sbom: true
+
+      - name: Scan built image
+        run: |
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            aquasec/trivy:0.67.2 \
+            image --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed \
+            "${{ steps.image.outputs.tag }}"
+
+  deploy:
+    name: "5 / deploy"
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://thelibertyarticulator.com
+    permissions:
+      contents: read
+    steps:
+      - name: Request authenticated deployment
+        env:
+          DEPLOY_WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+          DEPLOY_WEBHOOK_SECRET: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import hmac
+          import json
+          import os
+          import urllib.request
+
+          url = os.environ["DEPLOY_WEBHOOK_URL"]
+          secret = os.environ["DEPLOY_WEBHOOK_SECRET"].encode()
+          delivery = f"actions-{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}"
+          payload = {
+              "action": "deploy",
+              "repository": {"full_name": os.environ["GITHUB_REPOSITORY"]},
+              "client_payload": {
+                  "ref": os.environ["GITHUB_REF"],
+                  "sha": os.environ["GITHUB_SHA"],
+              },
+          }
+          body = json.dumps(payload, separators=(",", ":"), sort_keys=True).encode()
+          signature = "sha256=" + hmac.new(secret, body, hashlib.sha256).hexdigest()
+          request = urllib.request.Request(
+              url,
+              data=body,
+              method="POST",
+              headers={
+                  "Content-Type": "application/json",
+                  "X-GitHub-Delivery": delivery,
+                  "X-GitHub-Event": "repository_dispatch",
+                  "X-Hub-Signature-256": signature,
+              },
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              if response.status not in {200, 202}:
+                  raise SystemExit(f"deployment webhook returned {response.status}")
+              print(response.read().decode())
+          PY
+
+  release:
+    name: "6 / release"
+    needs:
+      - build
+      - deploy
+    if: >-
+      always() &&
+      startsWith(github.ref, 'refs/tags/v') &&
+      needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes

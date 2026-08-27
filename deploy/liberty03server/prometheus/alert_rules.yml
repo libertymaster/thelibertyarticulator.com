@@ -1,0 +1,356 @@
+groups:
+  - name: availability
+    rules:
+      - alert: ScrapeTargetDown
+        expr: up == 0
+        for: 3m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Metrics target {{ $labels.job }} is down"
+          description: "Prometheus cannot scrape {{ $labels.instance }} for more than three minutes."
+
+      - alert: PublicEndpointUnavailable
+        expr: probe_success{job="blackbox_https"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Public endpoint is unavailable"
+          description: "The probe for {{ $labels.instance }} has failed for two minutes."
+
+      - alert: PublicEndpointSlow
+        expr: probe_duration_seconds{job="blackbox_https"} > 3
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Public endpoint response is slow"
+          description: "{{ $labels.instance }} has taken over three seconds for ten minutes."
+
+      - alert: TLSCertificateExpiringSoon
+        expr: probe_ssl_earliest_cert_expiry{job="blackbox_https"} - time() < 14 * 24 * 3600
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "TLS certificate expires within 14 days"
+          description: "Renew the certificate for {{ $labels.instance }}."
+
+      - alert: Liberty01MetricsMissing
+        expr: absent(up{host="liberty01server"})
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "All liberty01 metrics are missing"
+          description: "Check Alloy and private routing on the application host."
+
+      - alert: Liberty02MetricsMissing
+        expr: absent(up{host="liberty02server"})
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "All liberty02 metrics are missing"
+          description: "Check Alloy and private routing on the data host."
+
+  - name: application
+    rules:
+      - alert: ApplicationReplicaMissing
+        expr: sum(up{job="django"}) < 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Fewer than two application replicas are healthy"
+          description: "Restore application redundancy before the remaining replica fails."
+
+      - alert: TraefikHighServerErrorRate
+        expr: |
+          sum(rate(traefik_service_requests_total{code=~"5.."}[5m]))
+          /
+          clamp_min(sum(rate(traefik_service_requests_total[5m])), 0.001) > 0.05
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "HTTP 5xx rate exceeds 5%"
+          description: "Inspect Django and Traefik logs for the failing route."
+
+      - alert: TraefikHighClientErrorRate
+        expr: |
+          sum(rate(traefik_service_requests_total{code=~"4.."}[10m]))
+          /
+          clamp_min(sum(rate(traefik_service_requests_total[10m])), 0.001) > 0.25
+        for: 20m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HTTP 4xx rate exceeds 25%"
+          description: "Check routing, authentication callbacks, and abusive clients."
+
+      - alert: TraefikHighLatency
+        expr: |
+          histogram_quantile(0.95,
+            sum by (le) (rate(traefik_service_request_duration_seconds_bucket[10m]))
+          ) > 2
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "95th percentile request latency exceeds two seconds"
+          description: "Correlate request latency with database and host saturation."
+
+      - alert: DjangoServerErrors
+        expr: sum(rate(django_http_responses_total_by_status_total{status=~"5.."}[5m])) > 0.1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Django is returning server errors"
+          description: "More than one 5xx response every ten seconds is being returned."
+
+      - alert: ContainerRestartLoop
+        expr: changes(container_start_time_seconds{name!=""}[15m]) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} is restarting"
+          description: "The container restarted more than twice in fifteen minutes."
+
+      - alert: ContainerMemoryNearLimit
+        expr: |
+          container_memory_working_set_bytes{name!=""}
+          /
+          container_spec_memory_limit_bytes{name!=""} > 0.90
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container memory is near its limit"
+          description: "{{ $labels.name }} has used over 90% of its memory limit."
+
+      - alert: ContainerOOMKilled
+        expr: increase(container_oom_events_total[10m]) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Container was OOM-killed"
+          description: "Increase capacity only after identifying the memory growth cause."
+
+  - name: hosts
+    rules:
+      - alert: HostHighCPU
+        expr: 100 - avg by (host, instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100 > 90
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host CPU usage exceeds 90%"
+          description: "CPU on {{ $labels.host }} is saturated."
+
+      - alert: HostMemoryLow
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.10
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host available memory is below 10%"
+          description: "Investigate memory pressure on {{ $labels.host }}."
+
+      - alert: HostDiskSpaceLow
+        expr: |
+          node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"}
+          /
+          node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"} < 0.10
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Filesystem has less than 10% space remaining"
+          description: "{{ $labels.mountpoint }} on {{ $labels.host }} is nearly full."
+
+      - alert: HostDiskSpaceCritical
+        expr: |
+          node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"}
+          /
+          node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"} < 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Filesystem has less than 5% space remaining"
+          description: "Free space immediately on {{ $labels.mountpoint }}."
+
+      - alert: HostInodesLow
+        expr: node_filesystem_files_free{fstype!~"tmpfs|overlay|squashfs"} / node_filesystem_files{fstype!~"tmpfs|overlay|squashfs"} < 0.10
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Filesystem inode capacity is low"
+          description: "{{ $labels.mountpoint }} on {{ $labels.host }} has fewer than 10% inodes free."
+
+      - alert: HostFilesystemReadOnly
+        expr: node_filesystem_readonly{fstype!~"tmpfs|overlay|squashfs"} == 1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Filesystem unexpectedly became read-only"
+          description: "Check storage and kernel errors on {{ $labels.host }}."
+
+      - alert: HostClockSkew
+        expr: abs(node_time_seconds - time()) > 60
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host clock is skewed by more than one minute"
+          description: "Restore time synchronization on {{ $labels.host }}."
+
+      - alert: HostLoadHigh
+        expr: node_load15 / count without (cpu, mode) (node_cpu_seconds_total{mode="idle"}) > 1.5
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host load is persistently high"
+          description: "The 15-minute load per CPU exceeds 1.5 on {{ $labels.host }}."
+
+  - name: data
+    rules:
+      - alert: PostgreSQLDown
+        expr: pg_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL is unavailable"
+          description: "Check PostgreSQL health, TLS files, storage, and recent changes."
+
+      - alert: PostgreSQLConnectionsHigh
+        expr: sum(pg_stat_activity_count) / max(pg_settings_max_connections) > 0.80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL connection utilization exceeds 80%"
+          description: "Find connection leaks before clients are refused."
+
+      - alert: PostgreSQLDeadlocks
+        expr: sum(increase(pg_stat_database_deadlocks[15m])) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL deadlocks detected"
+          description: "Review the application transactions involved in the deadlock."
+
+      - alert: PostgreSQLLongTransaction
+        expr: pg_stat_activity_max_tx_duration > 300
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL transaction is older than five minutes"
+          description: "Long transactions can block vacuum and schema changes."
+
+      - alert: RedisUnavailable
+        expr: redis_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis {{ $labels.job }} is unavailable"
+          description: "Check Redis health, TLS, memory policy, and storage."
+
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.90
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis memory utilization exceeds 90%"
+          description: "Inspect key growth for {{ $labels.job }}."
+
+      - alert: RedisRejectedConnections
+        expr: increase(redis_rejected_connections_total[10m]) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis rejected client connections"
+          description: "Check client limits, TLS failures, and saturation."
+
+      - alert: RedisBrokerEvictions
+        expr: increase(redis_evicted_keys_total{job="redis_broker"}[10m]) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Celery broker evicted keys"
+          description: "The broker uses noeviction; any eviction indicates configuration drift."
+
+      - alert: RedisBlockedClients
+        expr: redis_blocked_clients > 5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis has many blocked clients"
+          description: "Inspect slow commands and Celery connectivity."
+
+      - alert: PostgreSQLBackupMetricMissing
+        expr: absent(liberty_postgres_backup_last_success_timestamp_seconds)
+        for: 26h
+        labels:
+          severity: critical
+        annotations:
+          summary: "No PostgreSQL backup success metric exists"
+          description: "Run and verify the encrypted backup job."
+
+      - alert: PostgreSQLBackupStale
+        expr: time() - liberty_postgres_backup_last_success_timestamp_seconds > 26 * 3600
+        for: 30m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Latest PostgreSQL backup is stale"
+          description: "No successful backup has completed in more than 26 hours."
+
+  - name: observability
+    rules:
+      - alert: PrometheusConfigReloadFailed
+        expr: prometheus_config_last_reload_successful != 1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Prometheus configuration reload failed"
+          description: "Validate the configuration and restore the last known-good file."
+
+      - alert: PrometheusRuleEvaluationFailures
+        expr: increase(prometheus_rule_evaluation_failures_total[10m]) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus rule evaluations are failing"
+          description: "Inspect rule expressions and Prometheus logs."
+
+      - alert: AlertmanagerNotificationFailures
+        expr: increase(alertmanager_notifications_failed_total[15m]) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Alertmanager failed to deliver notifications"
+          description: "Check SMTP reachability, credentials, and the receiver configuration."
+
+      - alert: LokiDiscardingLogs
+        expr: sum(rate(loki_discarded_samples_total[5m])) > 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Loki is discarding log entries"
+          description: "Check ingestion limits and malformed streams."
+

@@ -1,0 +1,98 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% firstof page.seo_title page.title "The Liberty Articulator" %}{% endblock %}{% block title_suffix %} · The Liberty Articulator{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% firstof page.search_description "Independent scholarship investigating under the microscope of liberty and analyzing through the telescope of history." %}{% endblock %}">
+  <meta name="theme-color" content="#102b3a">
+  <meta name="color-scheme" content="light">
+  <meta property="og:site_name" content="The Liberty Articulator">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% firstof page.seo_title page.title "The Liberty Articulator" %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{% firstof page.search_description "Independent scholarship on liberty and history." %}{% endblock %}">
+  {% if request %}<meta property="og:url" content="{{ request.build_absolute_uri }}">{% endif %}
+  <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  {% block extra_css %}{% endblock %}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="utility-bar">
+      <div class="shell utility-bar__inner">
+        <p>Independent scholarship on liberty &amp; history</p>
+        <a href="{% url 'search:index' %}" class="utility-search" aria-label="Search the journal">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+          Search
+        </a>
+      </div>
+    </div>
+    <div class="shell masthead">
+      <a class="brand" href="{% url 'home' %}" aria-label="The Liberty Articulator, home">
+        <img src="{% static 'images/logo.svg' %}" alt="The Liberty Articulator" width="430" height="104">
+      </a>
+      <p class="masthead__motto">
+        <span>Investigating under the microscope of liberty.</span>
+        <span>Analyzing through the telescope of history.</span>
+      </p>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+        <span class="nav-toggle__label">Menu</span>
+        <span class="nav-toggle__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-primary-nav>
+      <div class="shell primary-nav__inner">
+        <a href="{% url 'home' %}"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="{% url 'publications:index' %}"{% if '/publications/' in request.path %} aria-current="page"{% endif %}>Publications</a>
+        <a href="{% url 'series:index' %}"{% if '/series/' in request.path %} aria-current="page"{% endif %}>Series</a>
+        <a href="{% url 'references:list' %}"{% if '/sources/' in request.path or '/references/' in request.path %} aria-current="page"{% endif %}>Sources</a>
+        <a class="primary-nav__question" href="{% url 'home' %}#the-question">What does history mean to you?</a>
+      </div>
+    </nav>
+  </header>
+
+  {% if messages %}
+    <div class="shell messages" aria-label="Notifications">
+      {% for message in messages %}<p class="message{% if message.tags %} message--{{ message.tags }}{% endif %}" role="status">{{ message }}</p>{% endfor %}
+    </div>
+  {% endif %}
+
+  <main id="main-content" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__grid">
+      <div class="site-footer__identity">
+        <img src="{% static 'images/logo.svg' %}" alt="" width="350" height="84">
+        <p>Rigorous inquiry at the meeting point of individual liberty, civic life, and the long view of history.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="{% url 'publications:index' %}">All publications</a></li>
+          <li><a href="{% url 'series:index' %}">Editorial series</a></li>
+          <li><a href="{% url 'references:list' %}">Source library</a></li>
+          <li><a href="{% url 'search:index' %}">Search</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Principles</h2>
+        <p>Evidence before certainty.<br>Context before judgment.<br>Liberty under examination.</p>
+      </div>
+    </div>
+    <div class="shell site-footer__base">
+      <p>&copy; {% now "Y" %} The Liberty Articulator.</p>
+      <p>Built for intellectual reading and independent thought.</p>
+    </div>
+  </footer>
+
+  {% wagtailuserbar %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

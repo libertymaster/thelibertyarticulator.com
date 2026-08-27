@@ -1,0 +1,131 @@
+[
+  {
+    "model": "taxonomy.category",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Foundations of Liberty",
+      "slug": "foundations-of-liberty",
+      "description": "Foundational ideas, texts, institutions, and arguments about human liberty.",
+      "parent": null,
+      "sort_order": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Constitutional Traditions",
+      "slug": "constitutional-traditions",
+      "description": "Constitutions, limits on power, federalism, and the rule of law across time.",
+      "parent": null,
+      "sort_order": 20,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 3,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Revolutions and Reform",
+      "slug": "revolutions-and-reform",
+      "description": "Movements that challenged political, legal, economic, or social orders.",
+      "parent": null,
+      "sort_order": 30,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 4,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Civil and Human Rights",
+      "slug": "civil-and-human-rights",
+      "description": "The development, denial, defense, and expansion of civil and human rights.",
+      "parent": null,
+      "sort_order": 40,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 5,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Markets and Political Economy",
+      "slug": "markets-and-political-economy",
+      "description": "Markets, property, labor, trade, public finance, and competing economic orders.",
+      "parent": null,
+      "sort_order": 50,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 6,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "War, Peace, and State Power",
+      "slug": "war-peace-and-state-power",
+      "description": "Conflict, diplomacy, emergency power, empire, and the liberties tested by war.",
+      "parent": null,
+      "sort_order": 60,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 7,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Ideas and Intellectual History",
+      "slug": "ideas-and-intellectual-history",
+      "description": "Thinkers, debates, concepts, and the historical settings that shaped them.",
+      "parent": null,
+      "sort_order": 70,
+      "is_active": true
+    }
+  },
+  {
+    "model": "taxonomy.category",
+    "pk": 8,
+    "fields": {
+      "created_at": "2026-08-26T12:00:00Z",
+      "updated_at": "2026-08-26T12:00:00Z",
+      "created_by": null,
+      "updated_by": null,
+      "name": "Methods and Historiography",
+      "slug": "methods-and-historiography",
+      "description": "How evidence, archives, memory, interpretation, and narrative shape history.",
+      "parent": null,
+      "sort_order": 80,
+      "is_active": true
+    }
+  }
+]
+

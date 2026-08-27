@@ -1,0 +1,43 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: smtp.thelibertyarticulator.com:587
+  smtp_from: alerts@thelibertyarticulator.com
+  smtp_auth_username: alerts@thelibertyarticulator.com
+  smtp_auth_password_file: /run/secrets/smtp_password
+  smtp_require_tls: true
+
+route:
+  receiver: operations-email
+  group_by:
+    - alertname
+    - cluster
+    - job
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+    - matchers:
+        - severity="critical"
+      group_wait: 10s
+      repeat_interval: 30m
+    - matchers:
+        - severity="warning"
+      repeat_interval: 4h
+
+inhibit_rules:
+  - source_matchers:
+      - severity="critical"
+    target_matchers:
+      - severity="warning"
+    equal:
+      - alertname
+      - instance
+
+receivers:
+  - name: operations-email
+    email_configs:
+      - to: operations@thelibertyarticulator.com
+        send_resolved: true
+        headers:
+          Subject: "[Liberty][{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}"
+

@@ -1,0 +1,21 @@
+http:
+  routers:
+    fusionauth:
+      rule: Host(`auth.thelibertyarticulator.com`)
+      entryPoints:
+        - web
+      middlewares:
+        - security-chain
+      service: fusionauth
+  services:
+    fusionauth:
+      loadBalancer:
+        passHostHeader: true
+        healthCheck:
+          path: /api/status
+          interval: 20s
+          timeout: 5s
+        servers:
+          # Resolve this name only on the private routed network.
+          - url: http://liberty02.internal:9011
+

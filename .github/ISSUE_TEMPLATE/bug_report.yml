@@ -1,0 +1,48 @@
+name: Bug report
+description: Report a reproducible defect that does not contain sensitive information.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities, secrets, personal data, or unpublished editorial material here. Use the private security contact instead.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Observed behavior
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Provide the smallest safe sequence that reproduces the issue.
+      placeholder: |
+        1. Visit ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Release tag or commit SHA, if known.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Include request ID, time zone-aware timestamp, browser, and safe log excerpts. Remove tokens, cookies, addresses, and private content.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed secrets, personal data, and unpublished material.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
+

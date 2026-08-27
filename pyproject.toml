@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "the_liberty_articulator"
+version = "0.1.0"
+description = "An independent, source-forward journal of liberty and history."
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+license = {text = "Proprietary"}
+authors = [{name = "The Liberty Articulator"}]
+dependencies = [
+  "Django==6.0.8",
+  "Wagtail==7.4.3",
+  "psycopg[binary]==3.3.4",
+  "gunicorn==26.1.0",
+  "django-environ==0.14.0",
+  "Pillow==12.3.0",
+  "celery[redis]==5.6.3",
+  "django-celery-beat==2.9.0",
+  "django-prometheus==2.5.0",
+  "django-filter==26.1",
+  "djangorestframework==3.18.0",
+  "whitenoise[brotli]==6.12.0",
+  "django-storages==1.14.6",
+  "boto3==1.43.77",
+  "wagtailmedia==0.18.1",
+  "citeproc-py==0.11.0",
+  "httpx==0.28.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "bandit>=1.9",
+  "coverage[toml]>=7.10",
+  "factory-boy>=3.3",
+  "mypy>=1.18",
+  "pip-audit>=2.9",
+  "pytest>=8.4",
+  "pytest-django>=4.11",
+  "pytest-xdist>=3.8",
+  "ruff>=0.12",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["apps*", "config*"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.testing"
+python_files = ["test_*.py"]
+testpaths = ["tests"]
+addopts = "--strict-markers --strict-config --tb=short"
+markers = [
+  "integration: exercises more than one application boundary",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["apps", "config"]
+omit = ["*/migrations/*", "*/tests/*"]
+
+[tool.coverage.report]
+fail_under = 75
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+exclude = ["*/migrations/*", "staticfiles", "media"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "DJ", "UP", "S", "SIM", "RUF"]
+ignore = [
+  "DJ001",
+  "S101",
+  "S105",
+  "S106",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"config/settings/*.py" = ["F403", "F405"]
+"tests/**/*.py" = ["S101"]
+
+[tool.mypy]
+python_version = "3.14"
+check_untyped_defs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[tool.bandit]
+exclude_dirs = ["tests", "*/migrations"]
+skips = ["B101"]

@@ -1,0 +1,14 @@
+<article class="publication-card">
+  <div class="publication-card__rule" aria-hidden="true"></div>
+  <div class="publication-card__meta">
+    {% if publication.publication_type %}<span class="eyebrow">{{ publication.get_publication_type_display|default:publication.publication_type }}</span>{% else %}<span class="eyebrow">Essay</span>{% endif %}
+    {% if publication.published_at %}<time datetime="{{ publication.published_at|date:'Y-m-d' }}">{{ publication.published_at|date:"F j, Y" }}</time>{% elif publication.first_published_at %}<time datetime="{{ publication.first_published_at|date:'Y-m-d' }}">{{ publication.first_published_at|date:"F j, Y" }}</time>{% endif %}
+  </div>
+  <h3><a href="{{ publication.get_absolute_url }}">{{ publication.title }}</a></h3>
+  {% if publication.subtitle %}<p class="publication-card__subtitle">{{ publication.subtitle }}</p>{% endif %}
+  {% if publication.dek %}<p class="publication-card__summary">{{ publication.dek|truncatewords:31 }}</p>{% elif publication.abstract %}<p class="publication-card__summary">{{ publication.abstract|striptags|truncatewords:31 }}</p>{% elif publication.search_description %}<p class="publication-card__summary">{{ publication.search_description|truncatewords:31 }}</p>{% endif %}
+  <div class="publication-card__footer">
+    {% if publication.byline %}<span>By {{ publication.byline }}</span>{% endif %}
+    {% if publication.reading_time %}<span>{{ publication.reading_time }} min read</span>{% endif %}
+  </div>
+</article>

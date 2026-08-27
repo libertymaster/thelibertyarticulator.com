@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{% firstof series.title series.name object.title object.name "Editorial series" %}{% endblock %}
+{% block meta_description %}{% firstof series.search_description series.description|striptags|truncatewords:30 object.search_description object.description|striptags|truncatewords:30 "An editorial series from The Liberty Articulator." %}{% endblock %}
+{% block body_class %}series-detail-page{% endblock %}
+
+{% block content %}
+<header class="series-hero">
+  <div class="shell">
+    <nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><a href="{% url 'series:index' %}">Series</a></li><li><span aria-current="page">{{ series.title }}</span></li></ol></nav>
+    <div class="series-hero__grid">
+      <div><p class="eyebrow eyebrow--light">Editorial series</p><h1>{{ series.title }}</h1>{% if series.tagline %}<p class="series-hero__subtitle">{{ series.tagline }}</p>{% endif %}</div>
+      <div class="series-hero__summary">{% if series.description %}{{ series.description|striptags }}{% endif %}{% if series.publications.count %}<p class="series-hero__count"><strong>{{ series.publications.count }}</strong> publication{{ series.publications.count|pluralize }} in this collection</p>{% endif %}</div>
+    </div>
+  </div>
+</header>
+<section class="section-pad">
+  <div class="shell collection-layout">
+    <div class="collection-intro"><p class="section-number" aria-hidden="true">The collection</p><h2>A sustained line of inquiry</h2><p>Read in sequence or enter wherever the question catches your attention.</p></div>
+    <div>
+      {% with items=publications|default:series.publications.all %}
+        {% if items %}<div class="publication-list publication-list--numbered">{% for publication in items %}<div class="numbered-publication"><span aria-hidden="true">{{ forloop.counter|stringformat:"02d" }}</span>{% include "includes/publication_card.html" with publication=publication %}</div>{% endfor %}</div>
+        {% else %}<div class="empty-state"><h2>The first installment is forthcoming</h2><p>This collection has been announced; its publications are in editorial preparation.</p></div>{% endif %}
+      {% endwith %}
+    </div>
+  </div>
+  <div class="shell">{% include "includes/pagination.html" with page_obj=page_obj %}</div>
+</section>
+{% endblock %}

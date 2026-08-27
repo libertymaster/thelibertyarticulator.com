@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+{% block meta_description %}The requested page could not be found.{% endblock %}
+{% block body_class %}error-page{% endblock %}
+
+{% block content %}
+<section class="error-view">
+  <div class="shell error-view__inner">
+    <div class="error-view__instrument" aria-hidden="true"><span>4</span><i></i><span>4</span></div>
+    <p class="eyebrow eyebrow--light">Beyond the known archive</p>
+    <h1>This page has slipped from view.</h1>
+    <p>The address may have changed, or the record may no longer exist. Recalibrate with search or return to the journal.</p>
+    <div class="error-view__actions"><a class="button button--copper" href="{% url 'home' %}">Return home</a><a class="text-link text-link--light" href="{% url 'search:index' %}">Search the archive →</a></div>
+  </div>
+</section>
+{% endblock %}

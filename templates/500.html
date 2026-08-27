@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Temporary Interruption{% endblock %}
+{% block meta_description %}The Liberty Articulator is temporarily unavailable.{% endblock %}
+{% block body_class %}error-page{% endblock %}
+
+{% block content %}
+<section class="error-view">
+  <div class="shell error-view__inner">
+    <div class="error-view__instrument error-view__instrument--500" aria-hidden="true"><span>5</span><i></i><span>0</span><i></i><span>0</span></div>
+    <p class="eyebrow eyebrow--light">A temporary interruption</p>
+    <h1>Our instruments need a moment.</h1>
+    <p>The journal encountered an unexpected problem. Please try again shortly; the interruption has been recorded for review.</p>
+    <div class="error-view__actions"><a class="button button--copper" href="{% url 'home' %}">Return home</a><button class="text-button text-link--light" type="button" onclick="window.location.reload()">Try again →</button></div>
+  </div>
+</section>
+{% endblock %}

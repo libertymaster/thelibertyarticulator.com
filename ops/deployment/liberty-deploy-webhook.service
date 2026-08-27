@@ -1,0 +1,35 @@
+[Unit]
+Description=The Liberty Articulator authenticated deployment webhook
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+User=liberty-deploy
+Group=liberty-deploy
+EnvironmentFile=/etc/liberty/deploy.env
+ExecStart=/usr/bin/python3 /opt/liberty/ops/deployment/webhook-handler.py
+Restart=on-failure
+RestartSec=5s
+WorkingDirectory=/opt/liberty
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+ReadWritePaths=/var/lib/liberty-deploy
+# Docker socket access is effectively root-equivalent. Keep this service bound to
+# localhost and restrict membership in the docker group to this dedicated account.
+SupplementaryGroups=docker
+
+[Install]
+WantedBy=multi-user.target

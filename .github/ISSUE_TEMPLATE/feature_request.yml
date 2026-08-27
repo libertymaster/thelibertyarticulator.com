@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a user, editorial, or operational improvement.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or operator problem should be solved? Avoid prescribing an implementation first.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe success, including accessibility and editorial implications.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and constraints
+      description: Note workarounds, source/citation implications, privacy, migration, or operational constraints.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety check
+      options:
+        - label: This request contains no secret, personal data, or unpublished source material.
+          required: true
+

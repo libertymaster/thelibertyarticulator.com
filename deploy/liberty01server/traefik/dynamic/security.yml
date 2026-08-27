@@ -1,0 +1,36 @@
+http:
+  middlewares:
+    compression:
+      compress: {}
+    request-limit:
+      rateLimit:
+        average: 100
+        burst: 200
+        period: 1s
+    metrics-private:
+      ipAllowList:
+        sourceRange:
+          - 10.0.0.0/8
+          - 172.16.0.0/12
+          - 192.168.0.0/16
+          - 127.0.0.0/8
+          - ::1/128
+        ipStrategy:
+          depth: 1
+    security-headers:
+      headers:
+        contentTypeNosniff: true
+        frameDeny: true
+        referrerPolicy: strict-origin-when-cross-origin
+        permissionsPolicy: "camera=(), microphone=(), geolocation=(), payment=()"
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        customResponseHeaders:
+          Server: ""
+    security-chain:
+      chain:
+        middlewares:
+          - compression
+          - request-limit
+          - security-headers

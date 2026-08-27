@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="The Liberty Articulator">
+  <circle cx="48" cy="48" r="37" fill="none" stroke="#f2eadb" stroke-width="2"/>
+  <circle cx="48" cy="48" r="23" fill="none" stroke="#69a096" stroke-width="2"/>
+  <path d="M48 2v92M2 48h92" stroke="#f2eadb" stroke-opacity=".35"/>
+  <ellipse cx="48" cy="48" rx="44" ry="15" fill="none" stroke="#d18a69" transform="rotate(-25 48 48)"/>
+  <path d="m48 29 4.5 14.5L67 48l-14.5 4.5L48 67l-4.5-14.5L29 48l14.5-4.5Z" fill="#f2eadb"/>
+  <circle cx="48" cy="48" r="4" fill="#d18a69"/>
+</svg>

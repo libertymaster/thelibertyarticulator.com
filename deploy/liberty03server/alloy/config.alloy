@@ -1,0 +1,70 @@
+logging {
+  level  = "info"
+  format = "json"
+}
+
+prometheus.remote_write "local" {
+  endpoint {
+    url = "http://prometheus:9090/api/v1/write"
+  }
+
+  external_labels = {
+    host = sys.env("HOST_NAME"),
+    tier = "observability",
+  }
+}
+
+prometheus.scrape "node" {
+  targets         = [{ "__address__" = "node_exporter:9100", "job" = "node" }]
+  forward_to      = [prometheus.remote_write.local.receiver]
+  scrape_interval = "30s"
+}
+
+prometheus.scrape "containers" {
+  targets         = [{ "__address__" = "cadvisor:8080", "job" = "cadvisor" }]
+  forward_to      = [prometheus.remote_write.local.receiver]
+  scrape_interval = "30s"
+}
+
+prometheus.scrape "alloy" {
+  targets         = [{ "__address__" = "127.0.0.1:12345", "job" = "alloy" }]
+  forward_to      = [prometheus.remote_write.local.receiver]
+  scrape_interval = "30s"
+}
+
+discovery.docker "local" {
+  host = "unix:///var/run/docker.sock"
+}
+
+discovery.relabel "docker_logs" {
+  targets = discovery.docker.local.targets
+
+  rule {
+    source_labels = ["__meta_docker_container_name"]
+    regex         = "/(.*)"
+    target_label  = "container"
+  }
+
+  rule {
+    replacement  = sys.env("HOST_NAME")
+    target_label = "host"
+  }
+
+  rule {
+    replacement  = "observability"
+    target_label = "tier"
+  }
+}
+
+loki.source.docker "local" {
+  host          = "unix:///var/run/docker.sock"
+  targets       = discovery.docker.local.targets
+  relabel_rules = discovery.relabel.docker_logs.rules
+  forward_to    = [loki.write.local.receiver]
+}
+
+loki.write "local" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}

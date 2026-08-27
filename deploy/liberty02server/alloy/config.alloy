@@ -1,0 +1,94 @@
+logging {
+  level  = "info"
+  format = "json"
+}
+
+prometheus.remote_write "central" {
+  endpoint {
+    url = sys.env("PROMETHEUS_REMOTE_WRITE_URL")
+
+    queue_config {
+      capacity             = 10000
+      max_shards           = 8
+      max_samples_per_send = 2000
+    }
+  }
+
+  external_labels = {
+    host = sys.env("HOST_NAME"),
+    tier = "data",
+  }
+}
+
+prometheus.scrape "node" {
+  targets         = [{ "__address__" = "node_exporter:9100", "job" = "node" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "30s"
+}
+
+prometheus.scrape "containers" {
+  targets         = [{ "__address__" = "cadvisor:8080", "job" = "cadvisor" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "30s"
+}
+
+prometheus.scrape "postgres" {
+  targets         = [{ "__address__" = "postgres_exporter:9187", "job" = "postgres" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "15s"
+}
+
+prometheus.scrape "redis_cache" {
+  targets         = [{ "__address__" = "redis_cache_exporter:9121", "job" = "redis_cache" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "15s"
+}
+
+prometheus.scrape "redis_broker" {
+  targets         = [{ "__address__" = "redis_broker_exporter:9121", "job" = "redis_broker" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "15s"
+}
+
+prometheus.scrape "alloy" {
+  targets         = [{ "__address__" = "127.0.0.1:12345", "job" = "alloy" }]
+  forward_to      = [prometheus.remote_write.central.receiver]
+  scrape_interval = "30s"
+}
+
+discovery.docker "local" {
+  host = "unix:///var/run/docker.sock"
+}
+
+discovery.relabel "docker_logs" {
+  targets = discovery.docker.local.targets
+
+  rule {
+    source_labels = ["__meta_docker_container_name"]
+    regex         = "/(.*)"
+    target_label  = "container"
+  }
+
+  rule {
+    replacement  = sys.env("HOST_NAME")
+    target_label = "host"
+  }
+
+  rule {
+    replacement  = "data"
+    target_label = "tier"
+  }
+}
+
+loki.source.docker "local" {
+  host          = "unix:///var/run/docker.sock"
+  targets       = discovery.docker.local.targets
+  relabel_rules = discovery.relabel.docker_logs.rules
+  forward_to    = [loki.write.central.receiver]
+}
+
+loki.write "central" {
+  endpoint {
+    url = sys.env("LOKI_PUSH_URL")
+  }
+}

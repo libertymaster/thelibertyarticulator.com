@@ -1,0 +1,26 @@
+credentials-file: /run/secrets/cloudflared-credentials.json
+metrics: 0.0.0.0:2000
+no-autoupdate: true
+grace-period: 30s
+
+ingress:
+  - hostname: thelibertyarticulator.com
+    service: http://traefik:8000
+    originRequest:
+      connectTimeout: 10s
+      httpHostHeader: thelibertyarticulator.com
+      noTLSVerify: false
+  - hostname: www.thelibertyarticulator.com
+    service: http://traefik:8000
+    originRequest:
+      connectTimeout: 10s
+      httpHostHeader: thelibertyarticulator.com
+      noTLSVerify: false
+  - hostname: auth.thelibertyarticulator.com
+    service: http://traefik:8000
+    originRequest:
+      connectTimeout: 10s
+      httpHostHeader: auth.thelibertyarticulator.com
+      noTLSVerify: false
+  - service: http_status:404
+

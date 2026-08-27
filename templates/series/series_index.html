@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Series{% endblock %}
+{% block meta_description %}Thematic collections from The Liberty Articulator, following consequential ideas across time.{% endblock %}
+{% block body_class %}series-index-page{% endblock %}
+
+{% block content %}
+<header class="page-hero">
+  <div class="shell">
+    <nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><span aria-current="page">Series</span></li></ol></nav>
+    <div class="page-hero__grid"><div><p class="eyebrow eyebrow--light">Collections of inquiry</p><h1>Editorial series</h1></div><p>Ideas rarely disclose their meaning in isolation. These collections follow a single question across people, places, and time.</p></div>
+  </div>
+</header>
+<section class="section-pad">
+  <div class="shell">
+    {% with items=page_obj|default:series_list %}
+      {% if items %}
+      <div class="series-grid">
+        {% for series in items %}
+        <article class="series-card">
+          <div class="series-card__number" aria-hidden="true">{{ forloop.counter|stringformat:"02d" }}</div>
+          <p class="eyebrow">{% if series.publications.count %}{{ series.publications.count }} publication{{ series.publications.count|pluralize }}{% else %}Editorial series{% endif %}</p>
+          <h2><a href="{% firstof series.get_absolute_url series.url '#' %}">{% firstof series.title series.name "Untitled series" %}</a></h2>
+          {% if series.tagline %}<p class="series-card__subtitle">{{ series.tagline }}</p>{% elif series.subtitle %}<p class="series-card__subtitle">{{ series.subtitle }}</p>{% endif %}
+          {% if series.description %}<p>{{ series.description|striptags|truncatewords:34 }}</p>{% endif %}
+          <a class="text-link" href="{% firstof series.get_absolute_url series.url '#' %}">Explore the series <span aria-hidden="true">→</span></a>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}<div class="empty-state"><span aria-hidden="true">◌</span><h2>Series are being assembled</h2><p>Return soon for thematic collections from across the journal.</p></div>{% endif %}
+    {% endwith %}
+    {% include "includes/pagination.html" with page_obj=page_obj %}
+  </div>
+</section>
+{% endblock %}

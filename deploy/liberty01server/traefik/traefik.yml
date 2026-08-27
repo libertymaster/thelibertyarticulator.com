@@ -1,0 +1,64 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+api:
+  dashboard: false
+
+ping:
+  entryPoint: metrics
+
+entryPoints:
+  web:
+    address: ":8000"
+    forwardedHeaders:
+      trustedIPs:
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+    transport:
+      respondingTimeouts:
+        readTimeout: 60s
+        writeTimeout: 60s
+        idleTimeout: 180s
+  metrics:
+    address: ":8082"
+
+providers:
+  docker:
+    endpoint: unix:///var/run/docker.sock
+    exposedByDefault: false
+    network: liberty01_application
+    watch: true
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+metrics:
+  prometheus:
+    entryPoint: metrics
+    addEntryPointsLabels: true
+    addRoutersLabels: true
+    addServicesLabels: true
+
+accessLog:
+  format: json
+  fields:
+    defaultMode: keep
+    headers:
+      defaultMode: drop
+      names:
+        User-Agent: keep
+        X-Forwarded-For: drop
+
+log:
+  format: json
+  level: INFO
+
+serversTransport:
+  insecureSkipVerify: false
+  forwardingTimeouts:
+    dialTimeout: 10s
+    responseHeaderTimeout: 60s
+    idleConnTimeout: 90s
+

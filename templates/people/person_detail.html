@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block title %}{% firstof person.display_name person.full_name person.name object.display_name object.full_name object.name "Contributor" %}{% endblock %}
+{% block meta_description %}{% firstof person.short_bio person.biography|striptags|truncatewords:28 person.bio|striptags|truncatewords:28 object.short_bio object.biography|striptags|truncatewords:28 "Contributor to The Liberty Articulator." %}{% endblock %}
+{% block body_class %}person-detail-page{% endblock %}
+
+{% block content %}
+<header class="profile-hero">
+  <div class="shell">
+    <nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><a href="{% url 'people:index' %}">Contributors</a></li><li><span aria-current="page">{{ person.name }}</span></li></ol></nav>
+    <div class="profile-hero__grid">
+      <div class="profile-portrait">
+        {% if person.portrait %}{% image person.portrait fill-520x520 as portrait %}<img src="{{ portrait.url }}" alt="Portrait of {{ person.name }}" width="520" height="520">
+        {% else %}<span aria-hidden="true">{{ person.name|slice:":1" }}</span>{% endif %}
+      </div>
+      <div class="profile-hero__copy">
+        <p class="eyebrow eyebrow--light">Contributor</p>
+        <h1>{{ person.name }}</h1>
+        {% if person.affiliation %}<p class="profile-hero__role">{{ person.affiliation }}</p>{% endif %}
+        <ul class="profile-links">
+          {% if person.orcid %}<li><a href="{{ person.orcid_url }}" rel="me external"><span class="orcid-mark" aria-hidden="true">iD</span> ORCID</a></li>{% endif %}
+          {% if person.website %}<li><a href="{{ person.website }}" rel="me external">Website <span aria-hidden="true">↗</span></a></li>{% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="shell profile-layout section-pad">
+  <aside>
+    <p class="section-number" aria-hidden="true">Profile</p>
+  </aside>
+  <section class="profile-biography" aria-labelledby="biography-heading">
+    <p class="eyebrow">About the contributor</p>
+    <h2 id="biography-heading">Biography</h2>
+    {% if person.biography %}{{ person.biography|richtext }}{% else %}<p>Biographical details will be added soon.</p>{% endif %}
+  </section>
+</div>
+
+<section class="contributor-work section-pad" aria-labelledby="contributions-heading">
+  <div class="shell">
+    <header class="section-header"><div><p class="eyebrow">In the journal</p><h2 id="contributions-heading">Contributions</h2></div>{% if publications %}<p>{{ publications|length }} publication{{ publications|length|pluralize }}</p>{% endif %}</header>
+    {% with items=publications %}
+      {% if items %}<div class="publication-grid">{% for publication in items %}{% include "includes/publication_card.html" with publication=publication %}{% endfor %}</div>
+      {% else %}<div class="empty-state empty-state--quiet"><h3>Work is forthcoming</h3><p>This contributor’s first publication is in editorial preparation.</p></div>{% endif %}
+    {% endwith %}
+  </div>
+</section>
+{% endblock %}

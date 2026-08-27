@@ -1,0 +1,394 @@
+name: liberty02
+
+x-security: &security
+  restart: unless-stopped
+  init: true
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: json-file
+    options:
+      max-size: 20m
+      max-file: "5"
+
+x-redis: &redis
+  image: ${REDIS_IMAGE:-dhi.io/redis:8.8.2-alpine3.24}
+  <<: *security
+  environment:
+    REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+  volumes:
+    - ${REDIS_TLS_DIR:?Set REDIS_TLS_DIR}:/etc/redis/tls:ro
+  networks:
+    - data
+  tmpfs:
+    - /tmp:size=32m,mode=1777
+  healthcheck:
+    test:
+      - CMD-SHELL
+      - REDISCLI_AUTH="$$REDIS_PASSWORD" redis-cli --tls --cacert /etc/redis/tls/ca.crt ping | grep -q PONG
+    interval: 15s
+    timeout: 5s
+    retries: 5
+
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE:-dhi.io/postgres:18.6-alpine3.24}
+    <<: *security
+    command:
+      - postgres
+      - -c
+      - listen_addresses=*
+      - -c
+      - password_encryption=scram-sha-256
+      - -c
+      - ssl=on
+      - -c
+      - ssl_min_protocol_version=TLSv1.3
+      - -c
+      - ssl_cert_file=/etc/postgresql/tls/server.crt
+      - -c
+      - ssl_key_file=/etc/postgresql/tls/server.key
+      - -c
+      - ssl_ca_file=/etc/postgresql/tls/ca.crt
+      - -c
+      - hba_file=/etc/postgresql/pg_hba.conf
+      - -c
+      - log_connections=on
+      - -c
+      - log_disconnections=on
+      - -c
+      - log_lock_waits=on
+      - -c
+      - log_min_duration_statement=${POSTGRES_LOG_MIN_DURATION_MS:-1000}
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Set POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=trust --data-checksums
+      POSTGRES_APP_DATABASE: ${POSTGRES_APP_DATABASE:-liberty}
+      POSTGRES_APP_USER: ${POSTGRES_APP_USER:-liberty}
+      POSTGRES_APP_PASSWORD: ${POSTGRES_APP_PASSWORD:?Set POSTGRES_APP_PASSWORD}
+      FUSIONAUTH_DATABASE: ${FUSIONAUTH_DATABASE:-fusionauth}
+      FUSIONAUTH_DATABASE_USER: ${FUSIONAUTH_DATABASE_USER:-fusionauth}
+      FUSIONAUTH_DATABASE_PASSWORD: ${FUSIONAUTH_DATABASE_PASSWORD:?Set FUSIONAUTH_DATABASE_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ${POSTGRES_TLS_DIR:?Set POSTGRES_TLS_DIR}:/etc/postgresql/tls:ro
+      - ./init/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./init/00-bootstrap.sh:/docker-entrypoint-initdb.d/00-bootstrap.sh:ro
+      - ./init/sql:/docker-entrypoint-initdb.d/sql:ro
+    networks:
+      - data
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:5432:5432
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+      - /run/postgresql:size=32m,mode=3775
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 30s
+    stop_grace_period: 90s
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+          cpus: "4.00"
+
+  redis_cache:
+    <<: *redis
+    command:
+      - redis-server
+      - --port
+      - "0"
+      - --tls-port
+      - "6379"
+      - --tls-cert-file
+      - /etc/redis/tls/server.crt
+      - --tls-key-file
+      - /etc/redis/tls/server.key
+      - --tls-ca-cert-file
+      - /etc/redis/tls/ca.crt
+      - --tls-auth-clients
+      - "no"
+      - --requirepass
+      - ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+      - --save
+      - ""
+      - --appendonly
+      - "no"
+      - --maxmemory
+      - ${REDIS_CACHE_MAXMEMORY:-1gb}
+      - --maxmemory-policy
+      - allkeys-lru
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:6379:6379
+    deploy:
+      resources:
+        limits:
+          memory: 1280m
+          cpus: "1.00"
+
+  redis_broker:
+    <<: *redis
+    command:
+      - redis-server
+      - --port
+      - "0"
+      - --tls-port
+      - "6379"
+      - --tls-cert-file
+      - /etc/redis/tls/server.crt
+      - --tls-key-file
+      - /etc/redis/tls/server.key
+      - --tls-ca-cert-file
+      - /etc/redis/tls/ca.crt
+      - --tls-auth-clients
+      - "no"
+      - --requirepass
+      - ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+      - --appendonly
+      - "yes"
+      - --appendfsync
+      - everysec
+      - --maxmemory
+      - ${REDIS_BROKER_MAXMEMORY:-1gb}
+      - --maxmemory-policy
+      - noeviction
+    volumes:
+      - redis_broker_data:/data
+      - ${REDIS_TLS_DIR:?Set REDIS_TLS_DIR}:/etc/redis/tls:ro
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:6380:6379
+    deploy:
+      resources:
+        limits:
+          memory: 1280m
+          cpus: "1.00"
+
+  fusionauth:
+    image: ${FUSIONAUTH_IMAGE:-fusionauth/fusionauth-app:1.69.0}
+    <<: *security
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${FUSIONAUTH_DATABASE:-fusionauth}?sslmode=require
+      DATABASE_ROOT_USERNAME: ${POSTGRES_ADMIN_USER:-postgres}
+      DATABASE_ROOT_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Set POSTGRES_ADMIN_PASSWORD}
+      DATABASE_USERNAME: ${FUSIONAUTH_DATABASE_USER:-fusionauth}
+      DATABASE_PASSWORD: ${FUSIONAUTH_DATABASE_PASSWORD:?Set FUSIONAUTH_DATABASE_PASSWORD}
+      FUSIONAUTH_APP_MEMORY: ${FUSIONAUTH_APP_MEMORY:-768M}
+      FUSIONAUTH_APP_RUNTIME_MODE: production
+      FUSIONAUTH_APP_URL: https://${FUSIONAUTH_HOSTNAME:-auth.thelibertyarticulator.com}
+      SEARCH_TYPE: database
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - fusionauth_config:/usr/local/fusionauth/config
+      - fusionauth_plugins:/usr/local/fusionauth/plugins
+      - fusionauth_logs:/usr/local/fusionauth/logs
+    networks:
+      - data
+    ports:
+      - ${PRIVATE_BIND_ADDRESS:?Set PRIVATE_BIND_ADDRESS}:9011:9011
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - "wget -q -T 5 -O /dev/null http://127.0.0.1:9011/api/status || exit 1"
+      interval: 20s
+      timeout: 8s
+      retries: 10
+      start_period: 90s
+    deploy:
+      resources:
+        limits:
+          memory: 1280m
+          cpus: "2.00"
+
+  postgres_exporter:
+    image: ${POSTGRES_EXPORTER_IMAGE:-dhi.io/postgres-exporter:0.20.1-debian13}
+    <<: *security
+    environment:
+      DATA_SOURCE_URI: postgres:5432/postgres?sslmode=require
+      DATA_SOURCE_USER: ${POSTGRES_ADMIN_USER:-postgres}
+      DATA_SOURCE_PASS: ${POSTGRES_ADMIN_PASSWORD:?Set POSTGRES_ADMIN_PASSWORD}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - data
+      - monitoring
+    expose:
+      - "9187"
+
+  redis_cache_exporter:
+    image: ${REDIS_EXPORTER_IMAGE:-dhi.io/redis-exporter:1.89.0-debian13}
+    <<: *security
+    environment:
+      REDIS_ADDR: rediss://redis_cache:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+      REDIS_EXPORTER_TLS_CA_CERT_FILE: /etc/redis/tls/ca.crt
+    volumes:
+      - ${REDIS_TLS_DIR:?Set REDIS_TLS_DIR}:/etc/redis/tls:ro
+    depends_on:
+      redis_cache:
+        condition: service_healthy
+    networks:
+      - data
+      - monitoring
+    expose:
+      - "9121"
+
+  redis_broker_exporter:
+    image: ${REDIS_EXPORTER_IMAGE:-dhi.io/redis-exporter:1.89.0-debian13}
+    <<: *security
+    environment:
+      REDIS_ADDR: rediss://redis_broker:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+      REDIS_EXPORTER_TLS_CA_CERT_FILE: /etc/redis/tls/ca.crt
+    volumes:
+      - ${REDIS_TLS_DIR:?Set REDIS_TLS_DIR}:/etc/redis/tls:ro
+    depends_on:
+      redis_broker:
+        condition: service_healthy
+    networks:
+      - data
+      - monitoring
+    expose:
+      - "9121"
+
+  backup:
+    profiles:
+      - backup
+    build:
+      context: ../..
+      dockerfile: deploy/liberty02server/backup/Dockerfile
+    image: ${BACKUP_IMAGE:-the-liberty-articulator/postgres-backup:local}
+    restart: "no"
+    init: true
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    env_file:
+      - ${BACKUP_ENV_FILE:-/etc/liberty/backup.env}
+    environment:
+      PGHOST: postgres
+      PGPORT: "5432"
+      PGSSLMODE: require
+      BACKUP_METRICS_FILE: /var/lib/node_exporter/textfile_collector/liberty_backup.prom
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ${BACKUP_OUTPUT_HOST_DIR:?Set BACKUP_OUTPUT_HOST_DIR}:/backups
+      - ${BACKUP_METRICS_HOST_DIR:?Set BACKUP_METRICS_HOST_DIR}:/var/lib/node_exporter/textfile_collector
+      - ${AGE_IDENTITY_DIR:-/etc/liberty/age}:/run/age:ro
+    networks:
+      - data
+    tmpfs:
+      - /tmp:size=2g,mode=1777
+
+  node_exporter:
+    image: ${NODE_EXPORTER_IMAGE:-dhi.io/node-exporter:1.12.1-alpine3.24}
+    command:
+      - --path.rootfs=/host
+      - --collector.textfile.directory=/var/lib/node_exporter/textfile_collector
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    pid: host
+    volumes:
+      - /:/host:ro,rslave
+      - ${BACKUP_METRICS_HOST_DIR:?Set BACKUP_METRICS_HOST_DIR}:/var/lib/node_exporter/textfile_collector:ro
+    networks:
+      - monitoring
+    expose:
+      - "9100"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  cadvisor:
+    image: ${CADVISOR_IMAGE:-gcr.io/cadvisor/cadvisor:v0.52.1}
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=30s
+      - --store_container_labels=false
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    networks:
+      - monitoring
+    expose:
+      - "8080"
+    restart: unless-stopped
+    read_only: true
+    privileged: false
+    security_opt:
+      - no-new-privileges:true
+
+  alloy:
+    image: ${ALLOY_IMAGE:-dhi.io/alloy:1.18.1-debian13}
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    environment:
+      HOST_NAME: liberty02server
+      PROMETHEUS_REMOTE_WRITE_URL: ${PROMETHEUS_REMOTE_WRITE_URL:?Set PROMETHEUS_REMOTE_WRITE_URL}
+      LOKI_PUSH_URL: ${LOKI_PUSH_URL:?Set LOKI_PUSH_URL}
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy_data:/var/lib/alloy/data
+    depends_on:
+      - node_exporter
+      - cadvisor
+      - postgres_exporter
+      - redis_cache_exporter
+      - redis_broker_exporter
+    networks:
+      - monitoring
+      - egress
+    expose:
+      - "12345"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+
+networks:
+  data:
+    name: liberty02_data
+  monitoring:
+    name: liberty02_monitoring
+    internal: true
+  egress:
+    name: liberty02_egress
+
+volumes:
+  postgres_data:
+  redis_broker_data:
+  fusionauth_config:
+  fusionauth_plugins:
+  fusionauth_logs:
+  alloy_data:

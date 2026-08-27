@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block title %}Contributors{% endblock %}
+{% block meta_description %}Meet the writers, researchers, editors, and scholars contributing to The Liberty Articulator.{% endblock %}
+{% block body_class %}person-list-page{% endblock %}
+
+{% block content %}
+<header class="page-hero">
+  <div class="shell"><nav class="breadcrumbs breadcrumbs--dark" aria-label="Breadcrumb"><ol><li><a href="{% url 'home' %}">Home</a></li><li><span aria-current="page">Contributors</span></li></ol></nav><div class="page-hero__grid"><div><p class="eyebrow eyebrow--light">The people behind the inquiry</p><h1>Contributors</h1></div><p>Writers, researchers, and editors committed to careful evidence, open argument, and the long view.</p></div></div>
+</header>
+<section class="section-pad">
+  <div class="shell">
+    {% if people %}<div class="people-grid">{% for person in people %}<article class="person-card"><a class="person-card__portrait" href="{{ person.get_absolute_url }}" tabindex="-1" aria-hidden="true">{% if person.portrait %}{% image person.portrait fill-480x480 as portrait %}<img src="{{ portrait.url }}" alt="" width="480" height="480">{% else %}<span>{{ person.name|slice:":1" }}</span>{% endif %}</a><p class="eyebrow">Contributor</p><h2><a href="{{ person.get_absolute_url }}">{{ person.name }}</a></h2>{% if person.affiliation %}<p>{{ person.affiliation }}</p>{% endif %}<a class="text-link" href="{{ person.get_absolute_url }}">View profile →</a></article>{% endfor %}</div>
+    {% else %}<div class="empty-state"><h2>Contributor profiles are forthcoming</h2><p>Our editorial community will appear here as the first issue is published.</p></div>{% endif %}
+  </div>
+</section>
+{% endblock %}

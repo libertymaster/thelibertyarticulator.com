@@ -1,0 +1,22 @@
+:root {
+  --w-color-primary: 18 53 70;
+  --w-color-primary-200: 27 73 91;
+  --w-color-secondary: 166 93 69;
+}
+
+.w-bg-primary, .sidebar, .w-overflow-hidden > .w-bg-primary { background-color: #0b2432 !important; }
+.sidebar__inner, .sidebar__collapse-toggle { background: #0b2432; }
+.sidebar-menu-item__link:hover, .sidebar-menu-item__link:focus, .sidebar-menu-item--active > .sidebar-menu-item__link { background-color: #123546 !important; }
+.sidebar-menu-item--active > .sidebar-menu-item__link { box-shadow: inset .2rem 0 #bd7658; }
+.sidebar .icon--menuitem { color: #7eaaa2; }
+.w-header { border-bottom: 1px solid #d8ccba; }
+.w-header h1, .w-panel__heading { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; font-weight: 400; letter-spacing: -.015em; }
+.button, .w-button { border-radius: 2px !important; }
+.button.button-longrunning, .button-primary { background-color: #123546; border-color: #123546; }
+.button.button-longrunning:hover, .button-primary:hover { background-color: #1b495b; }
+input:focus, textarea:focus, select:focus { border-color: #a65d45 !important; box-shadow: 0 0 0 2px rgba(166,93,69,.22) !important; }
+input[aria-invalid="true"] { border-color: #b4191f !important; }
+.liberty-admin-intro { border-bottom: 1px solid #d8ccba; margin-bottom: 1.5rem; padding-bottom: 1.5rem; text-align: center; }
+.liberty-admin-intro img { height: auto; margin: 0 auto 1rem; max-width: 20rem; }
+.liberty-admin-intro p { color: #617078; font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; font-size: .88rem; font-style: italic; line-height: 1.55; }
+body.login { background-color: #f2eadb; background-image: linear-gradient(rgba(18,53,70,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(18,53,70,.035) 1px, transparent 1px); background-size: 4rem 4rem; }
