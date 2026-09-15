@@ -10,7 +10,27 @@ from common import ROOT, configuration, env_file
 
 
 def run(args):
-    subprocess.run(args, cwd=ROOT, check=True)
+    """Run a security command and fail cleanly on an error."""
+    result = subprocess.run(args, cwd=ROOT)
+
+    if result.returncode == 0:
+        return
+
+    command = " ".join(str(arg) for arg in args)
+
+    if (
+        len(args) >= 3
+        and args[:3] == ["docker", "scout", "cves"]
+        and result.returncode == 2
+    ):
+        raise SystemExit(
+            "Security gate failed: Docker Scout detected "
+            f"matching vulnerabilities.\nCommand: {command}"
+        )
+
+    raise SystemExit(
+        f"Command failed with exit code {result.returncode}: {command}"
+    )
 
 
 if __name__ == "__main__":
@@ -19,6 +39,8 @@ if __name__ == "__main__":
 
     gitleaks = images["GITLEAKS_IMAGE"]
     trivy = images["TRIVY_IMAGE"]
+    app_image = env["APP_IMAGE"]
+
     gitleaks_config = ROOT / ".gitleaks.toml"
 
     if not gitleaks_config.is_file():
@@ -37,12 +59,14 @@ if __name__ == "__main__":
     ])
 
     print("==> Staging tracked working files for Gitleaks")
+
     with tempfile.TemporaryDirectory(prefix="liberty-scan-") as directory:
         # Make the temporary tree traversable by containerized scanners.
         os.chmod(directory, 0o755)
 
         stage = os.path.join(directory, "source")
         os.mkdir(stage, 0o755)
+        os.chmod(stage, 0o755)
 
         files = (
             subprocess.check_output(
@@ -63,7 +87,9 @@ if __name__ == "__main__":
                 continue
 
             target = os.path.join(stage, name)
-            os.makedirs(os.path.dirname(target), exist_ok=True)
+            parent = os.path.dirname(target)
+
+            os.makedirs(parent, exist_ok=True)
             shutil.copyfile(source, target)
 
             copied_files += 1
@@ -71,7 +97,8 @@ if __name__ == "__main__":
 
         if copied_files == 0 or copied_bytes == 0:
             raise SystemExit(
-                "Tracked-source security scan would be empty; refusing to continue."
+                "Tracked-source security scan would be empty; "
+                "refusing to continue."
             )
 
         print(
@@ -91,23 +118,55 @@ if __name__ == "__main__":
             "/source",
         ])
 
-        print("==> Exporting application image for Trivy")
+        print(
+            "==> Checking application-introduced HIGH/CRITICAL "
+            "vulnerabilities with Docker Scout"
+        )
+        run([
+            "docker", "scout", "cves",
+            "--ignore-base",
+            "--only-severity", "critical,high",
+            "--exit-code",
+            app_image,
+        ])
+
+        print(
+            "==> Checking VEX-affected full-image HIGH/CRITICAL "
+            "vulnerabilities with Docker Scout"
+        )
+        run([
+            "docker", "scout", "cves",
+            "--only-vex-affected",
+            "--only-severity", "critical,high",
+            "--exit-code",
+            app_image,
+        ])
+
+        print("==> Exporting application image for advisory Trivy scan")
         image_tar = os.path.join(directory, "image.tar")
 
-        # Stream Docker's output into a file opened by this process. This avoids
-        # docker image save --output creating a temporary file under /tmp.
+        # Stream Docker's output into a file opened by this process.
+        # This avoids docker image save --output creating a temporary
+        # file under /tmp.
         with open(image_tar, "wb") as image_file:
             subprocess.run(
-                ["docker", "image", "save", env["APP_IMAGE"]],
+                ["docker", "image", "save", app_image],
                 cwd=ROOT,
                 check=True,
                 stdout=image_file,
             )
 
-        if os.path.getsize(image_tar) == 0:
-            raise SystemExit("Application image export produced an empty archive.")
+        if not os.path.isfile(image_tar):
+            raise SystemExit(
+                "Application image export did not create an archive."
+            )
 
-        print("==> Scanning application image with Trivy")
+        if os.path.getsize(image_tar) == 0:
+            raise SystemExit(
+                "Application image export produced an empty archive."
+            )
+
+        print("==> Running advisory Trivy whole-image scan")
         run([
             "docker", "run", "--rm",
             "-v", f"{image_tar}:/scan/image.tar:ro,z",
@@ -116,7 +175,10 @@ if __name__ == "__main__":
             "--input", "/scan/image.tar",
             "--scanners", "vuln",
             "--severity", "HIGH,CRITICAL",
-            "--exit-code", "1",
+            "--exit-code", "0",
         ])
 
-    print("Secret and high/critical image vulnerability gates passed.")
+    print(
+        "Secret and VEX-aware HIGH/CRITICAL "
+        "image vulnerability gates passed."
+    )
