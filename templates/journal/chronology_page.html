@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% load journal_tags %}
+{% block assets %}{% vite_entry 'src/chronology.tsx' %}{% endblock %}
+{% block content %}
+<header class="page-header"><p class="eyebrow">History's Heroes / chronology</p><h1>{{ page.title }}</h1><p class="lead">{{ page.introduction }}</p>{% if page.is_demonstration %}<p class="notice">Demonstration chronology. These entries are fictional examples, not historical claims.</p>{% endif %}</header>
+<div id="chronology-island" data-payload="chronology-data" data-fallback="chronology-fallback"></div>
+<div id="chronology-fallback" class="reading-width"><h2>Chronology</h2><ol class="linear-timeline">{% for event in chronology_payload.events %}<li id="event-{{ event.key }}"><p class="eyebrow">{{ event.date_label }} / {{ event.person }}</p><h3>{{ event.title }}</h3><p>{{ event.description|linebreaksbr }}</p><p class="source-annotation">{{ event.source_citation }}</p>{% if event.source_url %}<a href="{{ event.source_url }}" rel="noopener noreferrer">Consult source</a>{% endif %}{% if event.article_url %}<p><a href="{{ event.article_url }}">{{ event.article_title }}</a></p>{% endif %}</li>{% empty %}<li>No events have been published.</li>{% endfor %}</ol></div>
+{{ chronology_payload|json_script:"chronology-data" }}
+{% endblock %}

@@ -1,0 +1,477 @@
+name: ${COMPOSE_PROJECT_NAME:-liberty_research}
+
+x-common: &common
+  restart: unless-stopped
+  security_opt: [no-new-privileges:true]
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+  stop_grace_period: 45s
+
+x-app-environment: &app-environment
+  PYTHONPATH: /app
+  DJANGO_SETTINGS_MODULE: config.settings.production
+  PUBLIC_HOST: ${PUBLIC_HOST:-thelibertyarticulator.com}
+  EDITOR_HOST: ${EDITOR_HOST:-editor.thelibertyarticulator.com}
+  PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-https://thelibertyarticulator.com}
+  POSTGRES_DB: ${POSTGRES_DB:-liberty_articulator}
+  POSTGRES_APP_USER: liberty_app
+  POSTGRES_HOST: postgres
+  POSTGRES_APP_PASSWORD_FILE: /run/secrets/postgres_app_password
+  REDIS_APP_PASSWORD_FILE: /run/secrets/redis_app_password
+  DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret_key
+  REQUIRE_CF_ACCESS: ${REQUIRE_CF_ACCESS:-1}
+  CF_ACCESS_TEAM_DOMAIN: ${CF_ACCESS_TEAM_DOMAIN:-}
+  CF_ACCESS_AUD: ${CF_ACCESS_AUD:-}
+  GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
+  GUNICORN_THREADS: ${GUNICORN_THREADS:-2}
+  CELERY_CONCURRENCY: ${CELERY_CONCURRENCY:-2}
+  EMAIL_HOST: ${EMAIL_HOST:-}
+  EMAIL_PORT: ${EMAIL_PORT:-587}
+  EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+  EMAIL_PASSWORD_FILE: /run/secrets/email_password
+  DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-editor@thelibertyarticulator.com}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+x-app: &app
+  <<: *common
+  image: ${APP_IMAGE:-the_liberty_articulator:0.3.2-debian}
+  build:
+    context: .
+    args:
+      PYTHON_BUILD_IMAGE: ${PYTHON_BUILD_IMAGE:?Run ops/prepare.sh first}
+      PYTHON_IMAGE: ${PYTHON_IMAGE:?Run ops/prepare.sh first}
+      NODE_IMAGE: ${NODE_IMAGE:?Run ops/prepare.sh first}
+  environment: *app-environment
+  user: "10001:10001"
+  read_only: true
+  cap_drop: [ALL]
+  init: true
+  tmpfs: ["/tmp:size=128m,mode=1777"]
+  secrets: [django_secret_key, postgres_app_password, redis_app_password, email_password]
+  volumes: [media_data:/app/media]
+  networks: [app, data, app_egress]
+  depends_on:
+    volume-init: {condition: service_completed_successfully}
+    postgres: {condition: service_healthy}
+    redis: {condition: service_healthy}
+
+services:
+  volume-init:
+    image: ${INIT_IMAGE:?Run ops/prepare.sh first}
+    restart: "no"
+    network_mode: none
+    user: "0:0"
+    security_opt: [no-new-privileges:true]
+    cap_add:
+      - CHOWN
+      - FOWNER
+      - DAC_OVERRIDE
+    cap_drop:
+      - ALL
+    command:
+      - sh
+      - -ec
+      - >
+        chown 10001:10001 /vol/media /vol/beat /vol/loki /vol/redis;
+        chown 473:473 /vol/alloy;
+        chown 70:70 /vol/postgres;
+        chown 65534:65534 /vol/alertmanager;
+        chown 472:472 /vol/grafana;
+        chown 65534:65534 /vol/prometheus;
+        chmod 750 /vol/*
+    read_only: true
+    volumes:
+      - media_data:/vol/media
+      - beat_data:/vol/beat
+      - loki_data:/vol/loki
+      - alloy_data:/vol/alloy
+      - redis_data:/vol/redis
+      - postgres_data:/vol/postgres
+      - alertmanager_data:/vol/alertmanager
+      - grafana_data:/vol/grafana
+      - prometheus_data:/vol/prometheus
+
+  postgres:
+    <<: *common
+    image: ${POSTGRES_IMAGE:?Run ops/prepare.sh first}
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_admin_password
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      LIBERTY_DB: ${POSTGRES_DB:-liberty_articulator}
+    user: "70:70"
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=64m,mode=1777", "/var/run/postgresql:size=16m,uid=70,gid=70,mode=0750"]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    secrets: [postgres_admin_password, postgres_app_password, postgres_metrics_password]
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks: [data]
+    shm_size: 256mb
+    mem_limit: 1536m
+    cpus: "1.5"
+    healthcheck:
+      test: [CMD, pg_isready, -h, "127.0.0.1", -U, postgres, -d, postgres]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 45s
+
+  redis:
+    <<: *common
+    image: ${REDIS_IMAGE:?Run ops/prepare.sh first}
+    user: "10001:10001"
+    entrypoint: [redis-server]
+    command: [/etc/redis/redis.conf]
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    secrets: [redis_acl]
+    volumes:
+      - redis_data:/data
+      - ./docker/redis/redis.conf:/etc/redis/redis.conf:ro,z
+    networks: [app]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    mem_limit: 512m
+    cpus: "0.5"
+    healthcheck:
+      test: [CMD, redis-cli, --user, health, --pass, "", --no-auth-warning, -e, ping]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  migrate:
+    <<: *app
+    restart: "no"
+    profiles: [ops]
+    command: [python, manage.py, safe_migrate, --noinput]
+    mem_limit: 1024m
+
+  web:
+    <<: *app
+    command: [gunicorn, "config.wsgi:application", --config, gunicorn.config.py]
+    networks: [edge, app, data, app_egress]
+    mem_limit: 1024m
+    cpus: "1.5"
+    healthcheck:
+      test: [CMD, python, ops/healthcheck.py, web]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 45s
+
+  worker:
+    <<: *app
+    environment:
+      <<: *app-environment
+      CELERY_CONCURRENCY: "2"
+    command: [worker]
+    mem_limit: 1024m
+    cpus: "1.0"
+    healthcheck:
+      test: ["CMD", "/venv/bin/python", "/app/ops/healthcheck.py", "worker"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  beat:
+    <<: *app
+    environment:
+      <<: *app-environment
+      CELERY_CONCURRENCY: "2"
+    command: [celery, -A, config, beat, --loglevel=INFO, --schedule=/app/beat/celerybeat-schedule, --pidfile=/tmp/celerybeat.pid]
+    volumes: [beat_data:/app/beat]
+    networks: [app, data]
+    mem_limit: 384m
+    cpus: "0.25"
+    healthcheck:
+      test: ["CMD", "/venv/bin/python", "/app/ops/healthcheck.py", "beat"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  traefik:
+    <<: *common
+    image: ${TRAEFIK_IMAGE:?Run ops/prepare.sh first}
+    command: [--configFile=/etc/traefik/traefik.yml]
+    user: "65534:65534"
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    volumes:
+      - ./docker/traefik/traefik.yml:/etc/traefik/traefik.yml:ro,z
+      - ./runtime/traefik-dynamic.yml:/etc/traefik/dynamic.yml:ro,z
+    networks: [edge, monitoring]
+    mem_limit: 256m
+    cpus: "0.5"
+    healthcheck:
+      test: [CMD, traefik, healthcheck, --ping, --configFile=/etc/traefik/traefik.yml]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
+  cloudflared:
+    <<: *common
+    image: ${CLOUDFLARED_IMAGE:?Run ops/prepare.sh first}
+    command: [tunnel, --no-autoupdate, --metrics, "0.0.0.0:2000", run, --token-file, /run/secrets/cloudflared_token]
+    user: "65532:65532"
+    read_only: true
+    cap_drop: [ALL]
+    secrets: [cloudflared_token]
+    networks:
+      - edge
+      - egress
+      - monitoring
+    depends_on:
+      traefik: {condition: service_healthy}
+    mem_limit: 256m
+    cpus: "0.5"
+
+  postgres-exporter:
+    <<: *common
+    image: ${POSTGRES_EXPORTER_IMAGE:?Run ops/prepare.sh first}
+    command:
+      - '--config.file='
+    environment:
+      DATA_SOURCE_URI: "postgres:5432/${POSTGRES_DB:-liberty_articulator}?sslmode=disable"
+      DATA_SOURCE_USER: liberty_metrics
+      DATA_SOURCE_PASS_FILE: /run/secrets/postgres_metrics_password
+    secrets: [postgres_metrics_password]
+    networks: [data, monitoring]
+    read_only: true
+    cap_drop: [ALL]
+    mem_limit: 128m
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  redis-exporter:
+    <<: *common
+    image: ${REDIS_EXPORTER_IMAGE:?Run ops/prepare.sh first}
+    command:
+      - --redis.addr=redis://redis:6379
+      - --redis.user=exporter
+      - --redis.password-file=/run/secrets/redis_exporter_passwords
+    secrets: [redis_exporter_passwords]
+    networks: [app, monitoring]
+    read_only: true
+    cap_drop: [ALL]
+    mem_limit: 128m
+    depends_on:
+      redis: {condition: service_healthy}
+
+  prometheus:
+    <<: *common
+    image: ${PROMETHEUS_IMAGE:?Run ops/prepare.sh first}
+    command: [--config.file=/etc/prometheus/prometheus.yml, --storage.tsdb.path=/prometheus, --storage.tsdb.retention.time=7d, --storage.tsdb.retention.size=2GB]
+    user: "65534:65534"
+    read_only: true
+    cap_drop: [ALL]
+    volumes:
+      - prometheus_data:/prometheus
+      - ./runtime/prometheus.yml:/etc/prometheus/prometheus.yml:ro,z
+      - ./monitoring/prometheus/rules.yml:/etc/prometheus/rules.yml:ro,z
+    networks: [monitoring, app]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    mem_limit: 768m
+    cpus: "0.75"
+
+  alertmanager:
+    <<: *common
+    image: ${ALERTMANAGER_IMAGE:?Run ops/prepare.sh first}
+    command: [--config.file=/etc/alertmanager/alertmanager.yml, --storage.path=/alertmanager, --data.retention=120h, --cluster.listen-address=]
+    user: "65534:65534"
+    read_only: true
+    cap_drop: [ALL]
+    volumes:
+      - alertmanager_data:/alertmanager
+      - ./monitoring/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro,z
+    networks: [monitoring]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    mem_limit: 128m
+    cpus: "0.25"
+
+  grafana:
+    <<: *common
+    image: ${GRAFANA_IMAGE:?Run ops/prepare.sh first}
+    user: "472:472"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_PATHS_CONFIG: /etc/grafana/grafana.ini
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_SECURITY_COOKIE_SAMESITE: strict
+    secrets: [grafana_admin_password]
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    volumes:
+      - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini:ro,z
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro,z
+      - ./runtime/dashboards:/var/lib/grafana/dashboards:ro,z
+    networks: [monitoring]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    mem_limit: 512m
+    cpus: "0.5"
+
+  loki:
+    <<: *common
+    image: ${LOKI_IMAGE:?Run ops/prepare.sh first}
+    command: [-config.file=/etc/loki/loki.yml]
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    volumes:
+      - loki_data:/loki
+      - ./monitoring/loki/loki.yml:/etc/loki/loki.yml:ro,z
+    networks: [monitoring]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+    mem_limit: 768m
+    cpus: "0.75"
+
+  docker-socket-proxy:
+    <<: *common
+    image: ${SOCKET_PROXY_IMAGE:?Run ops/prepare.sh first}
+    # Explicit host-trust exception: root is needed to read the root-owned Unix socket.
+    # HAProxy permits GET/HEAD discovery and logs only. No Docker mutation endpoints.
+    user: "0:0"
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./docker/socket-proxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro,z
+    networks: [docker_api]
+    mem_limit: 64m
+    cpus: "0.25"
+
+  alloy:
+    <<: *common
+    image: ${ALLOY_IMAGE:?Run ops/prepare.sh first}
+    command: [run, --server.http.listen-addr=0.0.0.0:12345, --storage.path=/var/lib/alloy/data, /etc/alloy/config.alloy]
+    user: 473:473
+    environment:
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-liberty_research}
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    volumes:
+      - alloy_data:/var/lib/alloy/data
+      - ./monitoring/alloy/config.alloy:/etc/alloy/config.alloy:ro,z
+    networks: [monitoring, docker_api]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+      docker-socket-proxy: {condition: service_started}
+    mem_limit: 384m
+    cpus: "0.5"
+
+  node-exporter:
+    <<: *common
+    image: ${NODE_EXPORTER_IMAGE:?Run ops/prepare.sh first}
+    command: [--path.rootfs=/host, --path.procfs=/host/proc, --path.sysfs=/host/sys, --no-collector.netdev, --no-collector.netstat, --no-collector.arp, '--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/containers/.+)($$|/)']
+    pid: host
+    user: "65534:65534"
+    read_only: true
+    cap_drop: [ALL]
+    volumes: ['/:/host:ro,rslave']
+    networks: [monitoring]
+    mem_limit: 128m
+    cpus: "0.25"
+
+  blackbox-exporter:
+    <<: *common
+    image: ${BLACKBOX_IMAGE:?Run ops/prepare.sh first}
+    command: [--config.file=/etc/blackbox/blackbox.yml]
+    read_only: true
+    cap_drop: [ALL]
+    volumes: ["./runtime/blackbox.yml:/etc/blackbox/blackbox.yml:ro,z"]
+    networks: [monitoring, edge, probe_egress]
+    mem_limit: 128m
+    cpus: "0.25"
+
+  cadvisor:
+    <<: *common
+    image: ${CADVISOR_IMAGE:?Run ops/prepare.sh first}
+    # Rootful Linux host sensor exception; review docs/SECURITY.md before deployment.
+    privileged: true
+    user: "0:0"
+    read_only: true
+    command: [--docker=tcp://docker-socket-proxy:2375, --docker_only=true, --housekeeping_interval=30s, --store_container_labels=false, "--whitelisted_container_labels=com.docker.compose.service,com.docker.compose.project", "--disable_metrics=percpu,process,sched,referenced_memory,hugetlb,resctrl,tcp,udp"]
+    tmpfs: ["/tmp:size=32m,mode=1777", /var/run:size=16m]
+    volumes:
+      - /:/rootfs:ro
+      - /sys:/sys:ro
+      - ${DOCKER_DATA_ROOT:-/srv/docker/engine}:/srv/docker/engine:ro
+      - /run/containerd/containerd.sock:/run/containerd/containerd.sock:ro
+    networks: [monitoring, docker_api]
+    depends_on:
+      docker-socket-proxy: {condition: service_started}
+    mem_limit: 384m
+    cpus: "0.5"
+
+networks:
+  edge:
+    driver: bridge
+    internal: true
+
+  monitoring:
+    driver: bridge
+    internal: true
+
+  egress:
+    driver: bridge
+
+  app:
+    driver: bridge
+    internal: true
+
+  data:
+    driver: bridge
+    internal: true
+
+  docker_api:
+    driver: bridge
+    internal: true
+
+  app_egress:
+    driver: bridge
+
+  probe_egress:
+    driver: bridge
+
+volumes:
+  postgres_data: {}
+  redis_data: {}
+  media_data: {}
+  beat_data: {}
+  prometheus_data: {}
+  grafana_data: {}
+  loki_data: {}
+  alloy_data: {}
+  alertmanager_data: {}
+
+secrets:
+  django_secret_key: {file: ./secrets/django_secret_key}
+  postgres_admin_password: {file: ./secrets/postgres_admin_password}
+  postgres_app_password: {file: ./secrets/postgres_app_password}
+  postgres_metrics_password: {file: ./secrets/postgres_metrics_password}
+  redis_app_password: {file: ./secrets/redis_app_password}
+  redis_acl: {file: ./secrets/redis.acl}
+  redis_exporter_passwords: {file: ./secrets/redis_exporter.json}
+  grafana_admin_password: {file: ./secrets/grafana_admin_password}
+  cloudflared_token: {file: ./secrets/cloudflared_token}
+  email_password: {file: ./secrets/email_password}

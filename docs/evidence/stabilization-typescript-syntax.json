@@ -1,0 +1,24 @@
+{
+  "tool": "TypeScript transpileModule",
+  "version": "5.8.3",
+  "node": "v22.16.0",
+  "syntax_only": true,
+  "not_typecheck_or_bundle": true,
+  "files": [
+    "frontend/e2e/publication.spec.ts",
+    "frontend/playwright.config.ts",
+    "frontend/src/archive.tsx",
+    "frontend/src/chronology.tsx",
+    "frontend/src/components/Chronology.tsx",
+    "frontend/src/components/ResearchArchive.tsx",
+    "frontend/src/components/SourceExplorer.tsx",
+    "frontend/src/lib.ts",
+    "frontend/src/mount.tsx",
+    "frontend/src/sources.tsx",
+    "frontend/tests/contracts.test.ts",
+    "frontend/tests/islands.test.tsx",
+    "frontend/tests/setup.ts",
+    "frontend/vite.config.ts",
+    "frontend/vitest.config.ts"
+  ]
+}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load wagtailcore_tags %}
+{% block content %}
+{% if page.reference_layout %}
+{% include_block page.reference_layout %}
+{% else %}
+
+<section class="home-intro"><p class="eyebrow">The journal</p><h1>Read closely.<br>Question carefully.</h1><div class="prose lead">{{ page.introduction|richtext }}</div><a class="button" href="/archive/">Explore the research archive</a></section>
+<section aria-labelledby="latest"><div class="section-heading"><h2 id="latest">Recent scholarship</h2><a href="/archive/">Browse the archive</a></div><div class="article-grid">
+{% for article in latest_articles %}<article class="article-card"><p class="eyebrow">{{ article.series.name|default:"Essay" }}</p><h3><a href="{% pageurl article %}">{{ article.title }}</a></h3><p>{{ article.abstract|truncatewords:38 }}</p><p class="meta">{{ article.publication_date|date:"j F Y" }}</p>{% if article.is_demonstration %}<span class="badge">Demonstration content</span>{% endif %}</article>{% empty %}<p>The publication is ready for its first article. Draft and publish it in Wagtail.</p>{% endfor %}
+</div></section>
+<section class="research-callout"><p class="eyebrow">Tools for closer reading</p><h2>Follow the argument back to its sources.</h2><p>Article-level source explorers, a filterable research archive, and evidence-linked chronologies support the reading experience without replacing the publication.</p></section>
+{% endif %}
+{% endblock %}

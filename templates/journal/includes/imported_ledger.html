@@ -1,0 +1,4 @@
+<div class="article-ledger-table" role="table" aria-label="Article source ledger">
+<div class="ledger-head" role="row"><span role="columnheader">Source</span><span role="columnheader">Use</span><span role="columnheader">Status</span></div>
+{% for source in bibliography %}<div role="row"><span role="cell"><strong>{{ source.display_title|default:source.title }}</strong><small>{{ source.edition_label }}</small></span><span role="cell">{{ source.use_description }}</span><span role="cell">{{ source.verification_status }}</span></div>{% endfor %}
+</div>

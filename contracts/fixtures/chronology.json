@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "title": "History's Heroes",
+  "events": [
+    {
+      "key": "early",
+      "year": -100,
+      "date_label": "100 BCE (fictional)",
+      "person": "Example A",
+      "theme": "life",
+      "title": "Fictional early event",
+      "description": "Demonstration event.",
+      "source_citation": "Invented evidence, not historical material.",
+      "source_url": "",
+      "article_url": "",
+      "article_title": ""
+    },
+    {
+      "key": "late",
+      "year": 1815,
+      "date_label": "1815 (fictional)",
+      "person": "Example B",
+      "theme": "writing",
+      "title": "Fictional later event",
+      "description": "Another demonstration event.",
+      "source_citation": "Invented evidence, not historical material.",
+      "source_url": "",
+      "article_url": "/demonstration/",
+      "article_title": "Demonstration article"
+    }
+  ]
+}

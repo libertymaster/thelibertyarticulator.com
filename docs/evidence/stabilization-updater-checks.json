@@ -1,0 +1,65 @@
+{
+  "release": "0.3.2",
+  "checks": [
+    {
+      "name": "dry run writes no project files",
+      "passed": true
+    },
+    {
+      "name": "full 0.3.1 source apply matches every payload hash and mode",
+      "passed": true
+    },
+    {
+      "name": "environment secrets locks content and unrelated files preserved",
+      "passed": true
+    },
+    {
+      "name": "repeat application is idempotent",
+      "passed": true
+    },
+    {
+      "name": "rollback dry run writes nothing",
+      "passed": true
+    },
+    {
+      "name": "rollback refuses edits made after patch",
+      "passed": true
+    },
+    {
+      "name": "rollback restores old files and removes only new payload files",
+      "passed": true
+    },
+    {
+      "name": "customized source is rejected before any project write",
+      "passed": true
+    },
+    {
+      "name": "symlink destinations refused",
+      "passed": true
+    },
+    {
+      "name": "corrupted patch payload refused before writes",
+      "passed": true
+    },
+    {
+      "name": "normal write failure restores files already changed",
+      "passed": true
+    },
+    {
+      "name": "corrupted rollback backup refused",
+      "passed": true
+    },
+    {
+      "name": "non-project destination rejected",
+      "passed": true
+    },
+    {
+      "name": "unsafe relative paths rejected",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "fixtures": "disposable copies of supplied 0.3.1 plus synthetic local-state canaries",
+  "deployment_access": false
+}

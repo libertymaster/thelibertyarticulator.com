@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "article_title": "Demonstration article",
+  "sources": [
+    {
+      "key": "letter",
+      "kind": "primary",
+      "title": "Fictional letter",
+      "authors": "Example Person",
+      "year": 1802,
+      "bibliography": "Example Person. Fictional letter. Demonstration only.",
+      "annotation": "A fictional primary source.",
+      "url": "",
+      "citations": [
+        {
+          "number": 1,
+          "anchor": "#note-one",
+          "passage_anchor": "#passage-one",
+          "locator": "p. 1",
+          "note": "Demonstration"
+        }
+      ]
+    },
+    {
+      "key": "study",
+      "kind": "secondary",
+      "title": "Fictional study",
+      "authors": "Example Researcher",
+      "year": 1815,
+      "bibliography": "Example Researcher. Fictional study. Demonstration only.",
+      "annotation": "A fictional interpretation.",
+      "url": "https://example.org/study",
+      "citations": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1",
+  "endpoint": "/api/v1/archive/",
+  "filters": {
+    "q": "",
+    "subject": "",
+    "author": "",
+    "series": "",
+    "source_kind": "",
+    "published_from": "",
+    "published_to": "",
+    "historical_from": "",
+    "historical_to": "",
+    "sort": "newest",
+    "status": ""
+  },
+  "facets": {
+    "subjects": [
+      {
+        "value": "history",
+        "label": "History"
+      }
+    ],
+    "authors": [
+      {
+        "value": "Example Person",
+        "label": "Example Person"
+      }
+    ],
+    "series": [
+      {
+        "value": "historys-heroes",
+        "label": "History's Heroes"
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": 1,
+      "title": "Demonstration article",
+      "url": "/demonstration/",
+      "abstract": "Fictional test material.",
+      "publication_date": "2026-09-13",
+      "authors": [
+        "Example Person"
+      ],
+      "subjects": [
+        "History"
+      ],
+      "series": "History's Heroes",
+      "historical_period": "1800 CE to 1820 CE",
+      "is_demonstration": true,
+      "discipline": "",
+      "article_type": "Article",
+      "record_status": "public_draft",
+      "status_label": "Public draft",
+      "review_status": "Review status not declared",
+      "sources_summary": "",
+      "method": "",
+      "display_date": "",
+      "read_time": ""
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "pages": 1,
+  "page_size": 12,
+  "errors": []
+}

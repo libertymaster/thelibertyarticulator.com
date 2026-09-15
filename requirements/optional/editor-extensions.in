@@ -1,0 +1,14 @@
+# Candidate pins retained from 0.3.1. NOT part of the default installation.
+# Qualify one package at a time against the reviewed production.lock.
+wagtailmedia==0.18.1
+wagtail-app-pages==0.3.9
+wagtail-formation==0.2.2
+wagtail-menubuilder==0.2.2
+wagtail-fedit==1.6.1
+wagtail-draftail-hovercard==0.1.0
+wagtail-draftail-snippet==0.4.2
+wagtail-draftail-anchors==0.7.0
+wagtail-draftail-plugins==0.4.0
+draftail-text-utils==0.3.0
+wagtailterms==0.2.1
+wagtail-admin-list-controls==0.1.11

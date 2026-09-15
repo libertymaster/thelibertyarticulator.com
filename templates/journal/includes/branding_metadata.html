@@ -1,0 +1,16 @@
+{% load journal_tags %}{% publication_branding as brand_assets %}
+<link rel="icon" href="{{ brand_assets.favicon_url }}" type="image/svg+xml" sizes="any">
+<meta property="og:site_name" content="The Liberty Articulator">
+<meta property="og:title" content="{{ page.seo_title|default:page.title }}">
+<meta property="og:description" content="{{ page.search_description|default:page.title }}">
+<meta property="og:type" content="{% if page.record_status and page.record_status != 'planned' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ brand_assets.page_url }}">
+<meta property="og:image" content="{{ brand_assets.image_url }}">
+<meta property="og:image:alt" content="{{ brand_assets.image_alt }}">
+{% if brand_assets.image_type %}<meta property="og:image:type" content="{{ brand_assets.image_type }}">{% endif %}
+{% if brand_assets.image_width %}<meta property="og:image:width" content="{{ brand_assets.image_width }}"><meta property="og:image:height" content="{{ brand_assets.image_height }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.seo_title|default:page.title }}">
+<meta name="twitter:description" content="{{ page.search_description|default:page.title }}">
+<meta name="twitter:image" content="{{ brand_assets.image_url }}">
+<meta name="twitter:image:alt" content="{{ brand_assets.image_alt }}">

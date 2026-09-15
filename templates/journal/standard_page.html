@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% load wagtailcore_tags %}
+{% block content %}
+{% if page.reference_layout %}
+{% include_block page.reference_layout %}
+{% else %}
+<article class="reading-width"><p class="eyebrow">The publication</p><h1>{{ page.title }}</h1><div class="prose">{{ page.body|richtext }}</div></article>{% endif %}
+{% endblock %}

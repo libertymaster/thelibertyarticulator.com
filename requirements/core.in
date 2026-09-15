@@ -1,0 +1,14 @@
+# Active runtime dependencies for the publication and its three React islands.
+# Optional features are deliberately NOT installed by this profile.
+Django==6.0.8
+Wagtail==7.4.3
+psycopg[binary]==3.3.4
+gunicorn==26.1.0
+Pillow==12.3.0
+celery[redis]==5.6.3
+kombu==5.6.2
+redis==6.4.0
+whitenoise[brotli]==6.12.0
+pydantic==2.13.5
+PyJWT[crypto]>=2.10.1,<3
+prometheus-client>=0.22,<1

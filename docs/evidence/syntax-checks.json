@@ -1,0 +1,9 @@
+{
+  ".py": 66,
+  ".json": 16,
+  ".yaml": 6,
+  ".yml": 7,
+  "shell_syntax": 8,
+  "python_host": "Python 3.13.5",
+  "node_host": "v22.16.0"
+}

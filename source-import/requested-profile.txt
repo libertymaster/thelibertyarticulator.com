@@ -1,0 +1,126 @@
+I accidentally hit enter but wasn't finished.
+There are some updated images and versions to mention.
+
+Version changes:
+
+From:                                                                   To:
+Django 6.0.8                                                        Django 6.1.1
+Wagtail 7.4.3                                                       Wagtail 8.0
+wagtail-app-pages 0.3.8                                     wagtail-app-pages 0.3.9
+
+Image changes:
+
+From:                                                                   To:
+cloudflared:2026.8.2                                          cloudflared:2026.9.1
+grafana-enterprise:13.0.7-distroless                  grafana-enterprise:13.2.1-distroless
+traefik:3.7.11-alpine3.24                                    traefik:3.7.13-debian13
+redis:8.8.2-alpine3.24                                         redis:8.10.1-debian13
+redis-exporter:1.89.0-debian13                         redis-exporter:1.91.1-debian13
+loki:3.7.6-debian13                                            loki:3.7.7-debian13
+alloy:1.18.1-debian13                                        alloy:1.19.2-debian13
+python:3.14.7-debian13                                     python:3.14.7-alpine3.24
+
+
+
+Images to be used:
+
+GitHub Container Repo:
+
+ghcr.io/google/cadvisor:0.60.5
+
+
+Docker Images
+
+cloudflare/cloudflared:2026.9.1
+
+grafana/grafana-enterprise:13.2.1-distroless
+
+
+
+Docker Hardened Images (dhi.io)
+
+
+dhi.io/keycloak:26.7.3-debian13
+
+dhi.io/traefik:3.7.13-debian13
+
+dhi.io/postgres:18.6-alpine3.24
+
+dhi.io/redis:8.10.1-debian13
+
+dhi.io/prometheus:3.14.0-debian13
+
+dhi.io/node-exporter:1.12.1-debian13
+
+dhi.io/blackbox-exporter:0.28.0-debian13
+
+dhi.io/loki:3.7.7-debian13
+
+dhi.io/alloy:1.19.2-debian13
+
+dhi.io/alertmanager:0.34.0-debian13
+
+dhi.io/postgres-exporter:0.20.1-debian13
+
+dhi.io/redis-exporter:1.91.1-debian13
+
+
+Python For Dockerfile Builds
+
+builder:
+dhi.io/python:3.14.7-debian13-dev
+
+runtime:
+dhi.io/python:3.14.7-alpine3.24
+
+
+
+Core Dependency Profile
+
+
+Django==6.1.1
+Wagtail==8.0
+
+psycopg[binary]==3.3.4
+gunicorn==26.1.0
+django-environ==0.14.0
+Pillow==12.3.0
+
+celery[redis]==5.6.3
+django-celery-beat==2.9.0
+django-prometheus==2.5.0
+
+django-filter==26.1
+djangorestframework==3.18.0
+
+whitenoise[brotli]==6.12.0
+django-storages==1.14.6
+boto3==1.43.77
+wagtailmedia==0.18.1
+
+wagtail-app-pages==0.3.9
+wagtail-formation==0.2.2
+wagtail-menubuilder==0.2.2
+wagtail-fedit==1.6.1
+
+wagtail-draftail-hovercard==0.1.0
+wagtail-draftail-snippet==0.4.2
+wagtail-draftail-anchors==0.7.0
+wagtail-draftail-plugins==0.4.0
+draftail-text-utils==0.3.0
+wagtailterms==0.2.1
+
+wagtail-admin-list-controls==0.1.11
+
+citeproc-py==0.11.0
+httpx==0.28.1
+
+
+Transfer the viewable content from these source files to the new stack.
+
+These were the only sources with content I could find.
+
+The following was taken from template site: thelibertyarticulator-site-source-v1
+
+thelibertyarticulator-site-source-v1/app
+

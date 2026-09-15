@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load journal_tags %}
+{% block assets %}{% vite_entry 'src/archive.tsx' %}{% endblock %}
+{% load wagtailcore_tags %}
+{% block content %}
+{% if page.reference_layout %}
+{% include_block page.reference_layout %}
+{% else %}
+
+<header class="page-header"><p class="eyebrow">Research tools / 01</p><h1>{{ page.title }}</h1><p class="lead">{{ page.introduction }}</p></header>
+{% include "journal/includes/archive_tool.html" %}
+{% endif %}
+{% endblock %}

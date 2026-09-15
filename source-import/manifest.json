@@ -1,0 +1,79 @@
+{
+  "source_file": "Pasted text(20260913-193902).txt",
+  "source_sha256": "7c53125e6fbc3637fa8e4b189fe55f17f379ad2abb9172458c77016b3e45d27b",
+  "files": [
+    {
+      "path": "app/globals.css",
+      "sha256": "c5f0281daa9e5ac1aa749e8ecbee62e9fe70dc9a514713f1661ac011053ca563",
+      "source_start_line": 127
+    },
+    {
+      "path": "app/layout.tsx",
+      "sha256": "44b571f2ec8c10c343c917364ca9394c64b9eb8042936ceddb30e55e8cd12bd5",
+      "source_start_line": 807
+    },
+    {
+      "path": "app/page.tsx",
+      "sha256": "e451d82b006bd76cf3c4c7dc42db00325d96cd6d83358334b5d2ee9258fde1da",
+      "source_start_line": 855
+    },
+    {
+      "path": "app/about/page.tsx",
+      "sha256": "e5543d32149d905330a9db8344cfa58ec2f3a3a9fb5a1841695da863afd91a70",
+      "source_start_line": 1008
+    },
+    {
+      "path": "app/archive/page.tsx",
+      "sha256": "9f9d2a86ea64fd73e69b73dfccfa3d4dbfff2fbcb4c31705d16aac9af2a0353a",
+      "source_start_line": 1098
+    },
+    {
+      "path": "app/article/the-archive-is-not-the-village/page.tsx",
+      "sha256": "7aadca35378fee2b1da2400864714fe4c1f2368eacd05848378045ebb690d191",
+      "source_start_line": 1135
+    },
+    {
+      "path": "app/issue/founding/page.tsx",
+      "sha256": "a519702032182d9c1e7f2f8681eb9cc4c532ed1edbe9fc0cdd21a6efb5b61794",
+      "source_start_line": 1393
+    },
+    {
+      "path": "app/sources/page.tsx",
+      "sha256": "02adb9942a6f1ed163fe523157c15378ecd87e6eca5f997f291644512b252911",
+      "source_start_line": 1444
+    },
+    {
+      "path": "app/standards/page.tsx",
+      "sha256": "4c356d6b276fc782d21cbe27343446a0f308cf30ea93daff465d97aa38c376f0",
+      "source_start_line": 1532
+    },
+    {
+      "path": "app/submit/page.tsx",
+      "sha256": "3221f6bdc0590b29038658aedc7b742b9b4ae2ab59d45d7de7600d53c4392b42",
+      "source_start_line": 1704
+    },
+    {
+      "path": "components/site-header.tsx",
+      "sha256": "9291a3a6c21c7bc08edf8344695a591be00a127190c9251ffd2e13cf861ecc27",
+      "source_start_line": 1784
+    },
+    {
+      "path": "components/site-footer.tsx",
+      "sha256": "381709da760b3fc174d71adf28c437b2beefb5ad2a8fab265303364dd66a2761",
+      "source_start_line": 1830
+    },
+    {
+      "path": "lib/journal-data.ts",
+      "sha256": "0275eb937a15016ea64dbf0a400a03f9394d8ee127bbcf5797d03ebadb898d7d",
+      "source_start_line": 1882
+    }
+  ],
+  "missing_referenced_files": [
+    "components/publication-card.tsx",
+    "components/archive-browser.tsx",
+    "components/citation-copy.tsx",
+    "public/og.png",
+    "public/favicon.svg"
+  ],
+  "policy": "Preserve supplied words, dates and labels; no external factual updates to imported editorial content."
+}

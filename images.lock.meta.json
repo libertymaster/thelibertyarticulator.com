@@ -1,0 +1,34 @@
+{
+  "details": {
+    "sources": {
+      "ALERTMANAGER_IMAGE": "dhi.io/alertmanager:0.34.0-debian13",
+      "ALLOY_IMAGE": "dhi.io/alloy:1.19.2-debian13",
+      "BLACKBOX_IMAGE": "dhi.io/blackbox-exporter:0.28.0-debian13",
+      "CADVISOR_IMAGE": "ghcr.io/google/cadvisor:0.60.5",
+      "CLOUDFLARED_IMAGE": "cloudflare/cloudflared:2026.9.1",
+      "GITLEAKS_IMAGE": "ghcr.io/gitleaks/gitleaks:v8.30.1",
+      "GRAFANA_IMAGE": "grafana/grafana-enterprise:13.2.1-distroless",
+      "INIT_IMAGE": "busybox:1.37",
+      "KEYCLOAK_IMAGE": "dhi.io/keycloak:26.7.3-debian13",
+      "LOKI_IMAGE": "dhi.io/loki:3.7.7-debian13",
+      "NODE_EXPORTER_IMAGE": "dhi.io/node-exporter:1.12.1-debian13",
+      "NODE_IMAGE": "node:24-bookworm-slim",
+      "POSTGRES_EXPORTER_IMAGE": "dhi.io/postgres-exporter:0.20.1-debian13",
+      "POSTGRES_IMAGE": "dhi.io/postgres:18.6-alpine3.24",
+      "PROMETHEUS_IMAGE": "dhi.io/prometheus:3.14.0-debian13",
+      "PYTHON_BUILD_IMAGE": "dhi.io/python:3.14.7-debian13-dev",
+      "PYTHON_IMAGE": "dhi.io/python:3.14.7-debian13",
+      "REDIS_EXPORTER_IMAGE": "dhi.io/redis-exporter:1.91.1-debian13",
+      "REDIS_IMAGE": "dhi.io/redis:8.10.1-debian13",
+      "SOCKET_PROXY_IMAGE": "haproxy:3.2-alpine",
+      "TRAEFIK_IMAGE": "dhi.io/traefik:3.7.13-debian13",
+      "TRIVY_IMAGE": "aquasec/trivy:0.74.0"
+    }
+  },
+  "format": 2,
+  "input_sha256": "0f4e528a23ea441e4301bd7155edb94d34e9fff53a4d776bf76f9069db120abd",
+  "kind": "images",
+  "outputs": {
+    "images.lock.env": "9d959346f2e2bdb84f6e52525bca9c3e96be1800f50c2db689a68c30aa6e6d5e"
+  }
+}

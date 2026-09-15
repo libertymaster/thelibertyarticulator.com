@@ -1,0 +1,19 @@
+{% load journal_tags %}
+<section class="archive-tool">
+<div id="archive-fallback">
+<form method="get" class="archive-form" aria-label="Archive filters"><div class="form-grid">{{ archive_form.as_div }}</div><button type="submit">Search archive</button></form>
+<p class="results-summary">{{ archive_payload.total }} public record{{ archive_payload.total|pluralize }}</p>
+<div class="publication-grid archive-grid">{% for item in archive_payload.results %}
+<article class="publication-card discipline-{{ item.discipline|lower }}">
+<div class="publication-card-top"><p>{{ item.discipline }} / {{ item.article_type }}</p><span class="card-index">{{ forloop.counter|stringformat:'02d' }}</span></div>
+<h2><a href="{{ item.url }}">{{ item.title }}</a></h2><p class="publication-deck">{{ item.abstract }}</p>
+<dl class="publication-signals"><div><dt>Status</dt><dd>{{ item.status_label }}</dd></div><div><dt>Review</dt><dd>{{ item.review_status }}</dd></div>{% if item.sources_summary %}<div><dt>Sources</dt><dd>{{ item.sources_summary }}</dd></div>{% endif %}{% if item.method %}<div><dt>Method</dt><dd>{{ item.method }}</dd></div>{% endif %}</dl>
+<div class="publication-card-foot"><p>{{ item.authors|join:', ' }}<br><span>{{ item.display_date|default:item.publication_date }} / {{ item.read_time }}</span></p>{% if item.record_status == 'planned' %}<span class="planned-label">Planned commissioning brief</span>{% endif %}</div>
+{% if item.historical_period %}<p class="meta">Period covered: {{ item.historical_period }}</p>{% endif %}
+{% if item.is_demonstration %}<p class="notice">Demonstration content</p>{% endif %}
+</article>{% empty %}<p>No public records match these filters.</p>{% endfor %}</div>
+<nav class="pagination" aria-label="Archive pages">{% if archive_payload.page > 1 %}{% page_query archive_payload.page|add:'-1' as previous_url %}<a href="{{ previous_url }}">Previous</a>{% endif %}<span>Page {{ archive_payload.page }} of {{ archive_payload.pages }}</span>{% if archive_payload.page < archive_payload.pages %}{% page_query archive_payload.page|add:'1' as next_url %}<a href="{{ next_url }}">Next</a>{% endif %}</nav>
+</div>
+<div id="archive-island" data-payload="archive-data" data-fallback="archive-fallback"></div>
+{{ archive_payload|json_script:"archive-data" }}
+</section>

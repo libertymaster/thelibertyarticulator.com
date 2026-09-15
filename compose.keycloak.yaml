@@ -1,0 +1,101 @@
+# Optional identity extension. No application authentication is switched by this file.
+# Set KEYCLOAK_HOST and follow docs/KEYCLOAK.md before enabling the identity profile.
+services:
+  identity-volume-init:
+    profiles: [identity]
+    image: ${INIT_IMAGE:?Run ops/prepare.sh}
+    restart: "no"
+    network_mode: none
+    user: "0:0"
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    cap_add: [CHOWN, FOWNER, DAC_OVERRIDE]
+    command: [sh, -ec, "chown 70:70 /vol/postgres; chown 65532:65532 /vol/keycloak; chmod 750 /vol/*"]
+    volumes: [keycloak_postgres_data:/vol/postgres, keycloak_data:/vol/keycloak]
+
+  keycloak-postgres:
+    profiles: [identity]
+    image: ${POSTGRES_IMAGE:?Run ops/prepare.sh}
+    restart: unless-stopped
+    user: "70:70"
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777", "/var/run/postgresql:size=16m,uid=70,gid=70,mode=0750"]
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/keycloak_postgres_admin_password
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+    secrets: [keycloak_postgres_admin_password, keycloak_database_password]
+    volumes:
+      - keycloak_postgres_data:/var/lib/postgresql
+      - ./docker/keycloak/01-roles.sql:/docker-entrypoint-initdb.d/01-roles.sql:ro,z
+    networks: [keycloak_db]
+    depends_on:
+      identity-volume-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, pg_isready, -h, "127.0.0.1", -U, postgres, -d, postgres]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    mem_limit: 768m
+    logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}
+    stop_grace_period: 60s
+
+  keycloak:
+    profiles: [identity]
+    image: ${KEYCLOAK_APP_IMAGE:-liberty_keycloak:0.3.0}
+    build:
+      context: .
+      dockerfile: docker/keycloak/Dockerfile
+      args:
+        KEYCLOAK_IMAGE: ${KEYCLOAK_IMAGE:?Run ops/prepare.sh}
+    restart: unless-stopped
+    user: "65532:65532"
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: ["/tmp:size=128m,mode=1777"]
+    environment:
+      KC_HOSTNAME: https://${KEYCLOAK_HOST:?Choose your own Keycloak hostname before using this overlay}
+      KC_HOSTNAME_STRICT: "true"
+      KC_HTTP_ENABLED: "true"
+      KC_PROXY_HEADERS: xforwarded
+      KC_DB_URL: jdbc:postgresql://keycloak-postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak_app
+      KC_BOOTSTRAP_ADMIN_USERNAME: bootstrap-admin
+      KC_CACHE: local
+    secrets: [keycloak_database_password, keycloak_bootstrap_password]
+    volumes: [keycloak_data:/opt/keycloak/data]
+    networks: [keycloak_db, keycloak_edge, identity_egress]
+    depends_on:
+      keycloak-postgres: {condition: service_healthy}
+      identity-volume-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, /bin/bash, /opt/keycloak/healthcheck.sh]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    mem_limit: 1536m
+    cpus: "1.0"
+    logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}
+    stop_grace_period: 60s
+
+  traefik:
+    networks: [edge, monitoring, keycloak_edge]
+
+networks:
+  keycloak_db: {internal: true}
+  keycloak_edge: {internal: true}
+  identity_egress: {}
+volumes:
+  keycloak_postgres_data: {}
+  keycloak_data: {}
+secrets:
+  keycloak_database_password: {file: ./secrets/keycloak_database_password}
+  keycloak_postgres_admin_password: {file: ./secrets/keycloak_postgres_admin_password}
+  keycloak_bootstrap_password: {file: ./secrets/keycloak_bootstrap_password}

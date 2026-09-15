@@ -1,0 +1,26 @@
+{
+  "assets": [
+    {
+      "filename": "og.png",
+      "path": "static/branding/og.png",
+      "sha256": "4261342b1994cec303f64ddfb9f61180b8e1bad8efc46d1e71e301b3d35447ce",
+      "bytes": 1036043,
+      "media_type": "image/png",
+      "width": 1200,
+      "height": 630,
+      "source": "User-supplied attachment in this conversation",
+      "transformation": "None; original bytes retained"
+    },
+    {
+      "filename": "favicon.svg",
+      "path": "static/branding/favicon.svg",
+      "sha256": "48ffbd4dd1d72cc54effbcf4ff97e4d98ab31791ffd08bef1c522e575cb3311f",
+      "bytes": 464,
+      "media_type": "image/svg+xml",
+      "width": 64,
+      "height": 64,
+      "source": "User-supplied attachment in this conversation",
+      "transformation": "None; original bytes retained"
+    }
+  ]
+}

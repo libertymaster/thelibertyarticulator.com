@@ -1,0 +1,78 @@
+name: Publication checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: publication-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require reviewed lock files
+        run: |
+          test -s images.lock.env && test -s requirements/development.lock && test -s frontend/package-lock.json || {
+            echo 'Run ops/prepare.sh on the target build host, review and commit generated locks, then rerun CI.'; exit 1;
+          }
+          python3 -c 'import sys; sys.path.insert(0,"ops"); from lock_state import verify; verify("images"); verify("dependencies")'
+          cat images.lock.env >> "$GITHUB_ENV"
+      - name: Authenticate to Docker Hardened Images
+        env:
+          DHI_USERNAME: ${{ secrets.DHI_USERNAME }}
+          DHI_TOKEN: ${{ secrets.DHI_TOKEN }}
+        run: |
+          test -n "$DHI_USERNAME" && test -n "$DHI_TOKEN" || { echo 'DHI read-only credentials are required for authenticated builds. Fork PRs do not receive secrets.'; exit 1; }
+          printf '%s' "$DHI_TOKEN" | docker login dhi.io -u "$DHI_USERNAME" --password-stdin
+      - name: Python checks in the pinned runtime family
+        run: |
+          docker run --rm --user 0:0 --entrypoint /bin/sh -v "$PWD:/work" -w /work "$PYTHON_BUILD_IMAGE" -ec '
+            python -m venv /tmp/qa
+            export PATH="/tmp/qa/bin:$PATH"
+            python -m pip install --require-hashes -r requirements/development.lock
+            python -m pip check
+            python ops/check_style.py
+            ruff check .
+            python ops/export_contracts.py --check
+            python -m pytest tests/static_tests -q
+            DJANGO_SETTINGS_MODULE=config.settings.testing python manage.py check
+            DJANGO_SETTINGS_MODULE=config.settings.testing python manage.py makemigrations --check --dry-run
+            DJANGO_SETTINGS_MODULE=config.settings.testing python manage.py test tests.django_tests
+            pip-audit -r requirements/production.lock
+          '
+      - name: Frontend build, types, unit tests, and dependency audit
+        run: |
+          docker run --rm -v "$PWD:/work" -w /work/frontend "$NODE_IMAGE" sh -ec '
+            npm ci
+            npm run build
+            npm test
+            npm audit --audit-level=high
+          '
+      - name: Initialize isolated integration environment
+        run: |
+          cp .env.example .env
+          python3 ops/init_secrets.py
+          python3 ops/render_config.py
+          python3 ops/check_image_contracts.py
+          MODE=dev ./ops/dc config --quiet
+          ./ops/dev.sh --demo
+          MODE=dev ./ops/dc up -d --wait web worker beat
+          MODE=dev ./ops/dc exec -T web python ops/smoke.py
+          MODE=dev ./ops/check_configs.sh
+      - name: Chromium behavior and JavaScript-disabled fallbacks
+        run: |
+          docker run --rm --network host -e CI=1 -e BASE_URL=http://127.0.0.1:8080 -v "$PWD:/work" -w /work/frontend "$NODE_IMAGE" sh -ec '
+            npx playwright install --with-deps chromium
+            npm run test:e2e
+          '
+      - name: Secret history and image vulnerability scans
+        run: python3 ops/security_check.py
+      - name: Integration diagnostics
+        if: failure()
+        run: MODE=dev ./ops/dc logs --tail=100 web worker beat postgres redis
+      - name: Stop ephemeral CI containers without volume deletion
+        if: always()
+        run: MODE=dev ./ops/dc down || true

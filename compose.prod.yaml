@@ -1,0 +1,15 @@
+# Base configuration already has no published host ports.
+# Keep this explicit production overlay available for deployment-only policy.
+services:
+  web:
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+  worker:
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+  beat:
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+  migrate:
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production

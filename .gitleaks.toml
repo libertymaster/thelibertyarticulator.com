@@ -1,0 +1,10 @@
+title = "The Liberty Articulator Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Allow Keycloak JDBC endpoint without credentials"
+regexTarget = "line"
+paths = ['''^compose\.keycloak\.yaml$''']
+regexes = ['''^\s*KC_DB_URL:\s+jdbc:postgresql://keycloak-postgres:5432/keycloak\s*$''']

@@ -1,0 +1,16 @@
+# Alerts are grouped/stored locally. Configure an actual receiver before relying on notifications.
+# No dummy remote webhook and no SMTP credentials are embedded.
+global:
+  resolve_timeout: 5m
+route:
+  receiver: local-only
+  group_by: [alertname, stack, job]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+receivers:
+  - name: local-only
+inhibit_rules:
+  - source_matchers: ['severity="critical"']
+    target_matchers: ['severity="warning"']
+    equal: [alertname, stack, job, instance]

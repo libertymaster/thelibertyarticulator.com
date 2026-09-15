@@ -1,0 +1,48 @@
+# Environment
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Secrets
+secrets/
+
+# Generated runtime/deployment data
+runtime/
+backups/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Django generated/user data
+media/
+staticfiles/
+
+# Generated frontend assets
+static/islands/
+frontend/node_modules/
+frontend/src/generated/validate_*.js
+frontend/src/generated/validate_*.d.ts
+frontend/playwright-report/
+frontend/test-results/
+
+# Tests
+.test-media/
+
+# Temporary/editor/backup files
+*.bak
+*.bak-*
+*~
+*.swp
+.DS_Store
+.idea/
+.vscode/
+
+# Commit generated dependency locks and image digest locks after review.

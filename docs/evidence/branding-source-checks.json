@@ -1,0 +1,24 @@
+{
+  "python_version": "3.13.5",
+  "python_files": 70,
+  "json_files": 19,
+  "yaml_files": 13,
+  "shell_files": 8,
+  "png_format": "PNG",
+  "png_size": [
+    1200,
+    630
+  ],
+  "png_mode": "RGB",
+  "unchanged_components_verified": [
+    "Dockerfile",
+    "images.sources.env",
+    "requirements",
+    "frontend",
+    "content/founding",
+    "apps/journal/migrations",
+    "contracts",
+    "monitoring",
+    "source-import"
+  ]
+}

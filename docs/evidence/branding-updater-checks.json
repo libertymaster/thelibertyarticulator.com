@@ -1,0 +1,15 @@
+{
+  "passed": 10,
+  "checks": [
+    "Dry run is read-only",
+    "Application produces every manifest-listed new checksum",
+    "Local environment, secrets, image locks and npm lock preserved",
+    "Repeat application is idempotent",
+    "Rollback dry run is read-only",
+    "Rollback refuses subsequent edits without writing",
+    "Rollback restores original files and removes added files",
+    "Conflicting local edit blocks update before writes",
+    "Target symlink is rejected",
+    "Corrupt payload is rejected before writes"
+  ]
+}

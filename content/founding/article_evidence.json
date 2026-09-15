@@ -1,0 +1,104 @@
+{
+  "abstract": "Archives do not simply hold a past that waits to be retrieved. Records were made for particular purposes, selected by institutions, described through changing systems, and encountered through unequal conditions of access. This founding editorial sets out a method for distinguishing surviving evidence from the historical worlds an article seeks to explain. It proposes a public source ledger and a seven-question analytical rubric inspired by Marc Bloch.",
+  "sources": [
+    {
+      "key": "imported-1",
+      "sort_order": 0,
+      "kind": "unclassified",
+      "title": "Apologie pour l’histoire ou Métier d’historien",
+      "authors": "Marc Bloch",
+      "year": null,
+      "bibliography": "Marc Bloch, Apologie pour l’histoire ou Métier d’historien, digital edition based on the 1952 second edition. The work was unfinished and published posthumously.",
+      "annotation": "",
+      "url": "https://classiques.uqam.ca/classiques/bloch_marc/apologie_histoire/apologie_histoire.html",
+      "display_title": "Bloch, Apologie",
+      "edition_label": "UQAC digital edition from the 1952 edition",
+      "use_description": "Methodological structure; no direct quotation",
+      "verification_status": "Consulted · rights not assumed"
+    },
+    {
+      "key": "imported-2",
+      "sort_order": 1,
+      "kind": "unclassified",
+      "title": "“Critique historique et critique du témoignage”",
+      "authors": "Marc Bloch",
+      "year": null,
+      "bibliography": "Marc Bloch, “Critique historique et critique du témoignage”, delivered in 1914 and published by Lucien Febvre in 1950; Febvre noted that Bloch might have revised some formulations.",
+      "annotation": "",
+      "url": "https://doi.org/10.3406/ahess.1950.1781",
+      "display_title": "Bloch, “Critique historique”",
+      "edition_label": "1914 address, published posthumously in 1950",
+      "use_description": "Early formulation of testimony criticism",
+      "verification_status": "Context caveat recorded"
+    },
+    {
+      "key": "imported-3",
+      "sort_order": 2,
+      "kind": "unclassified",
+      "title": "“Statement on Standards of Professional Conduct”",
+      "authors": "American Historical Association",
+      "year": null,
+      "bibliography": "American Historical Association, “Statement on Standards of Professional Conduct”, amended through January 2023.",
+      "annotation": "",
+      "url": "https://www.historians.org/resource/statement-on-standards-of-professional-conduct/",
+      "display_title": "AHA professional standards",
+      "edition_label": "Amended through January 2023",
+      "use_description": "Primary/secondary relation and retraceability",
+      "verification_status": "Consulted 29 Aug 2026"
+    },
+    {
+      "key": "imported-4",
+      "sort_order": 3,
+      "kind": "unclassified",
+      "title": "“Papiers d’historiens et d’érudits”",
+      "authors": "Archives nationales",
+      "year": null,
+      "bibliography": "Archives nationales, “Papiers d’historiens et d’érudits”, identifying the Marc Bloch fonds at AB XIX 3796–3852 and 4270–4275.",
+      "annotation": "",
+      "url": "https://www.archivesnationales.culture.gouv.fr/chan/chan/AP-pdf/AP-thematique-historiens-et-erudits.pdf",
+      "display_title": "Archives nationales finding aid",
+      "edition_label": "Marc Bloch fonds references",
+      "use_description": "Example of description versus archival object",
+      "verification_status": "Finding aid only · access restricted"
+    }
+  ],
+  "citations": [
+    {
+      "source_key": "imported-1",
+      "number": 1,
+      "sort_order": 0,
+      "note_anchor": "note-1",
+      "passage_anchor": "testimony",
+      "locator": "",
+      "note": ""
+    },
+    {
+      "source_key": "imported-2",
+      "number": 2,
+      "sort_order": 1,
+      "note_anchor": "note-2",
+      "passage_anchor": "testimony",
+      "locator": "",
+      "note": ""
+    },
+    {
+      "source_key": "imported-3",
+      "number": 3,
+      "sort_order": 2,
+      "note_anchor": "note-3",
+      "passage_anchor": "testimony",
+      "locator": "",
+      "note": ""
+    },
+    {
+      "source_key": "imported-4",
+      "number": 4,
+      "sort_order": 3,
+      "note_anchor": "note-4",
+      "passage_anchor": "silence",
+      "locator": "",
+      "note": ""
+    }
+  ],
+  "classification_notice": "The supplied article does not explicitly assign a primary/secondary role to each cited object. Imported classifications remain unclassified for editorial review."
+}

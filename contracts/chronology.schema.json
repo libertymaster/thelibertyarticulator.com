@@ -1,0 +1,102 @@
+{
+  "$defs": {
+    "TimelineEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "article_title": {
+          "title": "Article Title",
+          "type": "string"
+        },
+        "article_url": {
+          "title": "Article Url",
+          "type": "string"
+        },
+        "date_label": {
+          "title": "Date Label",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "person": {
+          "title": "Person",
+          "type": "string"
+        },
+        "source_citation": {
+          "title": "Source Citation",
+          "type": "string"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "theme": {
+          "enum": [
+            "life",
+            "writing",
+            "politics",
+            "context"
+          ],
+          "title": "Theme",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "year": {
+          "title": "Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "key",
+        "year",
+        "date_label",
+        "person",
+        "theme",
+        "title",
+        "description",
+        "source_citation",
+        "source_url",
+        "article_url",
+        "article_title"
+      ],
+      "title": "TimelineEvent",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "items": {
+        "$ref": "#/$defs/TimelineEvent"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "title",
+    "events"
+  ],
+  "title": "ChronologyPayload",
+  "type": "object"
+}

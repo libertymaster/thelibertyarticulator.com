@@ -1,0 +1,29 @@
+api:
+  dashboard: false
+entryPoints:
+  web:
+    address: ":8080"
+    http:
+      aliasHeadersStrategy: delete
+  metrics:
+    address: ":8082"
+    http:
+      aliasHeadersStrategy: delete
+providers:
+  file:
+    filename: /etc/traefik/dynamic.yml
+    watch: true
+ping:
+  entryPoint: metrics
+metrics:
+  prometheus:
+    entryPoint: metrics
+log:
+  level: INFO
+  format: json
+accessLog:
+  format: json
+  fields:
+    defaultMode: keep
+    headers:
+      defaultMode: drop

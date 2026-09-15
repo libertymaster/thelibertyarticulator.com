@@ -1,0 +1,5514 @@
+{
+  "home": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Investigating under the microscope of liberty.",
+              "label": "p: Investigating under the microscope of liberty."
+            },
+            {
+              "key": "t002",
+              "text": "Analyzing through the",
+              "label": "h1: Analyzing through the"
+            },
+            {
+              "key": "t003",
+              "text": "telescope of history.",
+              "label": "h1: telescope of history."
+            },
+            {
+              "key": "t004",
+              "text": "We examine liberty as a historical problem, a philosophical claim, and a political practice—always through evidence.",
+              "label": "p: We examine liberty as a historical problem, a philosophical claim, and a political practic"
+            },
+            {
+              "key": "t005",
+              "text": "Read the founding charter ",
+              "label": "a: Read the founding charter"
+            },
+            {
+              "key": "t006",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/about/",
+              "label": "['Read the founding charter ', {'tag': 'span', 'props': {'className': 'ui-symbol"
+            }
+          ]
+        },
+        "id": "060bd752-7c0d-52f5-85fa-3bb49a85e103"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Editorial balance",
+              "label": "span: Editorial balance"
+            },
+            {
+              "key": "t002",
+              "text": "Analysis across all three",
+              "label": "strong: Analysis across all three"
+            },
+            {
+              "key": "t003",
+              "text": "History",
+              "label": "span: History"
+            },
+            {
+              "key": "t004",
+              "text": "50%",
+              "label": "strong: 50%"
+            },
+            {
+              "key": "t005",
+              "text": "Philosophy",
+              "label": "span: Philosophy"
+            },
+            {
+              "key": "t006",
+              "text": "30%",
+              "label": "strong: 30%"
+            },
+            {
+              "key": "t007",
+              "text": "Politics",
+              "label": "span: Politics"
+            },
+            {
+              "key": "t008",
+              "text": "20%",
+              "label": "strong: 20%"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/archive/",
+              "label": "[{'tag': 'span', 'props': {'children': ['History']}}, {'tag': 'strong', 'props':"
+            },
+            {
+              "key": "l002",
+              "url": "/archive/",
+              "label": "[{'tag': 'span', 'props': {'children': ['Philosophy']}}, {'tag': 'strong', 'prop"
+            },
+            {
+              "key": "l003",
+              "url": "/archive/",
+              "label": "[{'tag': 'span', 'props': {'children': ['Politics']}}, {'tag': 'strong', 'props'"
+            }
+          ]
+        },
+        "id": "5822a699-f6f1-564b-8c89-e7ca3c03aeba"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "Primary-source grounded",
+              "label": "strong: Primary-source grounded"
+            },
+            {
+              "key": "t003",
+              "text": "Every claim leaves a retraceable trail.",
+              "label": "span: Every claim leaves a retraceable trail."
+            },
+            {
+              "key": "t004",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t005",
+              "text": "Independent review",
+              "label": "strong: Independent review"
+            },
+            {
+              "key": "t006",
+              "text": "Review model and status are named, never implied.",
+              "label": "span: Review model and status are named, never implied."
+            },
+            {
+              "key": "t007",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t008",
+              "text": "Versioned corrections",
+              "label": "strong: Versioned corrections"
+            },
+            {
+              "key": "t009",
+              "text": "The scholarly record is amended, not silently replaced.",
+              "label": "span: The scholarly record is amended, not silently replaced."
+            }
+          ],
+          "links": []
+        },
+        "id": "8b3de3c6-9519-556a-89f5-fa419af6c4f2"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "History",
+              "label": "span: History"
+            },
+            {
+              "key": "t002",
+              "text": "Founding editorial",
+              "label": "span: Founding editorial"
+            },
+            {
+              "key": "t003",
+              "text": "Public draft · not externally reviewed",
+              "label": "span: Public draft · not externally reviewed"
+            },
+            {
+              "key": "t004",
+              "text": "The archive is not the village",
+              "label": "h2: The archive is not the village"
+            },
+            {
+              "key": "t005",
+              "text": "How do we reason from the records that survived without mistaking institutional memory for the lives it only partly contains?",
+              "label": "p: How do we reason from the records that survived without mistaking institutional memory for"
+            },
+            {
+              "key": "t006",
+              "text": "The Editors",
+              "label": "strong: The Editors"
+            },
+            {
+              "key": "t007",
+              "text": "29 August 2026 · 9 min read · Version 1.0",
+              "label": "span: 29 August 2026 · 9 min read · Version 1.0"
+            },
+            {
+              "key": "t008",
+              "text": "Read the editorial ",
+              "label": "a: Read the editorial"
+            },
+            {
+              "key": "t009",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t010",
+              "text": "The Bloch Lens",
+              "label": "p: The Bloch Lens"
+            },
+            {
+              "key": "t011",
+              "text": "Evidence has a history.",
+              "label": "h2: Evidence has a history."
+            },
+            {
+              "key": "t012",
+              "text": "Every long-form article identifies what survives, what is silent, which comparison clarifies the problem, and what would change its conclusion.",
+              "label": "p: Every long-form article identifies what survives, what is silent, which comparison clarifi"
+            },
+            {
+              "key": "t013",
+              "text": "Open the seven questions ",
+              "label": "a: Open the seven questions"
+            },
+            {
+              "key": "t014",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/article/the-archive-is-not-the-village/",
+              "label": "['Read the editorial ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            },
+            {
+              "key": "l002",
+              "url": "/standards/#bloch-lens",
+              "label": "['Open the seven questions ', {'tag': 'span', 'props': {'className': 'ui-symbol'"
+            }
+          ]
+        },
+        "id": "b95036f1-3f3d-53f6-be31-deb4f64ae790"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Founding portfolio",
+              "label": "p: Founding portfolio"
+            },
+            {
+              "key": "t002",
+              "text": "A journal measured by what it publishes.",
+              "label": "h2: A journal measured by what it publishes."
+            },
+            {
+              "key": "t003",
+              "text": "Ten commissioning briefs make the 5–3–2 balance visible before the first issue is accepted.",
+              "label": "p: Ten commissioning briefs make the 5–3–2 balance visible before the first issue is accepted"
+            },
+            {
+              "key": "t004",
+              "text": "Inspect the full portfolio ",
+              "label": "a: Inspect the full portfolio"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t006",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t007",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t008",
+              "text": "Research article",
+              "label": "p: Research article"
+            },
+            {
+              "key": "t009",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t010",
+              "text": "Petitioning Before Independence",
+              "label": "h3: Petitioning Before Independence"
+            },
+            {
+              "key": "t011",
+              "text": "A proposed study of town records, petitions, and correspondence in Essex County, 1764–1776.",
+              "label": "p: A proposed study of town records, petitions, and correspondence in Essex County, 1764–1776"
+            },
+            {
+              "key": "t012",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t013",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t014",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t015",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t016",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t017",
+              "text": "Town minutes · Petitions · Correspondence",
+              "label": "dd: Town minutes · Petitions · Correspondence"
+            },
+            {
+              "key": "t018",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t019",
+              "text": "Documentary comparison",
+              "label": "dd: Documentary comparison"
+            },
+            {
+              "key": "t020",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t021",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t022",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t023",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t024",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t025",
+              "text": "Philosophy",
+              "label": "p: Philosophy"
+            },
+            {
+              "key": "t026",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t027",
+              "text": "Philosophical argument",
+              "label": "p: Philosophical argument"
+            },
+            {
+              "key": "t028",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t029",
+              "text": "Liberty Without a Master",
+              "label": "h3: Liberty Without a Master"
+            },
+            {
+              "key": "t030",
+              "text": "A proposed dialogue between Wollstonecraft, Douglass, and contemporary accounts of non-domination.",
+              "label": "p: A proposed dialogue between Wollstonecraft, Douglass, and contemporary accounts of non-dom"
+            },
+            {
+              "key": "t031",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t032",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t033",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t034",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t035",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t036",
+              "text": "Primary texts · Conceptual literature",
+              "label": "dd: Primary texts · Conceptual literature"
+            },
+            {
+              "key": "t037",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t038",
+              "text": "Conceptual reconstruction",
+              "label": "dd: Conceptual reconstruction"
+            },
+            {
+              "key": "t039",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t040",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t041",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t042",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t043",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t044",
+              "text": "Politics",
+              "label": "p: Politics"
+            },
+            {
+              "key": "t045",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t046",
+              "text": "Comparative political analysis",
+              "label": "p: Comparative political analysis"
+            },
+            {
+              "key": "t047",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t048",
+              "text": "After the Emergency",
+              "label": "h3: After the Emergency"
+            },
+            {
+              "key": "t049",
+              "text": "A proposed comparison of what sunset clauses constrain—and what emergency institutions leave behind.",
+              "label": "p: A proposed comparison of what sunset clauses constrain—and what emergency institutions lea"
+            },
+            {
+              "key": "t050",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t051",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t052",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t053",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t054",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t055",
+              "text": "Statutes · Orders · Legislative records",
+              "label": "dd: Statutes · Orders · Legislative records"
+            },
+            {
+              "key": "t056",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t057",
+              "text": "Institutional comparison",
+              "label": "dd: Institutional comparison"
+            },
+            {
+              "key": "t058",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t059",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t060",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t061",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t062",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/issue/founding/",
+              "label": "['Inspect the full portfolio ', {'tag': 'span', 'props': {'className': 'ui-symbo"
+            }
+          ]
+        },
+        "id": "a2c664dd-baa3-5513-ae2f-a8a3443ca346"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-06",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Analysis is not a fourth category",
+              "label": "p: Analysis is not a fourth category"
+            },
+            {
+              "key": "t002",
+              "text": "It is the discipline applied to every category.",
+              "label": "h2: It is the discipline applied to every category."
+            },
+            {
+              "key": "t003",
+              "text": "Inspired by Marc Bloch’s insistence on criticism, comparison, and explanation, the Bloch Lens is a public rubric rather than a ceremonial name.",
+              "label": "p: Inspired by Marc Bloch’s insistence on criticism, comparison, and explanation, the Bloch L"
+            },
+            {
+              "key": "t004",
+              "text": "How the rubric is reviewed ",
+              "label": "a: How the rubric is reviewed"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t006",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t007",
+              "text": "What is the historical or conceptual question?",
+              "label": "p: What is the historical or conceptual question?"
+            },
+            {
+              "key": "t008",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t009",
+              "text": "What evidence survives, and through which institutions?",
+              "label": "p: What evidence survives, and through which institutions?"
+            },
+            {
+              "key": "t010",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t011",
+              "text": "What is absent, silent, translated, or otherwise mediated?",
+              "label": "p: What is absent, silent, translated, or otherwise mediated?"
+            },
+            {
+              "key": "t012",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t013",
+              "text": "Which comparison makes the problem clearer?",
+              "label": "p: Which comparison makes the problem clearer?"
+            },
+            {
+              "key": "t014",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t015",
+              "text": "What causal or conceptual inference is being made?",
+              "label": "p: What causal or conceptual inference is being made?"
+            },
+            {
+              "key": "t016",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t017",
+              "text": "What counterevidence or rival explanation remains?",
+              "label": "p: What counterevidence or rival explanation remains?"
+            },
+            {
+              "key": "t018",
+              "text": "07",
+              "label": "span: 07"
+            },
+            {
+              "key": "t019",
+              "text": "What finding would change the conclusion?",
+              "label": "p: What finding would change the conclusion?"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/standards/#bloch-lens",
+              "label": "['How the rubric is reviewed ', {'tag': 'span', 'props': {'className': 'ui-symbo"
+            }
+          ]
+        },
+        "id": "4505a472-1319-5731-849b-6d83f4eef728"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-07",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "The source desk",
+              "label": "p: The source desk"
+            },
+            {
+              "key": "t002",
+              "text": "Access is not evidence.",
+              "label": "h2: Access is not evidence."
+            },
+            {
+              "key": "t003",
+              "text": "Evidence is not permission.",
+              "label": "h2: Evidence is not permission."
+            },
+            {
+              "key": "t004",
+              "text": "Each source record separates what an object can support, where it came from, and whether it may be reproduced.",
+              "label": "p: Each source record separates what an object can support, where it came from, and whether i"
+            },
+            {
+              "key": "t005",
+              "text": "Browse the source protocol ",
+              "label": "a: Browse the source protocol"
+            },
+            {
+              "key": "t006",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t007",
+              "text": "0",
+              "label": "span: 0"
+            },
+            {
+              "key": "t008",
+              "text": "1",
+              "label": "span: 1"
+            },
+            {
+              "key": "t009",
+              "text": "Primary text",
+              "label": "p: Primary text"
+            },
+            {
+              "key": "t010",
+              "text": "Marc Bloch, Apologie pour l’histoire ou Métier d’historien",
+              "label": "h3: Marc Bloch, Apologie pour l’histoire ou Métier d’historien"
+            },
+            {
+              "key": "t011",
+              "text": "Université du Québec à Chicoutimi digital edition",
+              "label": "span: Université du Québec à Chicoutimi digital edition"
+            },
+            {
+              "key": "t012",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t013",
+              "text": "0",
+              "label": "span: 0"
+            },
+            {
+              "key": "t014",
+              "text": "2",
+              "label": "span: 2"
+            },
+            {
+              "key": "t015",
+              "text": "Primary text",
+              "label": "p: Primary text"
+            },
+            {
+              "key": "t016",
+              "text": "Marc Bloch and Lucien Febvre, “À nos lecteurs” (1929)",
+              "label": "h3: Marc Bloch and Lucien Febvre, “À nos lecteurs” (1929)"
+            },
+            {
+              "key": "t017",
+              "text": "Persée · Annales d’histoire économique et sociale",
+              "label": "span: Persée · Annales d’histoire économique et sociale"
+            },
+            {
+              "key": "t018",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t019",
+              "text": "0",
+              "label": "span: 0"
+            },
+            {
+              "key": "t020",
+              "text": "3",
+              "label": "span: 3"
+            },
+            {
+              "key": "t021",
+              "text": "Archive guide",
+              "label": "p: Archive guide"
+            },
+            {
+              "key": "t022",
+              "text": "Marc Bloch fonds, AB XIX 3796–3852 and 4270–4275",
+              "label": "h3: Marc Bloch fonds, AB XIX 3796–3852 and 4270–4275"
+            },
+            {
+              "key": "t023",
+              "text": "Archives nationales de France",
+              "label": "span: Archives nationales de France"
+            },
+            {
+              "key": "t024",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/sources/",
+              "label": "['Browse the source protocol ', {'tag': 'span', 'props': {'className': 'ui-symbo"
+            },
+            {
+              "key": "l002",
+              "url": "https://classiques.uqam.ca/classiques/bloch_marc/apologie_histoire/apologie_histoire.html",
+              "label": "[{'tag': 'span', 'props': {'className': 'source-number', 'children': ['0', 1]}},"
+            },
+            {
+              "key": "l003",
+              "url": "https://www.persee.fr/doc/ahess_0003-441x_1929_num_1_1_1031",
+              "label": "[{'tag': 'span', 'props': {'className': 'source-number', 'children': ['0', 2]}},"
+            },
+            {
+              "key": "l004",
+              "url": "https://www.archivesnationales.culture.gouv.fr/chan/chan/AP-pdf/AP-thematique-historiens-et-erudits.pdf",
+              "label": "[{'tag': 'span', 'props': {'className': 'source-number', 'children': ['0', 3]}},"
+            }
+          ]
+        },
+        "id": "6a1ef77d-f23a-58f2-81a4-4f42e8392ee9"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-08",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Editorial workflow",
+              "label": "p: Editorial workflow"
+            },
+            {
+              "key": "t002",
+              "text": "Rigor is a sequence of accountable decisions.",
+              "label": "h2: Rigor is a sequence of accountable decisions."
+            },
+            {
+              "key": "t003",
+              "text": "Submission, review, verification, publication, and correction each leave a visible record.",
+              "label": "p: Submission, review, verification, publication, and correction each leave a visible record."
+            },
+            {
+              "key": "t004",
+              "text": "See all ten gates ",
+              "label": "a: See all ten gates"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t006",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t007",
+              "text": "Proposal & allocation",
+              "label": "h3: Proposal & allocation"
+            },
+            {
+              "key": "t008",
+              "text": "Scope, originality, article type, primary discipline, and conflicts are declared before drafting.",
+              "label": "p: Scope, originality, article type, primary discipline, and conflicts are declared before dr"
+            },
+            {
+              "key": "t009",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t010",
+              "text": "Research protocol",
+              "label": "h3: Research protocol"
+            },
+            {
+              "key": "t011",
+              "text": "The question, primary corpus, scholarship, method, translation or data practice, and anticipated limits are recorded.",
+              "label": "p: The question, primary corpus, scholarship, method, translation or data practice, and antic"
+            },
+            {
+              "key": "t012",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t013",
+              "text": "Integrity screen",
+              "label": "h3: Integrity screen"
+            },
+            {
+              "key": "t014",
+              "text": "Editors check authorship, originality, permissions, source accessibility, ethics, funding, and competing interests.",
+              "label": "p: Editors check authorship, originality, permissions, source accessibility, ethics, funding,"
+            },
+            {
+              "key": "t015",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t016",
+              "text": "Editorial assessment",
+              "label": "h3: Editorial assessment"
+            },
+            {
+              "key": "t017",
+              "text": "The handling editor assesses fit, evidentiary sufficiency, and completion of the Bloch Lens.",
+              "label": "p: The handling editor assesses fit, evidentiary sufficiency, and completion of the Bloch Len"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/standards/#peer-review",
+              "label": "['See all ten gates ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'aria"
+            }
+          ]
+        },
+        "id": "35d62119-9df0-567e-b56f-76038166428e"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "home-09",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "A question before a claim",
+              "label": "p: A question before a claim"
+            },
+            {
+              "key": "t002",
+              "text": "What does history mean to you?",
+              "label": "h2: What does history mean to you?"
+            },
+            {
+              "key": "t003",
+              "text": "The question will open our first reader forum. Its answers will be moderated, preserved, and clearly distinguished from peer-reviewed scholarship.",
+              "label": "p: The question will open our first reader forum. Its answers will be moderated, preserved, a"
+            },
+            {
+              "key": "t004",
+              "text": "Read the forum protocol ",
+              "label": "a: Read the forum protocol"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t006",
+              "text": "View submission guidance",
+              "label": "a: View submission guidance"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/about/#question",
+              "label": "['Read the forum protocol ', {'tag': 'span', 'props': {'className': 'ui-symbol',"
+            },
+            {
+              "key": "l002",
+              "url": "/submit/",
+              "label": "['View submission guidance']"
+            }
+          ]
+        },
+        "id": "25fee7e7-41a0-548e-b873-3a2a19709acc"
+      }
+    ],
+    "metadata": {}
+  },
+  "about": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "About the journal",
+              "label": "p: About the journal"
+            },
+            {
+              "key": "t002",
+              "text": "Liberty is the inquiry, not the answer.",
+              "label": "h1: Liberty is the inquiry, not the answer."
+            },
+            {
+              "key": "t003",
+              "text": "The Liberty Articulator is being established as an independent journal for historically grounded, philosophically exacting, and politically serious work.",
+              "label": "p: The Liberty Articulator is being established as an independent journal for historically gr"
+            }
+          ],
+          "links": []
+        },
+        "id": "c11ce11d-11ec-5af0-aa63-b4bd8c56b572"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Founding purpose",
+              "label": "p: Founding purpose"
+            },
+            {
+              "key": "t002",
+              "text": "To publish scholarship that makes its evidence inspectable, its reasoning contestable, its uncertainties visible, and its corrections durable.",
+              "label": "blockquote: To publish scholarship that makes its evidence inspectable, its reasoning contestable, its"
+            }
+          ],
+          "links": []
+        },
+        "id": "a5348cf5-20e5-5da1-a06e-971acd5f8e72"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "Historical focus",
+              "label": "h2: Historical focus"
+            },
+            {
+              "key": "t003",
+              "text": "Half of the research portfolio is led by history, with primary-source studies, historiography, and comparative work at its center.",
+              "label": "p: Half of the research portfolio is led by history, with primary-source studies, historiogra"
+            },
+            {
+              "key": "t004",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t005",
+              "text": "Interdisciplinary reach",
+              "label": "h2: Interdisciplinary reach"
+            },
+            {
+              "key": "t006",
+              "text": "Philosophy receives thirty percent and politics twenty percent, while analysis crosses all three fields.",
+              "label": "p: Philosophy receives thirty percent and politics twenty percent, while analysis crosses all"
+            },
+            {
+              "key": "t007",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t008",
+              "text": "Public method",
+              "label": "h2: Public method"
+            },
+            {
+              "key": "t009",
+              "text": "Review status, sources, disclosures, editorial dates, revisions, and limits remain visible at article level.",
+              "label": "p: Review status, sources, disclosures, editorial dates, revisions, and limits remain visible"
+            },
+            {
+              "key": "t010",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t011",
+              "text": "Institutional independence",
+              "label": "h2: Institutional independence"
+            },
+            {
+              "key": "t012",
+              "text": "Ownership, funding, editorial authority, and conflicts will be disclosed before submissions open.",
+              "label": "p: Ownership, funding, editorial authority, and conflicts will be disclosed before submission"
+            }
+          ],
+          "links": []
+        },
+        "id": "4fcf4370-2a3c-53a3-9838-b40fa8ef576f"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Governance before publication",
+              "label": "p: Governance before publication"
+            },
+            {
+              "key": "t002",
+              "text": "Independence needs structure.",
+              "label": "h2: Independence needs structure."
+            },
+            {
+              "key": "t003",
+              "text": "The journal will not claim full operational independence until its governing body, funding model, editorial appointments, complaints route, and separation of editorial and commercial authority are public.",
+              "label": "p: The journal will not claim full operational independence until its governing body, funding"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "Founding charter",
+              "label": "h3: Founding charter"
+            },
+            {
+              "key": "t006",
+              "text": "Defines purpose, scope, ownership, appointments, removal, voting, and amendment.",
+              "label": "p: Defines purpose, scope, ownership, appointments, removal, voting, and amendment."
+            },
+            {
+              "key": "t007",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t008",
+              "text": "Editorial board",
+              "label": "h3: Editorial board"
+            },
+            {
+              "key": "t009",
+              "text": "Members, affiliations, terms, roles, relevant interests, and decision authority are published.",
+              "label": "p: Members, affiliations, terms, roles, relevant interests, and decision authority are publis"
+            },
+            {
+              "key": "t010",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t011",
+              "text": "Financial disclosure",
+              "label": "h3: Financial disclosure"
+            },
+            {
+              "key": "t012",
+              "text": "Revenue sources, material donors, fees, sponsorships, and safeguards against influence are reported annually.",
+              "label": "p: Revenue sources, material donors, fees, sponsorships, and safeguards against influence are"
+            },
+            {
+              "key": "t013",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t014",
+              "text": "Independent appeal",
+              "label": "h3: Independent appeal"
+            },
+            {
+              "key": "t015",
+              "text": "Complaints involving an editor are reassigned outside that editor’s authority and leave an auditable record.",
+              "label": "p: Complaints involving an editor are reassigned outside that editor’s authority and leave an"
+            }
+          ],
+          "links": []
+        },
+        "id": "b877b655-05e7-5274-a600-abf0d303dd34"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Analysis",
+              "label": "span: Analysis"
+            },
+            {
+              "key": "t002",
+              "text": "In honor of Marc Bloch",
+              "label": "p: In honor of Marc Bloch"
+            },
+            {
+              "key": "t003",
+              "text": "A living obligation to analyze.",
+              "label": "h2: A living obligation to analyze."
+            },
+            {
+              "key": "t004",
+              "text": "The journal’s extended analytical focus draws inspiration from Bloch’s criticism of testimony, comparative imagination, attention to historical time, and insistence that the historian explain the craft.",
+              "label": "p: The journal’s extended analytical focus draws inspiration from Bloch’s criticism of testim"
+            },
+            {
+              "key": "t005",
+              "text": "The Bloch Lens is therefore a working rubric, not a claim of institutional lineage, endorsement, or exclusive ownership of a broad historical method.",
+              "label": "p: The Bloch Lens is therefore a working rubric, not a claim of institutional lineage, endors"
+            },
+            {
+              "key": "t006",
+              "text": "Inspect the rubric ",
+              "label": "a: Inspect the rubric"
+            },
+            {
+              "key": "t007",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/standards/#bloch-lens",
+              "label": "['Inspect the rubric ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            }
+          ]
+        },
+        "id": "7e03e81e-80e4-5f72-bd1d-4f1aae79470a"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "about-06",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "The founding inquiry",
+              "label": "p: The founding inquiry"
+            },
+            {
+              "key": "t002",
+              "text": "What does history mean to you?",
+              "label": "h2: What does history mean to you?"
+            },
+            {
+              "key": "t003",
+              "text": "The first reader forum will gather short, attributed answers from historians, philosophers, political scholars, archivists, teachers, students, and readers. Forum contributions will be moderated, consented, versioned, and labeled as invited reflection—not peer-reviewed research.",
+              "label": "p: The first reader forum will gather short, attributed answers from historians, philosophers"
+            },
+            {
+              "key": "t004",
+              "text": "See how participation will open ",
+              "label": "a: See how participation will open"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/submit/",
+              "label": "['See how participation will open ', {'tag': 'span', 'props': {'className': 'ui-"
+            }
+          ]
+        },
+        "id": "b793304d-79c6-5ad6-a535-b0daf8d434da"
+      }
+    ],
+    "metadata": {
+      "title": "About",
+      "description": "The founding mission, independence commitments, governance model, and central question of The Liberty Articulator.",
+      "alternates": {
+        "canonical": "/about"
+      }
+    }
+  },
+  "archive": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "archive-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Search & archive",
+              "label": "p: Search & archive"
+            },
+            {
+              "key": "t002",
+              "text": "Find the question behind the claim.",
+              "label": "h1: Find the question behind the claim."
+            },
+            {
+              "key": "t003",
+              "text": "The archive currently contains one public founding editorial and nine clearly marked commissioning briefs. Nothing planned is presented as published or peer reviewed.",
+              "label": "p: The archive currently contains one public founding editorial and nine clearly marked commi"
+            }
+          ],
+          "links": []
+        },
+        "id": "91a0dd78-f24d-5d91-a5d7-3eb714b710b2"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "archive-02",
+          "texts": [],
+          "links": []
+        },
+        "id": "b987da1d-f8a9-5192-bf14-f482691f7bff"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "archive-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Record status",
+              "label": "p: Record status"
+            },
+            {
+              "key": "t002",
+              "text": "Transparent by design.",
+              "label": "h2: Transparent by design."
+            },
+            {
+              "key": "t003",
+              "text": "“Public draft,” “planned,” “under review,” and “version of record” are distinct states. A review badge will never appear before the relevant editorial record exists.",
+              "label": "p: “Public draft,” “planned,” “under review,” and “version of record” are distinct states. A "
+            }
+          ],
+          "links": []
+        },
+        "id": "09cd6bdd-d25e-52ac-8227-2f694ddd0739"
+      }
+    ],
+    "metadata": {
+      "title": "Archive",
+      "description": "Search the founding editorial and commissioning portfolio by discipline, source, and method.",
+      "alternates": {
+        "canonical": "/archive"
+      }
+    }
+  },
+  "article": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "article-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "←",
+              "label": "span: ←"
+            },
+            {
+              "key": "t002",
+              "text": " Archive",
+              "label": "a: Archive"
+            },
+            {
+              "key": "t003",
+              "text": "History",
+              "label": "span: History"
+            },
+            {
+              "key": "t004",
+              "text": "Founding editorial",
+              "label": "span: Founding editorial"
+            },
+            {
+              "key": "t005",
+              "text": "Public draft",
+              "label": "span: Public draft"
+            },
+            {
+              "key": "t006",
+              "text": "The Editors",
+              "label": "strong: The Editors"
+            },
+            {
+              "key": "t007",
+              "text": "The Liberty Articulator",
+              "label": "span: The Liberty Articulator"
+            },
+            {
+              "key": "t008",
+              "text": "Published",
+              "label": "dt: Published"
+            },
+            {
+              "key": "t009",
+              "text": "29 August 2026",
+              "label": "dd: 29 August 2026"
+            },
+            {
+              "key": "t010",
+              "text": "Version",
+              "label": "dt: Version"
+            },
+            {
+              "key": "t011",
+              "text": "1.0",
+              "label": "dd: 1.0"
+            },
+            {
+              "key": "t012",
+              "text": "Reading time",
+              "label": "dt: Reading time"
+            },
+            {
+              "key": "t013",
+              "text": "9 minutes",
+              "label": "dd: 9 minutes"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/archive/",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            }
+          ]
+        },
+        "id": "188bf69e-e54b-5a53-b1e5-a1aa706c465d"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "article-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "Review status:",
+              "label": "strong: Review status:"
+            },
+            {
+              "key": "t003",
+              "text": " Founding editorial; editorially reviewed, not externally peer reviewed. This status is part of the record.",
+              "label": "p: Founding editorial; editorially reviewed, not externally peer reviewed. This status is par"
+            }
+          ],
+          "links": []
+        },
+        "id": "be7a8f27-ee60-59a7-add6-4d8980b4acc0"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "article-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "In this article",
+              "label": "p: In this article"
+            },
+            {
+              "key": "t002",
+              "text": "Abstract",
+              "label": "a: Abstract"
+            },
+            {
+              "key": "t003",
+              "text": "1. The made record",
+              "label": "a: 1. The made record"
+            },
+            {
+              "key": "t004",
+              "text": "2. Testimony and criticism",
+              "label": "a: 2. Testimony and criticism"
+            },
+            {
+              "key": "t005",
+              "text": "3. Arguing from silence",
+              "label": "a: 3. Arguing from silence"
+            },
+            {
+              "key": "t006",
+              "text": "4. The journal’s response",
+              "label": "a: 4. The journal’s response"
+            },
+            {
+              "key": "t007",
+              "text": "Source ledger",
+              "label": "a: Source ledger"
+            },
+            {
+              "key": "t008",
+              "text": "References",
+              "label": "a: References"
+            },
+            {
+              "key": "t009",
+              "text": "Discipline target",
+              "label": "p: Discipline target"
+            },
+            {
+              "key": "t010",
+              "text": "History · 50%",
+              "label": "strong: History · 50%"
+            },
+            {
+              "key": "t011",
+              "text": "Method",
+              "label": "p: Method"
+            },
+            {
+              "key": "t012",
+              "text": "Source criticism",
+              "label": "strong: Source criticism"
+            },
+            {
+              "key": "t013",
+              "text": "Abstract",
+              "label": "p: Abstract"
+            },
+            {
+              "key": "t014",
+              "text": "Historical method",
+              "label": "span: Historical method"
+            },
+            {
+              "key": "t015",
+              "text": "Archives",
+              "label": "span: Archives"
+            },
+            {
+              "key": "t016",
+              "text": "Source criticism",
+              "label": "span: Source criticism"
+            },
+            {
+              "key": "t017",
+              "text": "Marc Bloch",
+              "label": "span: Marc Bloch"
+            },
+            {
+              "key": "t018",
+              "text": "Silence",
+              "label": "span: Silence"
+            },
+            {
+              "key": "t019",
+              "text": "01 / The made record",
+              "label": "p: 01 / The made record"
+            },
+            {
+              "key": "t020",
+              "text": "What survives was first made.",
+              "label": "h2: What survives was first made."
+            },
+            {
+              "key": "t021",
+              "text": "A village does not enter an archive all at once. It arrives as tax assessments, court depositions, parish registers, maps, contracts, petitions, censuses, photographs, letters, and the later descriptions that make some of those objects findable. Each form answered a practical demand. Each admitted certain people, actions, and categories more readily than others.",
+              "label": "p: A village does not enter an archive all at once. It arrives as tax assessments, court depo"
+            },
+            {
+              "key": "t022",
+              "text": "That observation does not make the record unusable. It makes provenance part of the evidence. A poor-relief ledger may establish that an officer recorded a payment under a named category on a given date. It does not, by itself, establish the whole economy of need, the recipient’s account of the encounter, or the experiences of people who never appeared in the ledger. The distinction between the statement of the record and the reach of the inference is where analysis begins.",
+              "label": "p: That observation does not make the record unusable. It makes provenance part of the eviden"
+            },
+            {
+              "key": "t023",
+              "text": "The journal therefore asks authors to identify the exact object used, its creator and administrative purpose, its path into custody, its present description, and the transformations—copying, transcription, translation, digitization, search, or excerpting—through which the author encountered it.",
+              "label": "p: The journal therefore asks authors to identify the exact object used, its creator and admi"
+            },
+            {
+              "key": "t024",
+              "text": "The first question is not only “What does this source say?” but “What had to happen for this source to exist here, in this form, for this question?”",
+              "label": "p: The first question is not only “What does this source say?” but “What had to happen for th"
+            },
+            {
+              "key": "t025",
+              "text": "— Founding analytical rule",
+              "label": "cite: — Founding analytical rule"
+            },
+            {
+              "key": "t026",
+              "text": "Fig. 1 · The journal’s optical motifs represent scales of inquiry. This is original editorial artwork, not a historical source or reproduction.",
+              "label": "figcaption: Fig. 1 · The journal’s optical motifs represent scales of inquiry. This is original editor"
+            },
+            {
+              "key": "t027",
+              "text": "02 / Testimony and criticism",
+              "label": "p: 02 / Testimony and criticism"
+            },
+            {
+              "key": "t028",
+              "text": "Evidence must be questioned without being theatrically distrusted.",
+              "label": "h2: Evidence must be questioned without being theatrically distrusted."
+            },
+            {
+              "key": "t029",
+              "text": "Marc Bloch’s unfinished ",
+              "label": "p: Marc Bloch’s unfinished"
+            },
+            {
+              "key": "t030",
+              "text": "Apologie pour l’histoire",
+              "label": "em: Apologie pour l’histoire"
+            },
+            {
+              "key": "t031",
+              "text": " organized the historian’s craft around observation, testimony, criticism, analysis, and causation.",
+              "label": "p: organized the historian’s craft around observation, testimony, criticism, analysis, and ca"
+            },
+            {
+              "key": "t032",
+              "text": "1",
+              "label": "a: 1"
+            },
+            {
+              "key": "t033",
+              "text": " An earlier address, “Critique historique et critique du témoignage,” likewise treated indirect knowledge and the discrimination of truth, error, and plausibility as central problems.",
+              "label": "p: An earlier address, “Critique historique et critique du témoignage,” likewise treated indi"
+            },
+            {
+              "key": "t034",
+              "text": "2",
+              "label": "a: 2"
+            },
+            {
+              "key": "t035",
+              "text": "The useful lesson is not that testimony is always false or that suspicion is sophistication. Criticism is comparative. It tests a statement against the circumstances of its production, independent traces, internal consistency, material features, and alternative accounts. A source may be inaccurate about an event and unusually revealing about the categories through which its maker perceived that event. The historical question determines which feature matters.",
+              "label": "p: The useful lesson is not that testimony is always false or that suspicion is sophisticatio"
+            },
+            {
+              "key": "t036",
+              "text": "This is also why “primary source” is not a permanent honorific attached to an object. The American Historical Association’s professional standards emphasize that primary and secondary status depends in part on the question, and that primary evidence must be critically examined in relation to relevant secondary scholarship.",
+              "label": "p: This is also why “primary source” is not a permanent honorific attached to an object. The "
+            },
+            {
+              "key": "t037",
+              "text": "3",
+              "label": "a: 3"
+            },
+            {
+              "key": "t038",
+              "text": "A later catalog, edition, or oral recollection can play different evidentiary roles in different inquiries.",
+              "label": "p: A later catalog, edition, or oral recollection can play different evidentiary roles in dif"
+            },
+            {
+              "key": "t039",
+              "text": "Evidence / inference check",
+              "label": "p: Evidence / inference check"
+            },
+            {
+              "key": "t040",
+              "text": "The record supports",
+              "label": "strong: The record supports"
+            },
+            {
+              "key": "t041",
+              "text": "A bounded statement tied to a retraceable object and locator.",
+              "label": "p: A bounded statement tied to a retraceable object and locator."
+            },
+            {
+              "key": "t042",
+              "text": "The author infers",
+              "label": "strong: The author infers"
+            },
+            {
+              "key": "t043",
+              "text": "An interpretation whose steps, comparisons, assumptions, and alternatives must be stated.",
+              "label": "p: An interpretation whose steps, comparisons, assumptions, and alternatives must be stated."
+            },
+            {
+              "key": "t044",
+              "text": "03 / Arguing from silence",
+              "label": "p: 03 / Arguing from silence"
+            },
+            {
+              "key": "t045",
+              "text": "Absence becomes evidence only through a warranted expectation.",
+              "label": "h2: Absence becomes evidence only through a warranted expectation."
+            },
+            {
+              "key": "t046",
+              "text": "“The archive is silent” is not yet an explanation. A missing name may reflect non-participation, deliberate exclusion, lost volumes, inconsistent spelling, catalog structure, a search interface, an unconsulted related series, or the simple fact that the relevant action did not ordinarily produce a record. To argue from silence, an author must explain why a trace would normally be expected, how complete the surviving series is, and which alternative causes of absence have been tested.",
+              "label": "p: “The archive is silent” is not yet an explanation. A missing name may reflect non-particip"
+            },
+            {
+              "key": "t047",
+              "text": "Finding aids help establish the architecture of survival. The Archives nationales guide to historians’ private papers, for example, identifies the Marc Bloch fonds and the files containing manuscript and working material for the ",
+              "label": "p: Finding aids help establish the architecture of survival. The Archives nationales guide to"
+            },
+            {
+              "key": "t048",
+              "text": "Apologie",
+              "label": "em: Apologie"
+            },
+            {
+              "key": "t049",
+              "text": ". It does not provide the manuscript itself, guarantee access, or authorize reproduction.",
+              "label": "p: . It does not provide the manuscript itself, guarantee access, or authorize reproduction."
+            },
+            {
+              "key": "t050",
+              "text": "4",
+              "label": "a: 4"
+            },
+            {
+              "key": "t051",
+              "text": "A rigorous citation records that distinction instead of turning a catalog description into the object described.",
+              "label": "p: A rigorous citation records that distinction instead of turning a catalog description into"
+            },
+            {
+              "key": "t052",
+              "text": "Silence also has a politics. Institutions were uneven in whom they observed, believed, classified, compensated, punished, preserved, and described. Yet an account of power cannot be inferred from institutional bias alone. The author still owes the reader a demonstrated mechanism, comparison, chronology, and engagement with evidence that might resist the proposed interpretation.",
+              "label": "p: Silence also has a politics. Institutions were uneven in whom they observed, believed, cla"
+            },
+            {
+              "key": "t053",
+              "text": "04 / The journal’s response",
+              "label": "p: 04 / The journal’s response"
+            },
+            {
+              "key": "t054",
+              "text": "Make the reasoning inspectable.",
+              "label": "h2: Make the reasoning inspectable."
+            },
+            {
+              "key": "t055",
+              "text": "The Liberty Articulator’s response is procedural. Every long-form article will carry a source ledger beside its bibliography. The ledger records the exact edition or archival unit used, the locator, the role the source plays, the state of verification, known mediation, and rights or access limits. It binds evidence to a particular article version so that later corrections do not erase the route by which an earlier conclusion was reached.",
+              "label": "p: The Liberty Articulator’s response is procedural. Every long-form article will carry a sou"
+            },
+            {
+              "key": "t056",
+              "text": "A second device, the Bloch Lens, asks seven public questions about the inquiry, surviving evidence, silence and mediation, comparison, inference, counterevidence, and revision conditions. Reviewers will not be asked merely whether an article “feels analytical.” They will assess whether each required decision is explicit and adequately supported.",
+              "label": "p: A second device, the Bloch Lens, asks seven public questions about the inquiry, surviving "
+            },
+            {
+              "key": "t057",
+              "text": "None of this makes error impossible. It makes error easier to locate, contest, and correct. The journal’s scholarly standard is not invulnerability. It is a record strong enough to be examined by someone who was not present when the editorial decision was made.",
+              "label": "p: None of this makes error impossible. It makes error easier to locate, contest, and correct"
+            },
+            {
+              "key": "t058",
+              "text": "Source ledger / Version 1.0",
+              "label": "p: Source ledger / Version 1.0"
+            },
+            {
+              "key": "t059",
+              "text": "Material sources used in this editorial.",
+              "label": "h2: Material sources used in this editorial."
+            },
+            {
+              "key": "t060",
+              "text": "Source",
+              "label": "span: Source"
+            },
+            {
+              "key": "t061",
+              "text": "Use",
+              "label": "span: Use"
+            },
+            {
+              "key": "t062",
+              "text": "Status",
+              "label": "span: Status"
+            },
+            {
+              "key": "t063",
+              "text": "Bloch, ",
+              "label": "strong: Bloch,"
+            },
+            {
+              "key": "t064",
+              "text": "Apologie",
+              "label": "em: Apologie"
+            },
+            {
+              "key": "t065",
+              "text": "UQAC digital edition from the 1952 edition",
+              "label": "small: UQAC digital edition from the 1952 edition"
+            },
+            {
+              "key": "t066",
+              "text": "Methodological structure; no direct quotation",
+              "label": "span: Methodological structure; no direct quotation"
+            },
+            {
+              "key": "t067",
+              "text": "Consulted · rights not assumed",
+              "label": "span: Consulted · rights not assumed"
+            },
+            {
+              "key": "t068",
+              "text": "Bloch, “Critique historique”",
+              "label": "strong: Bloch, “Critique historique”"
+            },
+            {
+              "key": "t069",
+              "text": "1914 address, published posthumously in 1950",
+              "label": "small: 1914 address, published posthumously in 1950"
+            },
+            {
+              "key": "t070",
+              "text": "Early formulation of testimony criticism",
+              "label": "span: Early formulation of testimony criticism"
+            },
+            {
+              "key": "t071",
+              "text": "Context caveat recorded",
+              "label": "span: Context caveat recorded"
+            },
+            {
+              "key": "t072",
+              "text": "AHA professional standards",
+              "label": "strong: AHA professional standards"
+            },
+            {
+              "key": "t073",
+              "text": "Amended through January 2023",
+              "label": "small: Amended through January 2023"
+            },
+            {
+              "key": "t074",
+              "text": "Primary/secondary relation and retraceability",
+              "label": "span: Primary/secondary relation and retraceability"
+            },
+            {
+              "key": "t075",
+              "text": "Consulted 29 Aug 2026",
+              "label": "span: Consulted 29 Aug 2026"
+            },
+            {
+              "key": "t076",
+              "text": "Archives nationales finding aid",
+              "label": "strong: Archives nationales finding aid"
+            },
+            {
+              "key": "t077",
+              "text": "Marc Bloch fonds references",
+              "label": "small: Marc Bloch fonds references"
+            },
+            {
+              "key": "t078",
+              "text": "Example of description versus archival object",
+              "label": "span: Example of description versus archival object"
+            },
+            {
+              "key": "t079",
+              "text": "Finding aid only · access restricted",
+              "label": "span: Finding aid only · access restricted"
+            },
+            {
+              "key": "t080",
+              "text": "Notes & references",
+              "label": "p: Notes & references"
+            },
+            {
+              "key": "t081",
+              "text": "1",
+              "label": "span: 1"
+            },
+            {
+              "key": "t082",
+              "text": "Marc Bloch, ",
+              "label": "p: Marc Bloch,"
+            },
+            {
+              "key": "t083",
+              "text": "Apologie pour l’histoire ou Métier d’historien",
+              "label": "em: Apologie pour l’histoire ou Métier d’historien"
+            },
+            {
+              "key": "t084",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t085",
+              "text": ", digital edition based on the 1952 second edition. The work was unfinished and published posthumously.",
+              "label": "p: , digital edition based on the 1952 second edition. The work was unfinished and published "
+            },
+            {
+              "key": "t086",
+              "text": "2",
+              "label": "span: 2"
+            },
+            {
+              "key": "t087",
+              "text": "Marc Bloch, ",
+              "label": "p: Marc Bloch,"
+            },
+            {
+              "key": "t088",
+              "text": "“Critique historique et critique du témoignage” ",
+              "label": "a: “Critique historique et critique du témoignage”"
+            },
+            {
+              "key": "t089",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t090",
+              "text": ", delivered in 1914 and published by Lucien Febvre in 1950; Febvre noted that Bloch might have revised some formulations.",
+              "label": "p: , delivered in 1914 and published by Lucien Febvre in 1950; Febvre noted that Bloch might "
+            },
+            {
+              "key": "t091",
+              "text": "3",
+              "label": "span: 3"
+            },
+            {
+              "key": "t092",
+              "text": "American Historical Association, ",
+              "label": "p: American Historical Association,"
+            },
+            {
+              "key": "t093",
+              "text": "“Statement on Standards of Professional Conduct” ",
+              "label": "a: “Statement on Standards of Professional Conduct”"
+            },
+            {
+              "key": "t094",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t095",
+              "text": ", amended through January 2023.",
+              "label": "p: , amended through January 2023."
+            },
+            {
+              "key": "t096",
+              "text": "4",
+              "label": "span: 4"
+            },
+            {
+              "key": "t097",
+              "text": "Archives nationales, ",
+              "label": "p: Archives nationales,"
+            },
+            {
+              "key": "t098",
+              "text": "“Papiers d’historiens et d’érudits” ",
+              "label": "a: “Papiers d’historiens et d’érudits”"
+            },
+            {
+              "key": "t099",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t100",
+              "text": ", identifying the Marc Bloch fonds at AB XIX 3796–3852 and 4270–4275.",
+              "label": "p: , identifying the Marc Bloch fonds at AB XIX 3796–3852 and 4270–4275."
+            },
+            {
+              "key": "t101",
+              "text": "Suggested citation",
+              "label": "p: Suggested citation"
+            },
+            {
+              "key": "t102",
+              "text": "The Editors. “The Archive Is Not the Village.” The Liberty Articulator, public founding draft, version 1.0, August 29, 2026.",
+              "label": "p: The Editors. “The Archive Is Not the Village.” The Liberty Articulator, public founding dr"
+            },
+            {
+              "key": "t103",
+              "text": "Copy citation",
+              "label": "button: Copy citation"
+            },
+            {
+              "key": "t104",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t105",
+              "text": "Article type",
+              "label": "span: Article type"
+            },
+            {
+              "key": "t106",
+              "text": "Founding editorial",
+              "label": "strong: Founding editorial"
+            },
+            {
+              "key": "t107",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t108",
+              "text": "Review status",
+              "label": "span: Review status"
+            },
+            {
+              "key": "t109",
+              "text": "Not externally reviewed",
+              "label": "strong: Not externally reviewed"
+            },
+            {
+              "key": "t110",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t111",
+              "text": "Current record",
+              "label": "span: Current record"
+            },
+            {
+              "key": "t112",
+              "text": "Version 1.0 · no corrections",
+              "label": "strong: Version 1.0 · no corrections"
+            },
+            {
+              "key": "t113",
+              "text": "Correction policy ",
+              "label": "a: Correction policy"
+            },
+            {
+              "key": "t114",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "#abstract",
+              "label": "['Abstract']"
+            },
+            {
+              "key": "l002",
+              "url": "#made-record",
+              "label": "['1. The made record']"
+            },
+            {
+              "key": "l003",
+              "url": "#testimony",
+              "label": "['2. Testimony and criticism']"
+            },
+            {
+              "key": "l004",
+              "url": "#silence",
+              "label": "['3. Arguing from silence']"
+            },
+            {
+              "key": "l005",
+              "url": "#response",
+              "label": "['4. The journal’s response']"
+            },
+            {
+              "key": "l006",
+              "url": "#source-ledger",
+              "label": "['Source ledger']"
+            },
+            {
+              "key": "l007",
+              "url": "#references",
+              "label": "['References']"
+            },
+            {
+              "key": "l008",
+              "url": "#note-1",
+              "label": "['1']"
+            },
+            {
+              "key": "l009",
+              "url": "#note-2",
+              "label": "['2']"
+            },
+            {
+              "key": "l010",
+              "url": "#note-3",
+              "label": "['3']"
+            },
+            {
+              "key": "l011",
+              "url": "#note-4",
+              "label": "['4']"
+            },
+            {
+              "key": "l012",
+              "url": "https://classiques.uqam.ca/classiques/bloch_marc/apologie_histoire/apologie_histoire.html",
+              "label": "[{'tag': 'em', 'props': {'children': ['Apologie pour l’histoire ou Métier d’hist"
+            },
+            {
+              "key": "l013",
+              "url": "https://doi.org/10.3406/ahess.1950.1781",
+              "label": "['“Critique historique et critique du témoignage” ', {'tag': 'span', 'props': {'"
+            },
+            {
+              "key": "l014",
+              "url": "https://www.historians.org/resource/statement-on-standards-of-professional-conduct/",
+              "label": "['“Statement on Standards of Professional Conduct” ', {'tag': 'span', 'props': {"
+            },
+            {
+              "key": "l015",
+              "url": "https://www.archivesnationales.culture.gouv.fr/chan/chan/AP-pdf/AP-thematique-historiens-et-erudits.pdf",
+              "label": "['“Papiers d’historiens et d’érudits” ', {'tag': 'span', 'props': {'className': "
+            },
+            {
+              "key": "l016",
+              "url": "/standards/#corrections",
+              "label": "['Correction policy ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'aria"
+            }
+          ]
+        },
+        "id": "9a408f41-a285-5596-94bb-672b27561671"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "article-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Editorial history",
+              "label": "p: Editorial history"
+            },
+            {
+              "key": "t002",
+              "text": "Version record",
+              "label": "h2: Version record"
+            },
+            {
+              "key": "t003",
+              "text": "29 Aug 2026",
+              "label": "span: 29 Aug 2026"
+            },
+            {
+              "key": "t004",
+              "text": "Version 1.0 published",
+              "label": "strong: Version 1.0 published"
+            },
+            {
+              "key": "t005",
+              "text": "Founding editorial issued as a public draft. Editorial review only; no external peer review.",
+              "label": "p: Founding editorial issued as a public draft. Editorial review only; no external peer revie"
+            }
+          ],
+          "links": []
+        },
+        "id": "a1a4dfff-89b3-50a8-9fce-23f38d32199b"
+      }
+    ],
+    "metadata": {
+      "title": "The Archive Is Not the Village",
+      "description": "A founding editorial on surviving records, institutional memory, archival silence, and the journal’s standard for historical inference.",
+      "alternates": {
+        "canonical": "/article/the-archive-is-not-the-village"
+      },
+      "openGraph": {
+        "type": "article",
+        "title": "The Archive Is Not the Village",
+        "description": "A founding editorial on surviving records, institutional memory, archival silence, and the journal’s standard for historical inference.",
+        "url": "/article/the-archive-is-not-the-village",
+        "images": []
+      },
+      "twitter": {
+        "card": "summary",
+        "title": "The Archive Is Not the Village",
+        "description": "A founding editorial on surviving records, institutional memory, archival silence, and the journal’s standard for historical inference.",
+        "images": []
+      },
+      "other": {
+        "citation_title": "The Archive Is Not the Village",
+        "citation_author": "The Editors",
+        "citation_publication_date": "2026/08/29",
+        "citation_journal_title": "The Liberty Articulator",
+        "citation_language": "en",
+        "citation_abstract_html_url": "https://thelibertyarticulator.com/article/the-archive-is-not-the-village"
+      }
+    }
+  },
+  "founding": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "founding-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Issue 00 · commissioning portfolio",
+              "label": "p: Issue 00 · commissioning portfolio"
+            },
+            {
+              "key": "t002",
+              "text": "A balance declared before acceptance.",
+              "label": "h1: A balance declared before acceptance."
+            },
+            {
+              "key": "t003",
+              "text": "These ten records are editorial briefs, not finished articles. They make scope, method, sources, and the 50/30/20 commitment inspectable while the founding issue is developed.",
+              "label": "p: These ten records are editorial briefs, not finished articles. They make scope, method, so"
+            }
+          ],
+          "links": []
+        },
+        "id": "48ab9aa4-4db1-503b-9ad3-70b2e5e31e24"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "founding-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "5",
+              "label": "strong: 5"
+            },
+            {
+              "key": "t002",
+              "text": "History",
+              "label": "span: History"
+            },
+            {
+              "key": "t003",
+              "text": "50 percent",
+              "label": "small: 50 percent"
+            },
+            {
+              "key": "t004",
+              "text": "3",
+              "label": "strong: 3"
+            },
+            {
+              "key": "t005",
+              "text": "Philosophy",
+              "label": "span: Philosophy"
+            },
+            {
+              "key": "t006",
+              "text": "30 percent",
+              "label": "small: 30 percent"
+            },
+            {
+              "key": "t007",
+              "text": "2",
+              "label": "strong: 2"
+            },
+            {
+              "key": "t008",
+              "text": "Politics",
+              "label": "span: Politics"
+            },
+            {
+              "key": "t009",
+              "text": "20 percent",
+              "label": "small: 20 percent"
+            },
+            {
+              "key": "t010",
+              "text": "Analysis is evaluated across all ten records and is not counted as a fourth discipline.",
+              "label": "p: Analysis is evaluated across all ten records and is not counted as a fourth discipline."
+            }
+          ],
+          "links": []
+        },
+        "id": "41c7d52b-ac50-5f8a-a4e0-7fb611779c85"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "founding-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t002",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t003",
+              "text": "Founding editorial",
+              "label": "p: Founding editorial"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "The Archive Is Not the Village",
+              "label": "h3: The Archive Is Not the Village"
+            },
+            {
+              "key": "t006",
+              "text": "A prospectus for reasoning from surviving records without mistaking institutional memory for the lives it only partly contains.",
+              "label": "p: A prospectus for reasoning from surviving records without mistaking institutional memory f"
+            },
+            {
+              "key": "t007",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t008",
+              "text": "Public draft",
+              "label": "dd: Public draft"
+            },
+            {
+              "key": "t009",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t010",
+              "text": "Editorial · not externally reviewed",
+              "label": "dd: Editorial · not externally reviewed"
+            },
+            {
+              "key": "t011",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t012",
+              "text": "Bloch · AHA · Archives nationales",
+              "label": "dd: Bloch · AHA · Archives nationales"
+            },
+            {
+              "key": "t013",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t014",
+              "text": "Source criticism",
+              "label": "dd: Source criticism"
+            },
+            {
+              "key": "t015",
+              "text": "The Editors",
+              "label": "p: The Editors"
+            },
+            {
+              "key": "t016",
+              "text": "29 August 2026",
+              "label": "span: 29 August 2026"
+            },
+            {
+              "key": "t017",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t018",
+              "text": "9 min read",
+              "label": "span: 9 min read"
+            },
+            {
+              "key": "t019",
+              "text": "Read editorial ↗",
+              "label": "a: Read editorial ↗"
+            },
+            {
+              "key": "t020",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t021",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t022",
+              "text": "Research article",
+              "label": "p: Research article"
+            },
+            {
+              "key": "t023",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t024",
+              "text": "Petitioning Before Independence",
+              "label": "h3: Petitioning Before Independence"
+            },
+            {
+              "key": "t025",
+              "text": "A proposed study of town records, petitions, and correspondence in Essex County, 1764–1776.",
+              "label": "p: A proposed study of town records, petitions, and correspondence in Essex County, 1764–1776"
+            },
+            {
+              "key": "t026",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t027",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t028",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t029",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t030",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t031",
+              "text": "Town minutes · Petitions · Correspondence",
+              "label": "dd: Town minutes · Petitions · Correspondence"
+            },
+            {
+              "key": "t032",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t033",
+              "text": "Documentary comparison",
+              "label": "dd: Documentary comparison"
+            },
+            {
+              "key": "t034",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t035",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t036",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t037",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t038",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t039",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t040",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t041",
+              "text": "Comparative source study",
+              "label": "p: Comparative source study"
+            },
+            {
+              "key": "t042",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t043",
+              "text": "Citizenship after Emancipation",
+              "label": "h3: Citizenship after Emancipation"
+            },
+            {
+              "key": "t044",
+              "text": "A proposed comparison of Haiti’s constitutional texts from 1801 to 1806 and the political worlds they attempted to make.",
+              "label": "p: A proposed comparison of Haiti’s constitutional texts from 1801 to 1806 and the political "
+            },
+            {
+              "key": "t045",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t046",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t047",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t048",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t049",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t050",
+              "text": "Constitutions · Decrees · Correspondence",
+              "label": "dd: Constitutions · Decrees · Correspondence"
+            },
+            {
+              "key": "t051",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t052",
+              "text": "Comparative reading",
+              "label": "dd: Comparative reading"
+            },
+            {
+              "key": "t053",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t054",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t055",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t056",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t057",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t058",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t059",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t060",
+              "text": "Research article",
+              "label": "p: Research article"
+            },
+            {
+              "key": "t061",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t062",
+              "text": "Railway Time and Municipal Power",
+              "label": "h3: Railway Time and Municipal Power"
+            },
+            {
+              "key": "t063",
+              "text": "A proposed inquiry into Chicago ordinances, timetables, and the politics of standard time, 1880–1894.",
+              "label": "p: A proposed inquiry into Chicago ordinances, timetables, and the politics of standard time,"
+            },
+            {
+              "key": "t064",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t065",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t066",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t067",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t068",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t069",
+              "text": "Ordinances · Timetables · Newspapers",
+              "label": "dd: Ordinances · Timetables · Newspapers"
+            },
+            {
+              "key": "t070",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t071",
+              "text": "Institutional history",
+              "label": "dd: Institutional history"
+            },
+            {
+              "key": "t072",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t073",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t074",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t075",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t076",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t077",
+              "text": "History",
+              "label": "p: History"
+            },
+            {
+              "key": "t078",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t079",
+              "text": "Source dossier",
+              "label": "p: Source dossier"
+            },
+            {
+              "key": "t080",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t081",
+              "text": "Relief in the Ledger",
+              "label": "h3: Relief in the Ledger"
+            },
+            {
+              "key": "t082",
+              "text": "A proposed source dossier on what parish relief rolls can—and cannot—show about the Irish Famine.",
+              "label": "p: A proposed source dossier on what parish relief rolls can—and cannot—show about the Irish "
+            },
+            {
+              "key": "t083",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t084",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t085",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t086",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t087",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t088",
+              "text": "Relief rolls · Workhouse registers · Maps",
+              "label": "dd: Relief rolls · Workhouse registers · Maps"
+            },
+            {
+              "key": "t089",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t090",
+              "text": "Serial record analysis",
+              "label": "dd: Serial record analysis"
+            },
+            {
+              "key": "t091",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t092",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t093",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t094",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t095",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t096",
+              "text": "Philosophy",
+              "label": "p: Philosophy"
+            },
+            {
+              "key": "t097",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t098",
+              "text": "Philosophical argument",
+              "label": "p: Philosophical argument"
+            },
+            {
+              "key": "t099",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t100",
+              "text": "Liberty Without a Master",
+              "label": "h3: Liberty Without a Master"
+            },
+            {
+              "key": "t101",
+              "text": "A proposed dialogue between Wollstonecraft, Douglass, and contemporary accounts of non-domination.",
+              "label": "p: A proposed dialogue between Wollstonecraft, Douglass, and contemporary accounts of non-dom"
+            },
+            {
+              "key": "t102",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t103",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t104",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t105",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t106",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t107",
+              "text": "Primary texts · Conceptual literature",
+              "label": "dd: Primary texts · Conceptual literature"
+            },
+            {
+              "key": "t108",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t109",
+              "text": "Conceptual reconstruction",
+              "label": "dd: Conceptual reconstruction"
+            },
+            {
+              "key": "t110",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t111",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t112",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t113",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t114",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t115",
+              "text": "Philosophy",
+              "label": "p: Philosophy"
+            },
+            {
+              "key": "t116",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t117",
+              "text": "Critical exchange",
+              "label": "p: Critical exchange"
+            },
+            {
+              "key": "t118",
+              "text": "07",
+              "label": "span: 07"
+            },
+            {
+              "key": "t119",
+              "text": "Can Historical Explanation Carry Moral Judgment?",
+              "label": "h3: Can Historical Explanation Carry Moral Judgment?"
+            },
+            {
+              "key": "t120",
+              "text": "A proposed exchange on explanation, responsibility, anachronism, and the ethics of historical interpretation.",
+              "label": "p: A proposed exchange on explanation, responsibility, anachronism, and the ethics of histori"
+            },
+            {
+              "key": "t121",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t122",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t123",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t124",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t125",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t126",
+              "text": "Philosophy of history · Case studies",
+              "label": "dd: Philosophy of history · Case studies"
+            },
+            {
+              "key": "t127",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t128",
+              "text": "Argument and reply",
+              "label": "dd: Argument and reply"
+            },
+            {
+              "key": "t129",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t130",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t131",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t132",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t133",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t134",
+              "text": "Philosophy",
+              "label": "p: Philosophy"
+            },
+            {
+              "key": "t135",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t136",
+              "text": "Primary-text analysis",
+              "label": "p: Primary-text analysis"
+            },
+            {
+              "key": "t137",
+              "text": "08",
+              "label": "span: 08"
+            },
+            {
+              "key": "t138",
+              "text": "Locke’s Prerogative and Emergency Authority",
+              "label": "h3: Locke’s Prerogative and Emergency Authority"
+            },
+            {
+              "key": "t139",
+              "text": "A proposed close reading of prerogative, necessity, and accountability in the Second Treatise.",
+              "label": "p: A proposed close reading of prerogative, necessity, and accountability in the Second Treat"
+            },
+            {
+              "key": "t140",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t141",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t142",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t143",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t144",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t145",
+              "text": "Primary text · Editions · Commentaries",
+              "label": "dd: Primary text · Editions · Commentaries"
+            },
+            {
+              "key": "t146",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t147",
+              "text": "Textual analysis",
+              "label": "dd: Textual analysis"
+            },
+            {
+              "key": "t148",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t149",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t150",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t151",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t152",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t153",
+              "text": "Politics",
+              "label": "p: Politics"
+            },
+            {
+              "key": "t154",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t155",
+              "text": "Comparative political analysis",
+              "label": "p: Comparative political analysis"
+            },
+            {
+              "key": "t156",
+              "text": "09",
+              "label": "span: 09"
+            },
+            {
+              "key": "t157",
+              "text": "After the Emergency",
+              "label": "h3: After the Emergency"
+            },
+            {
+              "key": "t158",
+              "text": "A proposed comparison of what sunset clauses constrain—and what emergency institutions leave behind.",
+              "label": "p: A proposed comparison of what sunset clauses constrain—and what emergency institutions lea"
+            },
+            {
+              "key": "t159",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t160",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t161",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t162",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t163",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t164",
+              "text": "Statutes · Orders · Legislative records",
+              "label": "dd: Statutes · Orders · Legislative records"
+            },
+            {
+              "key": "t165",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t166",
+              "text": "Institutional comparison",
+              "label": "dd: Institutional comparison"
+            },
+            {
+              "key": "t167",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t168",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t169",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t170",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t171",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            },
+            {
+              "key": "t172",
+              "text": "Politics",
+              "label": "p: Politics"
+            },
+            {
+              "key": "t173",
+              "text": "/",
+              "label": "span: /"
+            },
+            {
+              "key": "t174",
+              "text": "Institutional study",
+              "label": "p: Institutional study"
+            },
+            {
+              "key": "t175",
+              "text": "10",
+              "label": "span: 10"
+            },
+            {
+              "key": "t176",
+              "text": "Who Draws the Public?",
+              "label": "h3: Who Draws the Public?"
+            },
+            {
+              "key": "t177",
+              "text": "A proposed study of boundary commissions, representation, and the politics hidden inside administrative lines.",
+              "label": "p: A proposed study of boundary commissions, representation, and the politics hidden inside a"
+            },
+            {
+              "key": "t178",
+              "text": "Status",
+              "label": "dt: Status"
+            },
+            {
+              "key": "t179",
+              "text": "Planned",
+              "label": "dd: Planned"
+            },
+            {
+              "key": "t180",
+              "text": "Review",
+              "label": "dt: Review"
+            },
+            {
+              "key": "t181",
+              "text": "Review pending",
+              "label": "dd: Review pending"
+            },
+            {
+              "key": "t182",
+              "text": "Sources",
+              "label": "dt: Sources"
+            },
+            {
+              "key": "t183",
+              "text": "Commission reports · Maps · Hearing records",
+              "label": "dd: Commission reports · Maps · Hearing records"
+            },
+            {
+              "key": "t184",
+              "text": "Method",
+              "label": "dt: Method"
+            },
+            {
+              "key": "t185",
+              "text": "Comparative institutions",
+              "label": "dd: Comparative institutions"
+            },
+            {
+              "key": "t186",
+              "text": "Commissioning prospectus",
+              "label": "p: Commissioning prospectus"
+            },
+            {
+              "key": "t187",
+              "text": "Founding issue",
+              "label": "span: Founding issue"
+            },
+            {
+              "key": "t188",
+              "text": " · ",
+              "label": "span: ·"
+            },
+            {
+              "key": "t189",
+              "text": "Prospectus",
+              "label": "span: Prospectus"
+            },
+            {
+              "key": "t190",
+              "text": "Planned commissioning brief",
+              "label": "span: Planned commissioning brief"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/article/the-archive-is-not-the-village/",
+              "label": "['Read editorial ↗']"
+            }
+          ]
+        },
+        "id": "e06dfd2c-3c18-5ce7-ad31-d18709d56427"
+      }
+    ],
+    "metadata": {
+      "title": "Founding Issue Portfolio",
+      "description": "The proposed ten-piece founding portfolio: five history, three philosophy, and two politics articles.",
+      "alternates": {
+        "canonical": "/issue/founding"
+      }
+    }
+  },
+  "sources": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "sources-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Sources & provenance",
+              "label": "p: Sources & provenance"
+            },
+            {
+              "key": "t002",
+              "text": "A source is not primary in the abstract.",
+              "label": "h1: A source is not primary in the abstract."
+            },
+            {
+              "key": "t003",
+              "text": "Its evidentiary role depends on the question asked. The same pamphlet may be testimony for one inquiry, an edition for another, and an object of reception for a third.",
+              "label": "p: Its evidentiary role depends on the question asked. The same pamphlet may be testimony for"
+            }
+          ],
+          "links": []
+        },
+        "id": "08f0071b-4282-5cde-9b6c-cb6e8f0ed1f5"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "sources-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t003",
+              "text": "Provenance",
+              "label": "h2: Provenance"
+            },
+            {
+              "key": "t004",
+              "text": "Where the object came from, how it was transmitted, and which institution shaped its survival.",
+              "label": "p: Where the object came from, how it was transmitted, and which institution shaped its survi"
+            },
+            {
+              "key": "t005",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t006",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t007",
+              "text": "Identity",
+              "label": "h2: Identity"
+            },
+            {
+              "key": "t008",
+              "text": "The exact edition, translation, archival unit, catalog record, or digital artifact used.",
+              "label": "p: The exact edition, translation, archival unit, catalog record, or digital artifact used."
+            },
+            {
+              "key": "t009",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t010",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t011",
+              "text": "Verification",
+              "label": "h2: Verification"
+            },
+            {
+              "key": "t012",
+              "text": "The claim, locator, quotation or note, checking status, and article version that cited it.",
+              "label": "p: The claim, locator, quotation or note, checking status, and article version that cited it."
+            },
+            {
+              "key": "t013",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t014",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t015",
+              "text": "Rights",
+              "label": "h2: Rights"
+            },
+            {
+              "key": "t016",
+              "text": "Access, licence, permission, reproduction limits, and retrieval date are recorded separately.",
+              "label": "p: Access, licence, permission, reproduction limits, and retrieval date are recorded separate"
+            }
+          ],
+          "links": []
+        },
+        "id": "d8eb2daa-5a65-5cec-9eeb-3caa9a82f8d4"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "sources-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Source ledger",
+              "label": "p: Source ledger"
+            },
+            {
+              "key": "t002",
+              "text": "What every citation must let a reader recover.",
+              "label": "h2: What every citation must let a reader recover."
+            },
+            {
+              "key": "t003",
+              "text": "A bibliography names an intellectual work. The source ledger records the exact object used and its role in the argument.",
+              "label": "p: A bibliography names an intellectual work. The source ledger records the exact object used"
+            },
+            {
+              "key": "t004",
+              "text": "Identity",
+              "label": "strong: Identity"
+            },
+            {
+              "key": "t005",
+              "text": "Creator · title · date · edition or version · language",
+              "label": "span: Creator · title · date · edition or version · language"
+            },
+            {
+              "key": "t006",
+              "text": "Repository",
+              "label": "strong: Repository"
+            },
+            {
+              "key": "t007",
+              "text": "Institution · collection · series · box · folder · folio or page",
+              "label": "span: Institution · collection · series · box · folder · folio or page"
+            },
+            {
+              "key": "t008",
+              "text": "Identifiers",
+              "label": "strong: Identifiers"
+            },
+            {
+              "key": "t009",
+              "text": "Archive ID · DOI · ISBN · catalog ID · stable URI",
+              "label": "span: Archive ID · DOI · ISBN · catalog ID · stable URI"
+            },
+            {
+              "key": "t010",
+              "text": "Use",
+              "label": "strong: Use"
+            },
+            {
+              "key": "t011",
+              "text": "Claim supported · locator · quotation or note · primary/secondary role",
+              "label": "span: Claim supported · locator · quotation or note · primary/secondary role"
+            },
+            {
+              "key": "t012",
+              "text": "Mediation",
+              "label": "strong: Mediation"
+            },
+            {
+              "key": "t013",
+              "text": "Transcription · translation · digitization · alteration · known omission",
+              "label": "span: Transcription · translation · digitization · alteration · known omission"
+            },
+            {
+              "key": "t014",
+              "text": "Stewardship",
+              "label": "strong: Stewardship"
+            },
+            {
+              "key": "t015",
+              "text": "Rights · permission · access limits · retrieval date · checksum when retained",
+              "label": "span: Rights · permission · access limits · retrieval date · checksum when retained"
+            }
+          ],
+          "links": []
+        },
+        "id": "0f97e0fd-b3ee-5abd-bce9-71108780acc2"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "sources-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Method dossier 001",
+              "label": "p: Method dossier 001"
+            },
+            {
+              "key": "t002",
+              "text": "Marc Bloch and the historian’s craft",
+              "label": "h2: Marc Bloch and the historian’s craft"
+            },
+            {
+              "key": "t003",
+              "text": "This starter dossier identifies texts and archival guides that support the journal’s analytical method. It does not reproduce copyrighted editions or imply that free online access grants reuse permission.",
+              "label": "p: This starter dossier identifies texts and archival guides that support the journal’s analy"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "Primary text",
+              "label": "p: Primary text"
+            },
+            {
+              "key": "t006",
+              "text": "Marc Bloch, Apologie pour l’histoire ou Métier d’historien",
+              "label": "h3: Marc Bloch, Apologie pour l’histoire ou Métier d’historien"
+            },
+            {
+              "key": "t007",
+              "text": "Université du Québec à Chicoutimi digital edition",
+              "label": "p: Université du Québec à Chicoutimi digital edition"
+            },
+            {
+              "key": "t008",
+              "text": "A posthumously published, unfinished methodological work. Free consultation does not itself grant blanket reuse rights.",
+              "label": "p: A posthumously published, unfinished methodological work. Free consultation does not itsel"
+            },
+            {
+              "key": "t009",
+              "text": "Open source record ",
+              "label": "a: Open source record"
+            },
+            {
+              "key": "t010",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t011",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t012",
+              "text": "Primary text",
+              "label": "p: Primary text"
+            },
+            {
+              "key": "t013",
+              "text": "Marc Bloch and Lucien Febvre, “À nos lecteurs” (1929)",
+              "label": "h3: Marc Bloch and Lucien Febvre, “À nos lecteurs” (1929)"
+            },
+            {
+              "key": "t014",
+              "text": "Persée · Annales d’histoire économique et sociale",
+              "label": "p: Persée · Annales d’histoire économique et sociale"
+            },
+            {
+              "key": "t015",
+              "text": "The journal founders’ own case for crossing periods and disciplinary boundaries. A founding aspiration, not a present-day review standard.",
+              "label": "p: The journal founders’ own case for crossing periods and disciplinary boundaries. A foundin"
+            },
+            {
+              "key": "t016",
+              "text": "Open source record ",
+              "label": "a: Open source record"
+            },
+            {
+              "key": "t017",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t018",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t019",
+              "text": "Archive guide",
+              "label": "p: Archive guide"
+            },
+            {
+              "key": "t020",
+              "text": "Marc Bloch fonds, AB XIX 3796–3852 and 4270–4275",
+              "label": "h3: Marc Bloch fonds, AB XIX 3796–3852 and 4270–4275"
+            },
+            {
+              "key": "t021",
+              "text": "Archives nationales de France",
+              "label": "p: Archives nationales de France"
+            },
+            {
+              "key": "t022",
+              "text": "The finding aid identifies manuscript and working-note holdings. Access and reproduction permission must be arranged separately.",
+              "label": "p: The finding aid identifies manuscript and working-note holdings. Access and reproduction p"
+            },
+            {
+              "key": "t023",
+              "text": "Open source record ",
+              "label": "a: Open source record"
+            },
+            {
+              "key": "t024",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t025",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t026",
+              "text": "Professional standard",
+              "label": "p: Professional standard"
+            },
+            {
+              "key": "t027",
+              "text": "Statement on Standards of Professional Conduct",
+              "label": "h3: Statement on Standards of Professional Conduct"
+            },
+            {
+              "key": "t028",
+              "text": "American Historical Association",
+              "label": "p: American Historical Association"
+            },
+            {
+              "key": "t029",
+              "text": "Guidance on evidence, retraceable citation, uncertainty, counterevidence, funding, and the relation of primary to secondary sources.",
+              "label": "p: Guidance on evidence, retraceable citation, uncertainty, counterevidence, funding, and the"
+            },
+            {
+              "key": "t030",
+              "text": "Open source record ",
+              "label": "a: Open source record"
+            },
+            {
+              "key": "t031",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "https://classiques.uqam.ca/classiques/bloch_marc/apologie_histoire/apologie_histoire.html",
+              "label": "['Open source record ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            },
+            {
+              "key": "l002",
+              "url": "https://www.persee.fr/doc/ahess_0003-441x_1929_num_1_1_1031",
+              "label": "['Open source record ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            },
+            {
+              "key": "l003",
+              "url": "https://www.archivesnationales.culture.gouv.fr/chan/chan/AP-pdf/AP-thematique-historiens-et-erudits.pdf",
+              "label": "['Open source record ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            },
+            {
+              "key": "l004",
+              "url": "https://www.historians.org/resource/statement-on-standards-of-professional-conduct/",
+              "label": "['Open source record ', {'tag': 'span', 'props': {'className': 'ui-symbol', 'ari"
+            }
+          ]
+        },
+        "id": "a2d76958-584c-5699-8ad5-15785d4984af"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "sources-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Non-negotiable distinctions",
+              "label": "p: Non-negotiable distinctions"
+            },
+            {
+              "key": "t002",
+              "text": "The source does not speak alone.",
+              "label": "h2: The source does not speak alone."
+            },
+            {
+              "key": "t003",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t004",
+              "text": "Primary does not mean sufficient.",
+              "label": "strong: Primary does not mean sufficient."
+            },
+            {
+              "key": "t005",
+              "text": " Evidence is scrutinized in relation to the question and the relevant secondary scholarship.",
+              "label": "p: Evidence is scrutinized in relation to the question and the relevant secondary scholarship"
+            },
+            {
+              "key": "t006",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t007",
+              "text": "Digitized does not mean complete.",
+              "label": "strong: Digitized does not mean complete."
+            },
+            {
+              "key": "t008",
+              "text": " Selection, description, scanning, search, and interface all mediate the record.",
+              "label": "p: Selection, description, scanning, search, and interface all mediate the record."
+            },
+            {
+              "key": "t009",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t010",
+              "text": "Accessible does not mean reusable.",
+              "label": "strong: Accessible does not mean reusable."
+            },
+            {
+              "key": "t011",
+              "text": " Copyright, contractual limits, privacy, cultural protocols, and repository rules remain distinct.",
+              "label": "p: Copyright, contractual limits, privacy, cultural protocols, and repository rules remain di"
+            },
+            {
+              "key": "t012",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t013",
+              "text": "Silence is not absence.",
+              "label": "strong: Silence is not absence."
+            },
+            {
+              "key": "t014",
+              "text": " The missing record may reflect destruction, non-creation, catalog practice, power, or the limits of the search.",
+              "label": "p: The missing record may reflect destruction, non-creation, catalog practice, power, or the "
+            }
+          ],
+          "links": []
+        },
+        "id": "06260fa0-1d32-573e-bff9-bc3c67e25900"
+      }
+    ],
+    "metadata": {
+      "title": "Sources & Provenance",
+      "description": "How The Liberty Articulator records, classifies, verifies, cites, and rights-checks primary and secondary sources.",
+      "alternates": {
+        "canonical": "/sources"
+      }
+    }
+  },
+  "standards": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Research & editorial standards",
+              "label": "p: Research & editorial standards"
+            },
+            {
+              "key": "t002",
+              "text": "Rigor must be visible to be accountable.",
+              "label": "h1: Rigor must be visible to be accountable."
+            },
+            {
+              "key": "t003",
+              "text": "These founding standards define what the journal intends to verify, disclose, preserve, and correct. They are dated drafts until an editorial board formally ratifies them.",
+              "label": "p: These founding standards define what the journal intends to verify, disclose, preserve, an"
+            }
+          ],
+          "links": []
+        },
+        "id": "e8e60da0-8578-5fd2-aed2-261e45e25b14"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "Status:",
+              "label": "strong: Status:"
+            },
+            {
+              "key": "t003",
+              "text": " Founding draft for public scrutiny",
+              "label": "p: Founding draft for public scrutiny"
+            },
+            {
+              "key": "t004",
+              "text": "Version 0.9 · issued 29 August 2026 · next review before submissions open",
+              "label": "p: Version 0.9 · issued 29 August 2026 · next review before submissions open"
+            }
+          ],
+          "links": []
+        },
+        "id": "d7785a79-0d98-5448-a5b3-944afba15eb0"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "01 ",
+              "label": "a: 01"
+            },
+            {
+              "key": "t002",
+              "text": "Scope & balance",
+              "label": "span: Scope & balance"
+            },
+            {
+              "key": "t003",
+              "text": "02 ",
+              "label": "a: 02"
+            },
+            {
+              "key": "t004",
+              "text": "Peer review",
+              "label": "span: Peer review"
+            },
+            {
+              "key": "t005",
+              "text": "03 ",
+              "label": "a: 03"
+            },
+            {
+              "key": "t006",
+              "text": "Analysis",
+              "label": "span: Analysis"
+            },
+            {
+              "key": "t007",
+              "text": "04 ",
+              "label": "a: 04"
+            },
+            {
+              "key": "t008",
+              "text": "Verification",
+              "label": "span: Verification"
+            },
+            {
+              "key": "t009",
+              "text": "05 ",
+              "label": "a: 05"
+            },
+            {
+              "key": "t010",
+              "text": "Corrections",
+              "label": "span: Corrections"
+            },
+            {
+              "key": "t011",
+              "text": "06 ",
+              "label": "a: 06"
+            },
+            {
+              "key": "t012",
+              "text": "Ethics",
+              "label": "span: Ethics"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "#scope",
+              "label": "['01 ', {'tag': 'span', 'props': {'children': ['Scope & balance']}}]"
+            },
+            {
+              "key": "l002",
+              "url": "#peer-review",
+              "label": "['02 ', {'tag': 'span', 'props': {'children': ['Peer review']}}]"
+            },
+            {
+              "key": "l003",
+              "url": "#bloch-lens",
+              "label": "['03 ', {'tag': 'span', 'props': {'children': ['Analysis']}}]"
+            },
+            {
+              "key": "l004",
+              "url": "#verification",
+              "label": "['04 ', {'tag': 'span', 'props': {'children': ['Verification']}}]"
+            },
+            {
+              "key": "l005",
+              "url": "#corrections",
+              "label": "['05 ', {'tag': 'span', 'props': {'children': ['Corrections']}}]"
+            },
+            {
+              "key": "l006",
+              "url": "#ethics",
+              "label": "['06 ', {'tag': 'span', 'props': {'children': ['Ethics']}}]"
+            }
+          ]
+        },
+        "id": "975e61a2-4fe6-55b2-bbef-48f118ec632e"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t002",
+              "text": "Scope & balance",
+              "label": "p: Scope & balance"
+            },
+            {
+              "key": "t003",
+              "text": "Three fields. One measurable commitment.",
+              "label": "h2: Three fields. One measurable commitment."
+            },
+            {
+              "key": "t004",
+              "text": "The founding portfolio uses a ten-article unit: five articles led by history, three by philosophy, and two by politics. Each interdisciplinary article receives one primary discipline at acceptance; secondary tags do not alter the count.",
+              "label": "p: The founding portfolio uses a ten-article unit: five articles led by history, three by phi"
+            },
+            {
+              "key": "t005",
+              "text": "History",
+              "label": "span: History"
+            },
+            {
+              "key": "t006",
+              "text": "5 of 10",
+              "label": "strong: 5 of 10"
+            },
+            {
+              "key": "t007",
+              "text": "50%",
+              "label": "span: 50%"
+            },
+            {
+              "key": "t008",
+              "text": "Philosophy",
+              "label": "span: Philosophy"
+            },
+            {
+              "key": "t009",
+              "text": "3 of 10",
+              "label": "strong: 3 of 10"
+            },
+            {
+              "key": "t010",
+              "text": "30%",
+              "label": "span: 30%"
+            },
+            {
+              "key": "t011",
+              "text": "Politics",
+              "label": "span: Politics"
+            },
+            {
+              "key": "t012",
+              "text": "2 of 10",
+              "label": "strong: 2 of 10"
+            },
+            {
+              "key": "t013",
+              "text": "20%",
+              "label": "span: 20%"
+            },
+            {
+              "key": "t014",
+              "text": "Analysis is a cross-cutting method, not a fourth allocation. The journal will publish an annual count of accepted research articles and explain any temporary deviation from the target.",
+              "label": "p: Analysis is a cross-cutting method, not a fourth allocation. The journal will publish an a"
+            }
+          ],
+          "links": []
+        },
+        "id": "d5299bdc-8590-5cca-8d22-12dc0fa50f3f"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t002",
+              "text": "Peer review",
+              "label": "p: Peer review"
+            },
+            {
+              "key": "t003",
+              "text": "Review is a process, not a guarantee.",
+              "label": "h2: Review is a process, not a guarantee."
+            },
+            {
+              "key": "t004",
+              "text": "Research articles will normally receive two independent specialist reports. At launch, author and reviewer identities are concealed from one another; editors retain the information required to manage conflicts and accountability.",
+              "label": "p: Research articles will normally receive two independent specialist reports. At launch, aut"
+            },
+            {
+              "key": "t005",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t006",
+              "text": "Identity transparency",
+              "label": "h3: Identity transparency"
+            },
+            {
+              "key": "t007",
+              "text": "Each record names the review model in standardized language and states any exception.",
+              "label": "p: Each record names the review model in standardized language and states any exception."
+            },
+            {
+              "key": "t008",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t009",
+              "text": "Conflict control",
+              "label": "h3: Conflict control"
+            },
+            {
+              "key": "t010",
+              "text": "Editors and reviewers declare relevant relationships, interests, funding, and recent collaboration before assignment.",
+              "label": "p: Editors and reviewers declare relevant relationships, interests, funding, and recent colla"
+            },
+            {
+              "key": "t011",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t012",
+              "text": "Recorded revision",
+              "label": "h3: Recorded revision"
+            },
+            {
+              "key": "t013",
+              "text": "Authors answer material objections point by point. Editors preserve reports, decisions, and manuscript versions.",
+              "label": "p: Authors answer material objections point by point. Editors preserve reports, decisions, an"
+            },
+            {
+              "key": "t014",
+              "text": "Peer review can expose weaknesses and improve an argument; it does not certify truth. Editorials, news, reviews, and reader forums display their different review status plainly.",
+              "label": "p: Peer review can expose weaknesses and improve an argument; it does not certify truth. Edit"
+            }
+          ],
+          "links": []
+        },
+        "id": "b6564898-e772-564e-b6d0-35f96554a36d"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-06",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Ten accountable gates",
+              "label": "p: Ten accountable gates"
+            },
+            {
+              "key": "t002",
+              "text": "From proposal to stewardship.",
+              "label": "h2: From proposal to stewardship."
+            },
+            {
+              "key": "t003",
+              "text": "Every gate has an owner, an evidence requirement, and a dated decision. A publication cannot skip silently to the next state.",
+              "label": "p: Every gate has an owner, an evidence requirement, and a dated decision. A publication cann"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "Proposal & allocation",
+              "label": "h3: Proposal & allocation"
+            },
+            {
+              "key": "t006",
+              "text": "Scope, originality, article type, primary discipline, and conflicts are declared before drafting.",
+              "label": "p: Scope, originality, article type, primary discipline, and conflicts are declared before dr"
+            },
+            {
+              "key": "t007",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t008",
+              "text": "Research protocol",
+              "label": "h3: Research protocol"
+            },
+            {
+              "key": "t009",
+              "text": "The question, primary corpus, scholarship, method, translation or data practice, and anticipated limits are recorded.",
+              "label": "p: The question, primary corpus, scholarship, method, translation or data practice, and antic"
+            },
+            {
+              "key": "t010",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t011",
+              "text": "Integrity screen",
+              "label": "h3: Integrity screen"
+            },
+            {
+              "key": "t012",
+              "text": "Editors check authorship, originality, permissions, source accessibility, ethics, funding, and competing interests.",
+              "label": "p: Editors check authorship, originality, permissions, source accessibility, ethics, funding,"
+            },
+            {
+              "key": "t013",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t014",
+              "text": "Editorial assessment",
+              "label": "h3: Editorial assessment"
+            },
+            {
+              "key": "t015",
+              "text": "The handling editor assesses fit, evidentiary sufficiency, and completion of the Bloch Lens.",
+              "label": "p: The handling editor assesses fit, evidentiary sufficiency, and completion of the Bloch Len"
+            },
+            {
+              "key": "t016",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t017",
+              "text": "Independent review",
+              "label": "h3: Independent review"
+            },
+            {
+              "key": "t018",
+              "text": "Normally two subject-qualified reviewers work under the published identity and interaction model.",
+              "label": "p: Normally two subject-qualified reviewers work under the published identity and interaction"
+            },
+            {
+              "key": "t019",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t020",
+              "text": "Revision & response",
+              "label": "h3: Revision & response"
+            },
+            {
+              "key": "t021",
+              "text": "Authors submit a versioned manuscript and a point-by-point response; every material objection is tracked.",
+              "label": "p: Authors submit a versioned manuscript and a point-by-point response; every material object"
+            },
+            {
+              "key": "t022",
+              "text": "07",
+              "label": "span: 07"
+            },
+            {
+              "key": "t023",
+              "text": "Verification",
+              "label": "h3: Verification"
+            },
+            {
+              "key": "t024",
+              "text": "Quotations, translations, dates, names, archive identifiers, citations, calculations, images, and rights are checked.",
+              "label": "p: Quotations, translations, dates, names, archive identifiers, citations, calculations, imag"
+            },
+            {
+              "key": "t025",
+              "text": "08",
+              "label": "span: 08"
+            },
+            {
+              "key": "t026",
+              "text": "Production",
+              "label": "h3: Production"
+            },
+            {
+              "key": "t027",
+              "text": "Copyediting, accessibility, metadata, author proofs, and preservation outputs must all pass.",
+              "label": "p: Copyediting, accessibility, metadata, author proofs, and preservation outputs must all pas"
+            },
+            {
+              "key": "t028",
+              "text": "09",
+              "label": "span: 09"
+            },
+            {
+              "key": "t029",
+              "text": "Publication",
+              "label": "h3: Publication"
+            },
+            {
+              "key": "t030",
+              "text": "The version of record displays review status, sources, editorial dates, disclosures, and a stable citation.",
+              "label": "p: The version of record displays review status, sources, editorial dates, disclosures, and a"
+            },
+            {
+              "key": "t031",
+              "text": "10",
+              "label": "span: 10"
+            },
+            {
+              "key": "t032",
+              "text": "Stewardship",
+              "label": "h3: Stewardship"
+            },
+            {
+              "key": "t033",
+              "text": "Corrections, responses, retractions, and preserved prior versions remain visible after publication.",
+              "label": "p: Corrections, responses, retractions, and preserved prior versions remain visible after pub"
+            }
+          ],
+          "links": []
+        },
+        "id": "d0932201-cc29-506b-a5d1-b34a4f36cad5"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-07",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t002",
+              "text": "The Bloch Lens",
+              "label": "p: The Bloch Lens"
+            },
+            {
+              "key": "t003",
+              "text": "Analysis in honor of Marc Bloch.",
+              "label": "h2: Analysis in honor of Marc Bloch."
+            },
+            {
+              "key": "t004",
+              "text": "The rubric is inspired by Bloch’s practice of critical testimony, comparison, historical analysis, and causal inquiry. It is not presented as a definitive reconstruction of his unfinished method.",
+              "label": "p: The rubric is inspired by Bloch’s practice of critical testimony, comparison, historical a"
+            },
+            {
+              "key": "t005",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t006",
+              "text": "What is the historical or conceptual question?",
+              "label": "p: What is the historical or conceptual question?"
+            },
+            {
+              "key": "t007",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t008",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t009",
+              "text": "What evidence survives, and through which institutions?",
+              "label": "p: What evidence survives, and through which institutions?"
+            },
+            {
+              "key": "t010",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t011",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t012",
+              "text": "What is absent, silent, translated, or otherwise mediated?",
+              "label": "p: What is absent, silent, translated, or otherwise mediated?"
+            },
+            {
+              "key": "t013",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t014",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t015",
+              "text": "Which comparison makes the problem clearer?",
+              "label": "p: Which comparison makes the problem clearer?"
+            },
+            {
+              "key": "t016",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t017",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t018",
+              "text": "What causal or conceptual inference is being made?",
+              "label": "p: What causal or conceptual inference is being made?"
+            },
+            {
+              "key": "t019",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t020",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t021",
+              "text": "What counterevidence or rival explanation remains?",
+              "label": "p: What counterevidence or rival explanation remains?"
+            },
+            {
+              "key": "t022",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t023",
+              "text": "07",
+              "label": "span: 07"
+            },
+            {
+              "key": "t024",
+              "text": "What finding would change the conclusion?",
+              "label": "p: What finding would change the conclusion?"
+            },
+            {
+              "key": "t025",
+              "text": "✓",
+              "label": "span: ✓"
+            }
+          ],
+          "links": []
+        },
+        "id": "ebf7091c-7075-5a5e-a41e-c0ce578e8454"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-08",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t002",
+              "text": "Verification",
+              "label": "p: Verification"
+            },
+            {
+              "key": "t003",
+              "text": "A retraceable evidentiary trail.",
+              "label": "h2: A retraceable evidentiary trail."
+            },
+            {
+              "key": "t004",
+              "text": "A",
+              "label": "span: A"
+            },
+            {
+              "key": "t005",
+              "text": "Source identity",
+              "label": "h3: Source identity"
+            },
+            {
+              "key": "t006",
+              "text": "Repository, collection, series, box, folder, page or folio, stable identifier, consultation date, and rights status where relevant.",
+              "label": "p: Repository, collection, series, box, folder, page or folio, stable identifier, consultatio"
+            },
+            {
+              "key": "t007",
+              "text": "B",
+              "label": "span: B"
+            },
+            {
+              "key": "t008",
+              "text": "Textual accuracy",
+              "label": "h3: Textual accuracy"
+            },
+            {
+              "key": "t009",
+              "text": "Material quotations, names, dates, figures, translations, transcriptions, and image captions are checked against the cited object.",
+              "label": "p: Material quotations, names, dates, figures, translations, transcriptions, and image captio"
+            },
+            {
+              "key": "t010",
+              "text": "C",
+              "label": "span: C"
+            },
+            {
+              "key": "t011",
+              "text": "Claim support",
+              "label": "h3: Claim support"
+            },
+            {
+              "key": "t012",
+              "text": "Editors distinguish what a source states, what an author infers, and which rival reading or counterevidence remains.",
+              "label": "p: Editors distinguish what a source states, what an author infers, and which rival reading o"
+            },
+            {
+              "key": "t013",
+              "text": "D",
+              "label": "span: D"
+            },
+            {
+              "key": "t014",
+              "text": "Access & limits",
+              "label": "h3: Access & limits"
+            },
+            {
+              "key": "t015",
+              "text": "Gaps, inaccessible holdings, selection effects, privileged access, permissions, and reproduction constraints are disclosed.",
+              "label": "p: Gaps, inaccessible holdings, selection effects, privileged access, permissions, and reprod"
+            }
+          ],
+          "links": []
+        },
+        "id": "7d10c64d-d045-5277-94d4-df7fccc0a873"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-09",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t002",
+              "text": "Corrections",
+              "label": "p: Corrections"
+            },
+            {
+              "key": "t003",
+              "text": "The record is amended, never silently rewritten.",
+              "label": "h2: The record is amended, never silently rewritten."
+            },
+            {
+              "key": "t004",
+              "text": "Typographical fixes that do not alter meaning may be logged in place. Material corrections, expressions of concern, retractions, and responses receive their own dated notice, stable URL, reciprocal link, and explanation.",
+              "label": "p: Typographical fixes that do not alter meaning may be logged in place. Material corrections"
+            },
+            {
+              "key": "t005",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t006",
+              "text": " Prior public versions remain preserved.",
+              "label": "li: Prior public versions remain preserved."
+            },
+            {
+              "key": "t007",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t008",
+              "text": " The current version identifies what changed and why.",
+              "label": "li: The current version identifies what changed and why."
+            },
+            {
+              "key": "t009",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t010",
+              "text": " A correction never removes the original editorial history.",
+              "label": "li: A correction never removes the original editorial history."
+            },
+            {
+              "key": "t011",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t012",
+              "text": " Retraction marks the record; it does not make the record disappear.",
+              "label": "li: Retraction marks the record; it does not make the record disappear."
+            }
+          ],
+          "links": []
+        },
+        "id": "32f9442d-40e7-5afc-83ef-6c456cb55a9e"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-10",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t002",
+              "text": "Ethics & independence",
+              "label": "p: Ethics & independence"
+            },
+            {
+              "key": "t003",
+              "text": "Policies before prestige.",
+              "label": "h2: Policies before prestige."
+            },
+            {
+              "key": "t004",
+              "text": "Before submissions open, the journal will publish ratified policies for authorship, AI use, conflicts, funding, permissions, complaints, appeals, misconduct, privacy, licensing, preservation, and editorial independence.",
+              "label": "p: Before submissions open, the journal will publish ratified policies for authorship, AI use"
+            },
+            {
+              "key": "t005",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t006",
+              "text": "Authorship & contribution",
+              "label": "h3: Authorship & contribution"
+            },
+            {
+              "key": "t007",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t008",
+              "text": "Funding & competing interests",
+              "label": "h3: Funding & competing interests"
+            },
+            {
+              "key": "t009",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t010",
+              "text": "Research ethics & permissions",
+              "label": "h3: Research ethics & permissions"
+            },
+            {
+              "key": "t011",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t012",
+              "text": "Complaints & appeals",
+              "label": "h3: Complaints & appeals"
+            },
+            {
+              "key": "t013",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t014",
+              "text": "Misconduct response",
+              "label": "h3: Misconduct response"
+            },
+            {
+              "key": "t015",
+              "text": "Founding draft",
+              "label": "span: Founding draft"
+            },
+            {
+              "key": "t016",
+              "text": "Content, code & metadata rights",
+              "label": "h3: Content, code & metadata rights"
+            }
+          ],
+          "links": []
+        },
+        "id": "b56b20ec-1635-5713-ae9b-de8c011bfbbb"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "standards-11",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Standards consulted",
+              "label": "p: Standards consulted"
+            },
+            {
+              "key": "t002",
+              "text": "The policy has sources, too.",
+              "label": "h2: The policy has sources, too."
+            },
+            {
+              "key": "t003",
+              "text": "Consulted sources guide the draft; listing them does not imply endorsement or certification by their publishers.",
+              "label": "p: Consulted sources guide the draft; listing them does not imply endorsement or certificatio"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "Statement on Standards of Professional Conduct",
+              "label": "h3: Statement on Standards of Professional Conduct"
+            },
+            {
+              "key": "t006",
+              "text": "American Historical Association",
+              "label": "p: American Historical Association"
+            },
+            {
+              "key": "t007",
+              "text": "Guidance on evidence, retraceable citation, uncertainty, counterevidence, funding, and the relation of primary to secondary sources.",
+              "label": "small: Guidance on evidence, retraceable citation, uncertainty, counterevidence, funding, and the"
+            },
+            {
+              "key": "t008",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t009",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t010",
+              "text": "Principles of Transparency and Best Practice in Scholarly Publishing, version 4",
+              "label": "h3: Principles of Transparency and Best Practice in Scholarly Publishing, version 4"
+            },
+            {
+              "key": "t011",
+              "text": "COPE · DOAJ · OASPA · WAME",
+              "label": "p: COPE · DOAJ · OASPA · WAME"
+            },
+            {
+              "key": "t012",
+              "text": "The live record says these 2022 principles are under review. The journal will date and version any policy derived from them.",
+              "label": "small: The live record says these 2022 principles are under review. The journal will date and ver"
+            },
+            {
+              "key": "t013",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t014",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t015",
+              "text": "Standard Terminology for Peer Review, ANSI/NISO Z39.106-2023",
+              "label": "h3: Standard Terminology for Peer Review, ANSI/NISO Z39.106-2023"
+            },
+            {
+              "key": "t016",
+              "text": "National Information Standards Organization",
+              "label": "p: National Information Standards Organization"
+            },
+            {
+              "key": "t017",
+              "text": "Vocabulary for describing reviewer identities, interactions, review publication, and post-publication commenting without ambiguous labels.",
+              "label": "small: Vocabulary for describing reviewer identities, interactions, review publication, and post-"
+            },
+            {
+              "key": "t018",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t019",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t020",
+              "text": "Peer-review metadata guide",
+              "label": "h3: Peer-review metadata guide"
+            },
+            {
+              "key": "t021",
+              "text": "Crossref",
+              "label": "p: Crossref"
+            },
+            {
+              "key": "t022",
+              "text": "Metadata guidance for reports, decisions, responses, rounds, competing interests, and relations to the reviewed item.",
+              "label": "small: Metadata guidance for reports, decisions, responses, rounds, competing interests, and rela"
+            },
+            {
+              "key": "t023",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t024",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t025",
+              "text": "Citing Records in the National Archives",
+              "label": "h3: Citing Records in the National Archives"
+            },
+            {
+              "key": "t026",
+              "text": "U.S. National Archives and Records Administration",
+              "label": "p: U.S. National Archives and Records Administration"
+            },
+            {
+              "key": "t027",
+              "text": "A repository-specific model for citations that preserve item, series, record group, repository, and location provenance.",
+              "label": "small: A repository-specific model for citations that preserve item, series, record group, reposi"
+            },
+            {
+              "key": "t028",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "https://www.historians.org/resource/statement-on-standards-of-professional-conduct/",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            },
+            {
+              "key": "l002",
+              "url": "https://doi.org/10.24318/cope.2019.1.12",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            },
+            {
+              "key": "l003",
+              "url": "https://www.niso.org/publications/z39106-2023-peerreview",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            },
+            {
+              "key": "l004",
+              "url": "https://www.crossref.org/documentation/schema-library/markup-guide-record-types/peer-reviews/",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            },
+            {
+              "key": "l005",
+              "url": "https://www.archives.gov/publications/general-info-leaflets/17-citing-records.pdf",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            }
+          ]
+        },
+        "id": "b6882956-7fe7-50ac-bbd3-f677e9af2148"
+      }
+    ],
+    "metadata": {
+      "title": "Research & Editorial Standards",
+      "description": "The Liberty Articulator’s founding standards for evidence, analysis, peer review, verification, and corrections.",
+      "alternates": {
+        "canonical": "/standards"
+      }
+    }
+  },
+  "submit": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "submit-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Submissions",
+              "label": "p: Submissions"
+            },
+            {
+              "key": "t002",
+              "text": "Show the route from evidence to inference.",
+              "label": "h1: Show the route from evidence to inference."
+            },
+            {
+              "key": "t003",
+              "text": "The journal is not yet accepting manuscripts. Guidance is published early so prospective authors can inspect the standard before the submission system opens.",
+              "label": "p: The journal is not yet accepting manuscripts. Guidance is published early so prospective a"
+            }
+          ],
+          "links": []
+        },
+        "id": "e932e846-4271-50b1-8ede-6a45113baf86"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "submit-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t002",
+              "text": "Submissions are not yet open.",
+              "label": "strong: Submissions are not yet open."
+            },
+            {
+              "key": "t003",
+              "text": "Policies, governance, reviewer protections, preservation, and production checks must be ratified first.",
+              "label": "p: Policies, governance, reviewer protections, preservation, and production checks must be ra"
+            }
+          ],
+          "links": []
+        },
+        "id": "5308d42f-c98f-511d-8312-14e71542599c"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "submit-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Planned article types",
+              "label": "p: Planned article types"
+            },
+            {
+              "key": "t002",
+              "text": "Form follows the scholarly task.",
+              "label": "h2: Form follows the scholarly task."
+            },
+            {
+              "key": "t003",
+              "text": "Word ranges are guidance, not proxies for quality. Each type has a distinct evidence and review checklist.",
+              "label": "p: Word ranges are guidance, not proxies for quality. Each type has a distinct evidence and r"
+            },
+            {
+              "key": "t004",
+              "text": "01",
+              "label": "span: 01"
+            },
+            {
+              "key": "t005",
+              "text": "Research article",
+              "label": "h3: Research article"
+            },
+            {
+              "key": "t006",
+              "text": "An original argument grounded in a defined primary corpus and situated in relevant scholarship.",
+              "label": "p: An original argument grounded in a defined primary corpus and situated in relevant scholar"
+            },
+            {
+              "key": "t007",
+              "text": "8,000–12,000 words",
+              "label": "small: 8,000–12,000 words"
+            },
+            {
+              "key": "t008",
+              "text": "02",
+              "label": "span: 02"
+            },
+            {
+              "key": "t009",
+              "text": "Primary-source study",
+              "label": "h3: Primary-source study"
+            },
+            {
+              "key": "t010",
+              "text": "A source-centered intervention that explains provenance, mediation, evidentiary value, and limits.",
+              "label": "p: A source-centered intervention that explains provenance, mediation, evidentiary value, and"
+            },
+            {
+              "key": "t011",
+              "text": "5,000–8,000 words",
+              "label": "small: 5,000–8,000 words"
+            },
+            {
+              "key": "t012",
+              "text": "03",
+              "label": "span: 03"
+            },
+            {
+              "key": "t013",
+              "text": "Philosophical argument",
+              "label": "h3: Philosophical argument"
+            },
+            {
+              "key": "t014",
+              "text": "A sustained argument with explicit premises, objections, historical context where relevant, and conceptual stakes.",
+              "label": "p: A sustained argument with explicit premises, objections, historical context where relevant"
+            },
+            {
+              "key": "t015",
+              "text": "6,000–10,000 words",
+              "label": "small: 6,000–10,000 words"
+            },
+            {
+              "key": "t016",
+              "text": "04",
+              "label": "span: 04"
+            },
+            {
+              "key": "t017",
+              "text": "Comparative analysis",
+              "label": "h3: Comparative analysis"
+            },
+            {
+              "key": "t018",
+              "text": "A structured comparison whose cases, dimensions, evidence, and inference rules are declared in advance.",
+              "label": "p: A structured comparison whose cases, dimensions, evidence, and inference rules are declare"
+            },
+            {
+              "key": "t019",
+              "text": "7,000–11,000 words",
+              "label": "small: 7,000–11,000 words"
+            },
+            {
+              "key": "t020",
+              "text": "05",
+              "label": "span: 05"
+            },
+            {
+              "key": "t021",
+              "text": "Critical exchange",
+              "label": "h3: Critical exchange"
+            },
+            {
+              "key": "t022",
+              "text": "A paired argument and response reviewed as one scholarly record.",
+              "label": "p: A paired argument and response reviewed as one scholarly record."
+            },
+            {
+              "key": "t023",
+              "text": "4,000–6,000 words each",
+              "label": "small: 4,000–6,000 words each"
+            },
+            {
+              "key": "t024",
+              "text": "06",
+              "label": "span: 06"
+            },
+            {
+              "key": "t025",
+              "text": "Methods note",
+              "label": "h3: Methods note"
+            },
+            {
+              "key": "t026",
+              "text": "A focused, reproducible intervention in source criticism, translation, archival, computational, or comparative method.",
+              "label": "p: A focused, reproducible intervention in source criticism, translation, archival, computati"
+            },
+            {
+              "key": "t027",
+              "text": "3,000–5,000 words",
+              "label": "small: 3,000–5,000 words"
+            }
+          ],
+          "links": []
+        },
+        "id": "6a9e7e35-7906-50c0-b560-acfc3daea843"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "submit-04",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Before a manuscript enters review",
+              "label": "p: Before a manuscript enters review"
+            },
+            {
+              "key": "t002",
+              "text": "The submission packet.",
+              "label": "h2: The submission packet."
+            },
+            {
+              "key": "t003",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t004",
+              "text": "An abstract that states the question, argument, evidence, method, and limits.",
+              "label": "span: An abstract that states the question, argument, evidence, method, and limits."
+            },
+            {
+              "key": "t005",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t006",
+              "text": "A research protocol naming the primary corpus and relevant secondary scholarship.",
+              "label": "span: A research protocol naming the primary corpus and relevant secondary scholarship."
+            },
+            {
+              "key": "t007",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t008",
+              "text": "A source ledger with retraceable locators for every material factual claim.",
+              "label": "span: A source ledger with retraceable locators for every material factual claim."
+            },
+            {
+              "key": "t009",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t010",
+              "text": "A completed Bloch Lens identifying silence, mediation, comparison, counterevidence, and revision conditions.",
+              "label": "span: A completed Bloch Lens identifying silence, mediation, comparison, counterevidence, and re"
+            },
+            {
+              "key": "t011",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t012",
+              "text": "Authorship contributions, funding, competing interests, permissions, and ethics disclosures.",
+              "label": "span: Authorship contributions, funding, competing interests, permissions, and ethics disclosure"
+            },
+            {
+              "key": "t013",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t014",
+              "text": "An anonymized manuscript plus a separate identity and affiliation record.",
+              "label": "span: An anonymized manuscript plus a separate identity and affiliation record."
+            },
+            {
+              "key": "t015",
+              "text": "✓",
+              "label": "span: ✓"
+            },
+            {
+              "key": "t016",
+              "text": "Data, transcription, translation, image, and code availability statements where applicable.",
+              "label": "span: Data, transcription, translation, image, and code availability statements where applicable"
+            }
+          ],
+          "links": []
+        },
+        "id": "c8895a49-3ad0-51d3-a5b1-39bd2cb63565"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "submit-05",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Prepare, do not upload",
+              "label": "p: Prepare, do not upload"
+            },
+            {
+              "key": "t002",
+              "text": "Use the public standard as your checklist.",
+              "label": "h2: Use the public standard as your checklist."
+            },
+            {
+              "key": "t003",
+              "text": "No manuscript files or personal data are being collected through this preview.",
+              "label": "p: No manuscript files or personal data are being collected through this preview."
+            },
+            {
+              "key": "t004",
+              "text": "Read the research standards ",
+              "label": "a: Read the research standards"
+            },
+            {
+              "key": "t005",
+              "text": "↗",
+              "label": "span: ↗"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/standards/",
+              "label": "['Read the research standards ', {'tag': 'span', 'props': {'className': 'ui-symb"
+            }
+          ]
+        },
+        "id": "a17f38b6-d97a-5a26-9ac8-dc688b9e210b"
+      }
+    ],
+    "metadata": {
+      "title": "Submissions",
+      "description": "Forthcoming article types, evidence requirements, and submission guidance for The Liberty Articulator.",
+      "alternates": {
+        "canonical": "/submit"
+      }
+    }
+  },
+  "header": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "header-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "Skip to content",
+              "label": "a: Skip to content"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "#main-content",
+              "label": "['Skip to content']"
+            }
+          ]
+        },
+        "id": "ca359497-bc12-5b50-b648-9633e1a5ebed"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "header-02",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "An independent journal of history, philosophy, and politics.",
+              "label": "p: An independent journal of history, philosophy, and politics."
+            },
+            {
+              "key": "t002",
+              "text": "Founding issue in development · 2026",
+              "label": "p: Founding issue in development · 2026"
+            }
+          ],
+          "links": []
+        },
+        "id": "583746a6-9341-5cad-a3ca-aafe6e155d07"
+      },
+      {
+        "type": "section",
+        "value": {
+          "layout": "header-03",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "The Liberty Articulator",
+              "label": "span: The Liberty Articulator"
+            },
+            {
+              "key": "t002",
+              "text": "Journal",
+              "label": "a: Journal"
+            },
+            {
+              "key": "t003",
+              "text": "Archive",
+              "label": "a: Archive"
+            },
+            {
+              "key": "t004",
+              "text": "Sources",
+              "label": "a: Sources"
+            },
+            {
+              "key": "t005",
+              "text": "Standards",
+              "label": "a: Standards"
+            },
+            {
+              "key": "t006",
+              "text": "About",
+              "label": "a: About"
+            },
+            {
+              "key": "t007",
+              "text": "◎",
+              "label": "span: ◎"
+            },
+            {
+              "key": "t008",
+              "text": "Search",
+              "label": "span: Search"
+            },
+            {
+              "key": "t009",
+              "text": "☰",
+              "label": "span: ☰"
+            },
+            {
+              "key": "t010",
+              "text": "Menu",
+              "label": "span: Menu"
+            },
+            {
+              "key": "t011",
+              "text": "Journal",
+              "label": "a: Journal"
+            },
+            {
+              "key": "t012",
+              "text": "Archive",
+              "label": "a: Archive"
+            },
+            {
+              "key": "t013",
+              "text": "Sources",
+              "label": "a: Sources"
+            },
+            {
+              "key": "t014",
+              "text": "Standards",
+              "label": "a: Standards"
+            },
+            {
+              "key": "t015",
+              "text": "About",
+              "label": "a: About"
+            },
+            {
+              "key": "t016",
+              "text": "Submissions",
+              "label": "a: Submissions"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/",
+              "label": "[{'tag': 'span', 'props': {'className': 'optic-mark', 'aria-hidden': 'true', 'ch"
+            },
+            {
+              "key": "l002",
+              "url": "/",
+              "label": "['Journal']"
+            },
+            {
+              "key": "l003",
+              "url": "/archive/",
+              "label": "['Archive']"
+            },
+            {
+              "key": "l004",
+              "url": "/sources/",
+              "label": "['Sources']"
+            },
+            {
+              "key": "l005",
+              "url": "/standards/",
+              "label": "['Standards']"
+            },
+            {
+              "key": "l006",
+              "url": "/about/",
+              "label": "['About']"
+            },
+            {
+              "key": "l007",
+              "url": "/archive/",
+              "label": "[{'tag': 'span', 'props': {'className': 'ui-symbol', 'aria-hidden': 'true', 'chi"
+            },
+            {
+              "key": "l008",
+              "url": "/",
+              "label": "['Journal']"
+            },
+            {
+              "key": "l009",
+              "url": "/archive/",
+              "label": "['Archive']"
+            },
+            {
+              "key": "l010",
+              "url": "/sources/",
+              "label": "['Sources']"
+            },
+            {
+              "key": "l011",
+              "url": "/standards/",
+              "label": "['Standards']"
+            },
+            {
+              "key": "l012",
+              "url": "/about/",
+              "label": "['About']"
+            },
+            {
+              "key": "l013",
+              "url": "/submit/",
+              "label": "['Submissions']"
+            }
+          ]
+        },
+        "id": "024dd5d9-8fcd-5366-9b8b-94832f4b7279"
+      }
+    ],
+    "metadata": {}
+  },
+  "footer": {
+    "sections": [
+      {
+        "type": "section",
+        "value": {
+          "layout": "footer-01",
+          "texts": [
+            {
+              "key": "t001",
+              "text": "The Liberty Articulator",
+              "label": "p: The Liberty Articulator"
+            },
+            {
+              "key": "t002",
+              "text": "Inquiry without a foregone conclusion.",
+              "label": "h2: Inquiry without a foregone conclusion."
+            },
+            {
+              "key": "t003",
+              "text": "A forthcoming independent journal examining liberty through historical evidence, philosophical argument, political institutions, and extended analysis.",
+              "label": "p: A forthcoming independent journal examining liberty through historical evidence, philosoph"
+            },
+            {
+              "key": "t004",
+              "text": "Journal",
+              "label": "h3: Journal"
+            },
+            {
+              "key": "t005",
+              "text": "Archive",
+              "label": "a: Archive"
+            },
+            {
+              "key": "t006",
+              "text": "Founding issue",
+              "label": "a: Founding issue"
+            },
+            {
+              "key": "t007",
+              "text": "Sources",
+              "label": "a: Sources"
+            },
+            {
+              "key": "t008",
+              "text": "Practice",
+              "label": "h3: Practice"
+            },
+            {
+              "key": "t009",
+              "text": "Research standards",
+              "label": "a: Research standards"
+            },
+            {
+              "key": "t010",
+              "text": "Peer review",
+              "label": "a: Peer review"
+            },
+            {
+              "key": "t011",
+              "text": "Corrections",
+              "label": "a: Corrections"
+            },
+            {
+              "key": "t012",
+              "text": "Participate",
+              "label": "h3: Participate"
+            },
+            {
+              "key": "t013",
+              "text": "Submissions",
+              "label": "a: Submissions"
+            },
+            {
+              "key": "t014",
+              "text": "About the journal",
+              "label": "a: About the journal"
+            },
+            {
+              "key": "t015",
+              "text": "Governance",
+              "label": "a: Governance"
+            },
+            {
+              "key": "t016",
+              "text": "What does history mean to you?",
+              "label": "h3: What does history mean to you?"
+            },
+            {
+              "key": "t017",
+              "text": "Join the founding inquiry ",
+              "label": "a: Join the founding inquiry"
+            },
+            {
+              "key": "t018",
+              "text": "↗",
+              "label": "span: ↗"
+            },
+            {
+              "key": "t019",
+              "text": "© 2026 The Liberty Articulator. Founding policies and content rights are being established.",
+              "label": "p: © 2026 The Liberty Articulator. Founding policies and content rights are being established"
+            },
+            {
+              "key": "t020",
+              "text": "Chicago, Illinois · Versioned 29 August 2026",
+              "label": "p: Chicago, Illinois · Versioned 29 August 2026"
+            }
+          ],
+          "links": [
+            {
+              "key": "l001",
+              "url": "/archive/",
+              "label": "['Archive']"
+            },
+            {
+              "key": "l002",
+              "url": "/issue/founding/",
+              "label": "['Founding issue']"
+            },
+            {
+              "key": "l003",
+              "url": "/sources/",
+              "label": "['Sources']"
+            },
+            {
+              "key": "l004",
+              "url": "/standards/",
+              "label": "['Research standards']"
+            },
+            {
+              "key": "l005",
+              "url": "/standards/#peer-review",
+              "label": "['Peer review']"
+            },
+            {
+              "key": "l006",
+              "url": "/standards/#corrections",
+              "label": "['Corrections']"
+            },
+            {
+              "key": "l007",
+              "url": "/submit/",
+              "label": "['Submissions']"
+            },
+            {
+              "key": "l008",
+              "url": "/about/",
+              "label": "['About the journal']"
+            },
+            {
+              "key": "l009",
+              "url": "/about/#governance",
+              "label": "['Governance']"
+            },
+            {
+              "key": "l010",
+              "url": "/about/#question",
+              "label": "['Join the founding inquiry ', {'tag': 'span', 'props': {'className': 'ui-symbol"
+            }
+          ]
+        },
+        "id": "2e3de96a-9fe1-5f56-89f0-ee4a1195aa89"
+      }
+    ],
+    "metadata": {}
+  }
+}

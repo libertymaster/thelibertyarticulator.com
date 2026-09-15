@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+import sys
+from common import compose
+if __name__ == '__main__':
+    raise SystemExit(compose(*sys.argv[1:], check=False).returncode)

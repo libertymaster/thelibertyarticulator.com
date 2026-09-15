@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+exclude = ["apps/journal/migrations", "staticfiles", ".venv", "node_modules"]
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]
+ignore = ["F403", "F405"]
+[tool.pytest.ini_options]
+testpaths = ["tests/static_tests"]
+pythonpath = ["."]

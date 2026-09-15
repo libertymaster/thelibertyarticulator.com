@@ -1,0 +1,15 @@
+{% load static wagtailcore_tags journal_tags %}
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}{{ page.seo_title|default:page.title }} | The Liberty Articulator{% endblock %}</title>
+<meta name="description" content="{{ page.search_description|default:page.title }}">
+<link rel="stylesheet" href="{% static 'css/publication.css' %}">
+<link rel="stylesheet" href="{% static 'css/integration.css' %}">
+{% block metadata %}{% if page.full_url %}<link rel="canonical" href="{{ page.full_url }}">{% endif %}{% endblock %}
+{% include "journal/includes/branding_metadata.html" %}
+{% block assets %}{% endblock %}<script src="{% static 'js/citation-copy.js' %}" defer></script>
+</head><body>
+{% source_chrome 'header' %}
+<main id="main-content" class="publication-main {% if page.reference_layout %}reference-edition{% else %}native-edition{% endif %}">{% block content %}{% endblock %}</main>
+{% source_chrome 'footer' %}
+</body></html>

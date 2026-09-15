@@ -1,0 +1,45 @@
+groups:
+  - name: liberty-availability
+    rules:
+      - alert: ExporterUnavailable
+        expr: up == 0
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "A scrape target is unavailable"
+          description: "Inspect the target's service logs and network membership. Run ops/dc ps and check Prometheus Targets."
+      - alert: WebsiteUnavailable
+        expr: probe_success == 0
+        for: 3m
+        labels: {severity: critical}
+        annotations:
+          summary: "A website or tunnel readiness probe is failing"
+          description: "Compare internal and external probes. Check web /ready/, Traefik, Cloudflare policy, and tunnel logs."
+      - alert: ScheduledPublishingStalled
+        expr: time() - liberty_scheduler_last_success_timestamp_seconds > 180
+        for: 3m
+        labels: {severity: critical}
+        annotations:
+          summary: "Scheduled publishing has not completed recently"
+          description: "Check beat, worker, Redis authentication, and publish_scheduled task errors. Do not start a second beat."
+      - alert: DjangoServerErrors
+        expr: sum(rate(liberty_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(liberty_http_requests_total[5m])), 0.01) > 0.05
+        for: 5m
+        labels: {severity: critical}
+        annotations:
+          summary: "More than 5 percent of Django responses are server errors"
+          description: "Inspect web logs in Loki and PostgreSQL/Redis health; use the deployment rollback runbook if release-related."
+      - alert: HostDiskSpaceLow
+        expr: node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"} < 0.15
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Host filesystem has less than 15 percent free space"
+          description: "Check database growth, Loki/Prometheus retention, Docker logs, and backups. Never remove database volumes to free space."
+      - alert: RedisMemoryPressure
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.8
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Redis is approaching its no-eviction memory limit"
+          description: "Inspect broker backlog and cache growth; increase capacity or separate broker/cache before writes fail."

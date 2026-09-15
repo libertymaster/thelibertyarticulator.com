@@ -1,0 +1,325 @@
+{
+  "$defs": {
+    "ArchiveFilters": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "default": "",
+          "title": "Author",
+          "type": "string"
+        },
+        "historical_from": {
+          "default": "",
+          "title": "Historical From",
+          "type": "string"
+        },
+        "historical_to": {
+          "default": "",
+          "title": "Historical To",
+          "type": "string"
+        },
+        "published_from": {
+          "default": "",
+          "title": "Published From",
+          "type": "string"
+        },
+        "published_to": {
+          "default": "",
+          "title": "Published To",
+          "type": "string"
+        },
+        "q": {
+          "default": "",
+          "title": "Q",
+          "type": "string"
+        },
+        "series": {
+          "default": "",
+          "title": "Series",
+          "type": "string"
+        },
+        "sort": {
+          "default": "newest",
+          "enum": [
+            "newest",
+            "oldest",
+            "title"
+          ],
+          "title": "Sort",
+          "type": "string"
+        },
+        "source_kind": {
+          "default": "",
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "status": {
+          "default": "",
+          "title": "Status",
+          "type": "string"
+        },
+        "subject": {
+          "default": "",
+          "title": "Subject",
+          "type": "string"
+        }
+      },
+      "required": [
+        "q",
+        "subject",
+        "author",
+        "series",
+        "source_kind",
+        "published_from",
+        "published_to",
+        "historical_from",
+        "historical_to",
+        "status",
+        "sort"
+      ],
+      "title": "ArchiveFilters",
+      "type": "object"
+    },
+    "ArticleCard": {
+      "additionalProperties": false,
+      "properties": {
+        "abstract": {
+          "title": "Abstract",
+          "type": "string"
+        },
+        "article_type": {
+          "default": "Article",
+          "title": "Article Type",
+          "type": "string"
+        },
+        "authors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Authors",
+          "type": "array"
+        },
+        "discipline": {
+          "default": "",
+          "title": "Discipline",
+          "type": "string"
+        },
+        "display_date": {
+          "default": "",
+          "title": "Display Date",
+          "type": "string"
+        },
+        "historical_period": {
+          "title": "Historical Period",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "is_demonstration": {
+          "title": "Is Demonstration",
+          "type": "boolean"
+        },
+        "method": {
+          "default": "",
+          "title": "Method",
+          "type": "string"
+        },
+        "publication_date": {
+          "title": "Publication Date",
+          "type": "string"
+        },
+        "read_time": {
+          "default": "",
+          "title": "Read Time",
+          "type": "string"
+        },
+        "record_status": {
+          "default": "public_draft",
+          "title": "Record Status",
+          "type": "string"
+        },
+        "review_status": {
+          "default": "Review status not declared",
+          "title": "Review Status",
+          "type": "string"
+        },
+        "series": {
+          "title": "Series",
+          "type": "string"
+        },
+        "sources_summary": {
+          "default": "",
+          "title": "Sources Summary",
+          "type": "string"
+        },
+        "status_label": {
+          "default": "Public draft",
+          "title": "Status Label",
+          "type": "string"
+        },
+        "subjects": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Subjects",
+          "type": "array"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "abstract",
+        "publication_date",
+        "authors",
+        "subjects",
+        "series",
+        "historical_period",
+        "is_demonstration",
+        "discipline",
+        "article_type",
+        "record_status",
+        "status_label",
+        "review_status",
+        "sources_summary",
+        "method",
+        "display_date",
+        "read_time"
+      ],
+      "title": "ArticleCard",
+      "type": "object"
+    },
+    "Choice": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "label"
+      ],
+      "title": "Choice",
+      "type": "object"
+    },
+    "Facets": {
+      "additionalProperties": false,
+      "properties": {
+        "authors": {
+          "items": {
+            "$ref": "#/$defs/Choice"
+          },
+          "title": "Authors",
+          "type": "array"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/$defs/Choice"
+          },
+          "title": "Series",
+          "type": "array"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/$defs/Choice"
+          },
+          "title": "Subjects",
+          "type": "array"
+        }
+      },
+      "required": [
+        "subjects",
+        "authors",
+        "series"
+      ],
+      "title": "Facets",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "endpoint": {
+      "default": "/api/v1/archive/",
+      "title": "Endpoint",
+      "type": "string"
+    },
+    "errors": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Errors",
+      "type": "array"
+    },
+    "facets": {
+      "$ref": "#/$defs/Facets"
+    },
+    "filters": {
+      "$ref": "#/$defs/ArchiveFilters"
+    },
+    "page": {
+      "minimum": 1,
+      "title": "Page",
+      "type": "integer"
+    },
+    "page_size": {
+      "maximum": 24,
+      "minimum": 1,
+      "title": "Page Size",
+      "type": "integer"
+    },
+    "pages": {
+      "minimum": 1,
+      "title": "Pages",
+      "type": "integer"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/ArticleCard"
+      },
+      "title": "Results",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "total": {
+      "minimum": 0,
+      "title": "Total",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "endpoint",
+    "filters",
+    "facets",
+    "results",
+    "total",
+    "page",
+    "pages",
+    "page_size",
+    "errors"
+  ],
+  "title": "ArchivePayload",
+  "type": "object"
+}

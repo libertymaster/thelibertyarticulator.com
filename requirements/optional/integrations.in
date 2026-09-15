@@ -1,0 +1,11 @@
+# Candidate pins retained from 0.3.1. NOT part of the default installation.
+# Qualify one package at a time against the reviewed production.lock.
+django-environ==0.14.0
+django-celery-beat==2.9.0
+django-prometheus==2.5.0
+django-filter==26.1
+djangorestframework==3.18.0
+django-storages==1.14.6
+boto3==1.43.77
+citeproc-py==0.11.0
+httpx==0.28.1

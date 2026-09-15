@@ -1,0 +1,5 @@
+# Compile this file in the pinned Debian Python builder.
+-r core.in
+# Wagtail owns its Django REST Framework, django-filter, Willow, modelcluster,
+# treebeard and taggit dependency constraints. All transitives become exact in
+# production.lock. Do not add optional editor packages here before qualification.

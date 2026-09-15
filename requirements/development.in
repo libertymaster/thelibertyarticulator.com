@@ -1,0 +1,11 @@
+# Keep test environments on exactly the production runtime dependencies.
+-c production.lock
+-r production.in
+pytest>=8.4,<10
+pytest-django>=4.11,<5
+pytest-cov>=6,<8
+ruff>=0.12,<1
+pip-audit>=2.9,<3
+
+jsonschema>=4.25,<5
+PyYAML>=6,<7

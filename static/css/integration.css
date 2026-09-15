@@ -1,0 +1,95 @@
+/* Additions for server-rendered Wagtail content and the three React tools.
+   The original editorial stylesheet remains in publication.css. */
+:root { --line: var(--rule); --panel: var(--paper-light); --soft: var(--paper-deep); }
+[hidden] { display: none !important; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .6; }
+input, select, textarea { box-sizing: border-box; width: 100%; max-width: 100%; border: 1px solid var(--rule); border-radius: .12rem; background: var(--paper-light); color: var(--ink); padding: .65rem .7rem; font: inherit; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--oxblood); outline-offset: 2px; }
+input[type=checkbox], input[type=radio] { width: auto; }
+.archive-form label, .react-tool label { display: block; font-size: .8rem; font-weight: 600; }
+.archive-form label > input, .archive-form label > select, .react-tool label > input, .react-tool label > select { display: block; margin-top: .35rem; font-weight: 400; }
+.archive-form { padding: 1.5rem; border: 1px solid var(--rule); background: var(--paper-deep); margin-bottom: 1.5rem; }
+.form-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin-bottom: 1.2rem; }
+.form-grid > div { min-width: 0; }
+button, .pagination a { border: 1px solid var(--oxblood); border-radius: .12rem; background: var(--oxblood); color: white; padding: .65rem 1rem; }
+button.secondary, .pagination a { background: var(--paper-light); color: var(--ink); border-color: var(--rule); }
+.react-tool button.source-select, .react-tool button.timeline-event { color: var(--ink); }
+.react-tool { color: var(--ink); }
+.react-tool a, .prose a, .bibliography a, .footnotes a { text-decoration: underline; text-underline-offset: .18em; }
+.react-tool .tool-count, .react-tool small { color: var(--muted-ink); }
+.results-summary { margin: 1.5rem 0; color: var(--muted-ink); }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+.publication-card h2 { font: 400 clamp(1.7rem,2.4vw,2.7rem)/1.1 Georgia,serif; letter-spacing: -.035em; margin: 1.25rem 0 .9rem; }
+.publication-card details { margin: 1rem 0; }
+.publication-card summary { cursor: pointer; text-decoration: underline; }
+.publication-card .meta { font-size: .75rem; }
+.notice, .missing-artwork, .missing-asset { border-left: .25rem solid var(--gold); background: var(--paper-deep); padding: 1rem 1.2rem; font-size: .85rem; line-height: 1.6; }
+.missing-artwork, .missing-asset { min-height: 12rem; display: grid; place-content: center; text-align: center; color: var(--muted-ink); }
+.badge { display: inline-block; font-size: .65rem; border: 1px solid var(--rule); padding: .2rem .4rem; text-transform: uppercase; }
+.reference-edition .article-layout { grid-template-columns: minmax(7rem,.3fr) minmax(0,1.4fr) minmax(18rem,.7fr); }
+.reference-edition .article-record { display: block; position: static; padding-left: 1.25rem; min-width: 0; }
+.reference-edition .article-record #sources-island, .reference-edition .article-record #sources-fallback { display: block; }
+.reference-edition .article-record .tool-placeholder { padding: 1rem; border: 1px solid var(--rule); }
+.reference-edition .source-tool { max-height: none; overflow: visible; margin-top: 1.5rem; }
+.reference-edition .source-tool h2 { font-size: 1.65rem; line-height: 1.1; }
+.reference-edition .source-tool .source-results { max-height: 24rem; }
+.reference-edition .article-body { padding-inline: clamp(1.25rem,3vw,3rem); }
+.native-edition > .page-header, .native-edition > .prose, .native-edition > .chronology-shell { max-width: 85rem; margin: 0 auto; padding: 3rem clamp(1.25rem,4vw,4.5rem); }
+.native-edition .page-header h1 { font: 400 clamp(2.5rem,5vw,5rem)/1 Georgia,serif; letter-spacing: -.04em; }
+.native-edition .page-header .lead { max-width: 55rem; color: var(--muted-ink); font: 1.15rem/1.6 Georgia,serif; }
+.native-edition .article-layout { grid-template-columns: minmax(0,2fr) minmax(17rem,1fr); gap: 3rem; }
+.native-edition .article-tools { min-width: 0; }
+.native-edition .article-header .abstract { margin: 1.5rem 0; font: 1.15rem/1.8 Georgia,serif; }
+.prose { font: 1.1rem/1.85 Georgia,serif; }
+.prose h2, .prose h3, .prose h4 { line-height: 1.2; margin: 2rem 0 1rem; }
+.prose p { margin: 1rem 0; }
+.prose ul, .prose ol { padding-left: 1.65rem; }
+.prose li { margin: .55rem 0; }
+.prose figure { margin: 2rem 0; }
+.prose figcaption { color: var(--muted-ink); font: .8rem/1.6 system-ui,sans-serif; }
+.footnotes, .bibliography { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1.5rem; }
+.footnotes li, .bibliography li { margin: 1rem 0; padding-left: .4rem; }
+.article-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; }
+.article-card { border-top: 1px solid var(--rule); padding-top: 1rem; }
+.research-tool-nav { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #4f514b; font-size: .8rem; }
+.research-tool-nav a { text-decoration: underline; }
+.byline { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; font-size: .85rem; }
+.timeline-linear { padding-left: 1.5rem; }
+.timeline-linear > li { margin: 2rem 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
+@media (max-width:1100px) {
+  .reference-edition .article-layout { grid-template-columns: 8rem minmax(0,1fr); }
+  .reference-edition .article-record { grid-column: 1 / -1; display: block; padding: 2rem 0 0; }
+}
+@media (max-width:800px) {
+  .form-grid, .article-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .reference-edition .article-layout, .native-edition .article-layout { grid-template-columns: 1fr; }
+  .reference-edition .article-body { padding: 0; }
+  .reference-edition .article-record { display: block; }
+  .source-results, .source-tool { max-height: none; }
+}
+@media (max-width:560px) {
+  .form-grid, .article-grid { grid-template-columns: 1fr; }
+  .pagination { gap: .75rem; flex-wrap: wrap; }
+  input, select, textarea { font-size: 1rem; }
+}
+@media print {
+  body::before, .site-header, .site-footer, .credibility-bar, .article-tools, .article-record, .archive-form, .react-tool, .pagination, .skip-link { display: none !important; }
+  body { background: white; color: black; }
+  .article-layout, .reference-edition .article-layout, .native-edition .article-layout { display: block; padding: 0; }
+  .article-toc { position: static; }
+  .article-body { border: 0; padding: 0; }
+  #archive-fallback, #chronology-fallback { display: block !important; }
+  .publication-card, .article-notes li { break-inside: avoid; }
+}
+
+.reading-width, #chronology-island { max-width: 85rem; margin: 0 auto; padding: 2rem clamp(1.25rem,4vw,4.5rem); }
+.linear-timeline { padding-left: 1.5rem; }
+.linear-timeline > li { margin: 2rem 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
+
+@media (max-width: 560px) {
+  .mobile-nav summary .ui-symbol { display: inline; font-size: 1.3rem; }
+}
+
+/* Preserve the uploaded artwork's aspect ratio at every reading width. */
+.article-figure img { height: auto; }

@@ -1,0 +1,135 @@
+{
+  "$defs": {
+    "CitationLink": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor": {
+          "title": "Anchor",
+          "type": "string"
+        },
+        "locator": {
+          "title": "Locator",
+          "type": "string"
+        },
+        "note": {
+          "title": "Note",
+          "type": "string"
+        },
+        "number": {
+          "title": "Number",
+          "type": "integer"
+        },
+        "passage_anchor": {
+          "title": "Passage Anchor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "number",
+        "anchor",
+        "passage_anchor",
+        "locator",
+        "note"
+      ],
+      "title": "CitationLink",
+      "type": "object"
+    },
+    "SourceItem": {
+      "additionalProperties": false,
+      "properties": {
+        "annotation": {
+          "title": "Annotation",
+          "type": "string"
+        },
+        "authors": {
+          "title": "Authors",
+          "type": "string"
+        },
+        "bibliography": {
+          "title": "Bibliography",
+          "type": "string"
+        },
+        "citations": {
+          "items": {
+            "$ref": "#/$defs/CitationLink"
+          },
+          "title": "Citations",
+          "type": "array"
+        },
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "primary",
+            "secondary",
+            "unclassified"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Year"
+        }
+      },
+      "required": [
+        "key",
+        "kind",
+        "title",
+        "authors",
+        "year",
+        "bibliography",
+        "annotation",
+        "url",
+        "citations"
+      ],
+      "title": "SourceItem",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "article_title": {
+      "title": "Article Title",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceItem"
+      },
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "article_title",
+    "sources"
+  ],
+  "title": "SourcesPayload",
+  "type": "object"
+}

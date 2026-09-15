@@ -1,0 +1,243 @@
+export type Discipline = 'History' | 'Philosophy' | 'Politics';
+
+export type Publication = {
+  slug: string;
+  discipline: Discipline;
+  type: string;
+  title: string;
+  deck: string;
+  author: string;
+  status: string;
+  review: string;
+  sources: string;
+  method: string;
+  date: string;
+  readTime: string;
+  featured?: boolean;
+};
+
+export const publications: Publication[] = [
+  {
+    slug: 'the-archive-is-not-the-village',
+    discipline: 'History',
+    type: 'Founding editorial',
+    title: 'The Archive Is Not the Village',
+    deck: 'A prospectus for reasoning from surviving records without mistaking institutional memory for the lives it only partly contains.',
+    author: 'The Editors',
+    status: 'Public draft',
+    review: 'Editorial · not externally reviewed',
+    sources: 'Bloch · AHA · Archives nationales',
+    method: 'Source criticism',
+    date: '29 August 2026',
+    readTime: '9 min read',
+    featured: true,
+  },
+  {
+    slug: 'petitioning-before-independence',
+    discipline: 'History',
+    type: 'Research article',
+    title: 'Petitioning Before Independence',
+    deck: 'A proposed study of town records, petitions, and correspondence in Essex County, 1764–1776.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Town minutes · Petitions · Correspondence',
+    method: 'Documentary comparison',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'citizenship-after-emancipation',
+    discipline: 'History',
+    type: 'Comparative source study',
+    title: 'Citizenship after Emancipation',
+    deck: 'A proposed comparison of Haiti’s constitutional texts from 1801 to 1806 and the political worlds they attempted to make.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Constitutions · Decrees · Correspondence',
+    method: 'Comparative reading',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'railway-time-and-municipal-power',
+    discipline: 'History',
+    type: 'Research article',
+    title: 'Railway Time and Municipal Power',
+    deck: 'A proposed inquiry into Chicago ordinances, timetables, and the politics of standard time, 1880–1894.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Ordinances · Timetables · Newspapers',
+    method: 'Institutional history',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'relief-in-the-ledger',
+    discipline: 'History',
+    type: 'Source dossier',
+    title: 'Relief in the Ledger',
+    deck: 'A proposed source dossier on what parish relief rolls can—and cannot—show about the Irish Famine.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Relief rolls · Workhouse registers · Maps',
+    method: 'Serial record analysis',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'liberty-without-a-master',
+    discipline: 'Philosophy',
+    type: 'Philosophical argument',
+    title: 'Liberty Without a Master',
+    deck: 'A proposed dialogue between Wollstonecraft, Douglass, and contemporary accounts of non-domination.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Primary texts · Conceptual literature',
+    method: 'Conceptual reconstruction',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'historical-explanation-and-moral-judgment',
+    discipline: 'Philosophy',
+    type: 'Critical exchange',
+    title: 'Can Historical Explanation Carry Moral Judgment?',
+    deck: 'A proposed exchange on explanation, responsibility, anachronism, and the ethics of historical interpretation.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Philosophy of history · Case studies',
+    method: 'Argument and reply',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'lockes-prerogative',
+    discipline: 'Philosophy',
+    type: 'Primary-text analysis',
+    title: 'Locke’s Prerogative and Emergency Authority',
+    deck: 'A proposed close reading of prerogative, necessity, and accountability in the Second Treatise.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Primary text · Editions · Commentaries',
+    method: 'Textual analysis',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'after-the-emergency',
+    discipline: 'Politics',
+    type: 'Comparative political analysis',
+    title: 'After the Emergency',
+    deck: 'A proposed comparison of what sunset clauses constrain—and what emergency institutions leave behind.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Statutes · Orders · Legislative records',
+    method: 'Institutional comparison',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+  {
+    slug: 'who-draws-the-public',
+    discipline: 'Politics',
+    type: 'Institutional study',
+    title: 'Who Draws the Public?',
+    deck: 'A proposed study of boundary commissions, representation, and the politics hidden inside administrative lines.',
+    author: 'Commissioning prospectus',
+    status: 'Planned',
+    review: 'Review pending',
+    sources: 'Commission reports · Maps · Hearing records',
+    method: 'Comparative institutions',
+    date: 'Founding issue',
+    readTime: 'Prospectus',
+  },
+];
+
+export const workflow = [
+  ['01', 'Proposal & allocation', 'Scope, originality, article type, primary discipline, and conflicts are declared before drafting.'],
+  ['02', 'Research protocol', 'The question, primary corpus, scholarship, method, translation or data practice, and anticipated limits are recorded.'],
+  ['03', 'Integrity screen', 'Editors check authorship, originality, permissions, source accessibility, ethics, funding, and competing interests.'],
+  ['04', 'Editorial assessment', 'The handling editor assesses fit, evidentiary sufficiency, and completion of the Bloch Lens.'],
+  ['05', 'Independent review', 'Normally two subject-qualified reviewers work under the published identity and interaction model.'],
+  ['06', 'Revision & response', 'Authors submit a versioned manuscript and a point-by-point response; every material objection is tracked.'],
+  ['07', 'Verification', 'Quotations, translations, dates, names, archive identifiers, citations, calculations, images, and rights are checked.'],
+  ['08', 'Production', 'Copyediting, accessibility, metadata, author proofs, and preservation outputs must all pass.'],
+  ['09', 'Publication', 'The version of record displays review status, sources, editorial dates, disclosures, and a stable citation.'],
+  ['10', 'Stewardship', 'Corrections, responses, retractions, and preserved prior versions remain visible after publication.'],
+] as const;
+
+export const blochLens = [
+  'What is the historical or conceptual question?',
+  'What evidence survives, and through which institutions?',
+  'What is absent, silent, translated, or otherwise mediated?',
+  'Which comparison makes the problem clearer?',
+  'What causal or conceptual inference is being made?',
+  'What counterevidence or rival explanation remains?',
+  'What finding would change the conclusion?',
+] as const;
+
+export const standardsSources = [
+  {
+    title: 'Marc Bloch, Apologie pour l’histoire ou Métier d’historien',
+    organization: 'Université du Québec à Chicoutimi digital edition',
+    href: 'https://classiques.uqam.ca/classiques/bloch_marc/apologie_histoire/apologie_histoire.html',
+    note: 'A posthumously published, unfinished methodological work. Free consultation does not itself grant blanket reuse rights.',
+    kind: 'Primary text',
+  },
+  {
+    title: 'Marc Bloch and Lucien Febvre, “À nos lecteurs” (1929)',
+    organization: 'Persée · Annales d’histoire économique et sociale',
+    href: 'https://www.persee.fr/doc/ahess_0003-441x_1929_num_1_1_1031',
+    note: 'The journal founders’ own case for crossing periods and disciplinary boundaries. A founding aspiration, not a present-day review standard.',
+    kind: 'Primary text',
+  },
+  {
+    title: 'Marc Bloch fonds, AB XIX 3796–3852 and 4270–4275',
+    organization: 'Archives nationales de France',
+    href: 'https://www.archivesnationales.culture.gouv.fr/chan/chan/AP-pdf/AP-thematique-historiens-et-erudits.pdf',
+    note: 'The finding aid identifies manuscript and working-note holdings. Access and reproduction permission must be arranged separately.',
+    kind: 'Archive guide',
+  },
+  {
+    title: 'Statement on Standards of Professional Conduct',
+    organization: 'American Historical Association',
+    href: 'https://www.historians.org/resource/statement-on-standards-of-professional-conduct/',
+    note: 'Guidance on evidence, retraceable citation, uncertainty, counterevidence, funding, and the relation of primary to secondary sources.',
+    kind: 'Professional standard',
+  },
+  {
+    title: 'Principles of Transparency and Best Practice in Scholarly Publishing, version 4',
+    organization: 'COPE · DOAJ · OASPA · WAME',
+    href: 'https://doi.org/10.24318/cope.2019.1.12',
+    note: 'The live record says these 2022 principles are under review. The journal will date and version any policy derived from them.',
+    kind: 'Publishing standard',
+  },
+  {
+    title: 'Standard Terminology for Peer Review, ANSI/NISO Z39.106-2023',
+    organization: 'National Information Standards Organization',
+    href: 'https://www.niso.org/publications/z39106-2023-peerreview',
+    note: 'Vocabulary for describing reviewer identities, interactions, review publication, and post-publication commenting without ambiguous labels.',
+    kind: 'Technical standard',
+  },
+  {
+    title: 'Peer-review metadata guide',
+    organization: 'Crossref',
+    href: 'https://www.crossref.org/documentation/schema-library/markup-guide-record-types/peer-reviews/',
+    note: 'Metadata guidance for reports, decisions, responses, rounds, competing interests, and relations to the reviewed item.',
+    kind: 'Metadata standard',
+  },
+  {
+    title: 'Citing Records in the National Archives',
+    organization: 'U.S. National Archives and Records Administration',
+    href: 'https://www.archives.gov/publications/general-info-leaflets/17-citing-records.pdf',
+    note: 'A repository-specific model for citations that preserve item, series, record group, repository, and location provenance.',
+    kind: 'Citation guide',
+  },
+] as const;

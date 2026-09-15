@@ -1,0 +1,41 @@
+{% extends "base.html" %}{% load wagtailcore_tags wagtailimages_tags journal_tags %}
+{% block metadata %}
+<link rel="canonical" href="{{ canonical_url }}">{% if page.record_status != "planned" %}<meta name="citation_title" content="{{ page.title }}">
+<meta name="citation_publication_date" content="{{ page.publication_date|date:'Y/m/d' }}"><meta name="citation_journal_title" content="The Liberty Articulator">
+{% for author in article_authors %}<meta name="citation_author" content="{{ author.name }}">{% endfor %}
+{% endif %}
+<meta name="citation_language" content="en">{% article_structured_data page canonical_url %}
+{% endblock %}
+{% block assets %}{% vite_entry 'src/sources.tsx' %}{% endblock %}
+{% block content %}
+{% if page.reference_layout %}
+{% include_block page.reference_layout %}
+{% else %}
+
+<header class="article-header">{% if page.record_status == "planned" %}<p class="notice"><strong>Planned commissioning brief.</strong> This is not a completed or peer-reviewed research article.</p>{% endif %}<p class="eyebrow">{{ page.series.name|default:"Research essay" }}</p><h1>{{ page.title }}</h1><p class="abstract">{{ page.abstract }}</p><div class="byline">{% for author in article_authors %}<span>{{ author.name }}{% if author.affiliation %} <small>{{ author.affiliation }}</small>{% endif %}{% if author.orcid %} <a href="https://orcid.org/{{ author.orcid }}" rel="noopener noreferrer">ORCID</a>{% endif %}</span>{% endfor %}<time datetime="{{ page.publication_date|date:'Y-m-d' }}">{{ page.publication_date|date:"j F Y" }}</time></div>
+{% if page.is_demonstration %}<p class="notice">Demonstration content. The people, sources, and events in this example are illustrative, not historical evidence.</p>{% endif %}
+</header>
+<div class="article-layout">
+<article class="article-reading" aria-label="Article text">
+<div class="prose">
+{% for section in sections %}
+<section id="{{ section.id }}" class="article-section">
+{% if section.kind == 'heading' %}{% if section.value.level == 'h3' %}<h3>{{ section.value.text }}</h3>{% elif section.value.level == 'h4' %}<h4>{{ section.value.text }}</h4>{% else %}<h2>{{ section.value.text }}</h2>{% endif %}
+{% elif section.kind == 'paragraph' %}{{ section.value.text|richtext }}
+{% elif section.kind == 'quote' %}<blockquote><p>{{ section.value.text }}</p>{% if section.value.attribution %}<footer>{{ section.value.attribution }}</footer>{% endif %}</blockquote>
+{% elif section.kind == 'figure' %}<figure>{% image section.value.image width-1200 as rendition %}<img src="{{ rendition.url }}" alt="{{ section.value.alt_text }}" width="{{ rendition.width }}" height="{{ rendition.height }}" loading="lazy"><figcaption>{{ section.value.caption }}{% if section.value.credit %} <span>Credit: {{ section.value.credit }}</span>{% endif %}</figcaption></figure>{% endif %}
+{% if section.references %}<p class="citation-markers" aria-label="References for this passage">{% for ref in section.references %}{% if ref.missing %}<strong class="notice">Missing source: {{ ref.source_key }}</strong>{% else %}<sup id="{{ ref.backlink }}"><a href="#{{ ref.anchor }}" aria-label="Footnote {{ ref.number }}">[{{ ref.number }}]</a></sup> {% endif %}{% endfor %}</p>{% endif %}
+</section>
+{% endfor %}
+</div>
+<section class="footnotes" aria-labelledby="footnotes-title"><h2 id="footnotes-title">Notes</h2><ol>{% for note in footnotes %}<li id="{{ note.anchor }}"><a href="#source-{{ note.source.key }}">{{ note.source.title }}</a>{% if note.locator %}, {{ note.locator }}{% endif %}.{% if note.note %} {{ note.note }}{% endif %} <a href="#{{ note.backlink }}" aria-label="Return to citation {{ note.number }}">Return to text</a></li>{% empty %}<li>No footnotes have been added.</li>{% endfor %}</ol></section>
+<section class="bibliography" id="bibliography" aria-labelledby="bibliography-title"><h2 id="bibliography-title">Bibliography</h2><ol>{% for source in bibliography %}<li id="source-{{ source.key }}"><span class="badge">{{ source.get_kind_display }}</span><p>{{ source.bibliography }}</p>{% if source.annotation %}<p class="source-annotation">{{ source.annotation }}</p>{% endif %}{% if source.url %}<a href="{{ source.url }}" rel="noopener noreferrer">Consult source</a>{% endif %}</li>{% empty %}<li>No sources have been added.</li>{% endfor %}</ol><p class="meta">{{ page.license_label }}</p></section>
+</article>
+<aside class="article-tools" aria-label="Research tools">
+<div id="sources-fallback" class="tool-placeholder"><p class="eyebrow">Research tools</p><h2>Explore the sources</h2><p>Every source and annotation is also available in the bibliography.</p><a href="#bibliography">Read the bibliography</a></div>
+<div id="sources-island" data-payload="sources-data" data-fallback="sources-fallback"></div>
+{{ sources_payload|json_script:"sources-data" }}
+</aside>
+</div>
+{% endif %}
+{% endblock %}

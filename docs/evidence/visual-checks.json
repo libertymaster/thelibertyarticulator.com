@@ -1,0 +1,178 @@
+[
+  {
+    "page": "about",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "Liberty is the inquiry, not the answer."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "archive",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "Find the question behind the claim."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "article",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "The Archive Is Not the Village"
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "founding",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "A balance declared before acceptance."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "home",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "Analyzing through thetelescope of history."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "sources",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "A source is not primary in the abstract."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "standards",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "Rigor must be visible to be accountable."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "submit",
+    "viewport": 1440,
+    "width": 1440,
+    "scrollWidth": 1440,
+    "headers": [
+      "Show the route from evidence to inference."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "about",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "Liberty is the inquiry, not the answer."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "archive",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "Find the question behind the claim."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "article",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "The Archive Is Not the Village"
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "founding",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "A balance declared before acceptance."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "home",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "Analyzing through thetelescope of history."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "sources",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "A source is not primary in the abstract."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "standards",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "Rigor must be visible to be accountable."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  },
+  {
+    "page": "submit",
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 390,
+    "headers": [
+      "Show the route from evidence to inference."
+    ],
+    "duplicateIds": [],
+    "missingAnchors": []
+  }
+]

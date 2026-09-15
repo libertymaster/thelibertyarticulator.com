@@ -1,0 +1,2 @@
+{% load journal_tags %}{% publication_branding as brand_assets %}
+<img src="{{ brand_assets.image_url }}" alt="{{ brand_assets.image_alt }}"{% if brand_assets.image_width %} width="{{ brand_assets.image_width }}" height="{{ brand_assets.image_height }}"{% endif %} loading="lazy" decoding="async">
