@@ -1,0 +1,42 @@
+<section class="section-shell archive-founding-portfolio" aria-labelledby="archive-founding-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Founding portfolio</p>
+      <h2 id="archive-founding-title">The commissioning record behind the founding issue.</h2>
+    </div>
+    <div>
+      <p>One public founding editorial and nine planned commissioning briefs. Planned work is shown as a prospectus, not as published scholarship.</p>
+      <a class="text-link" href="/issue/founding/">Inspect the full founding issue</a>
+    </div>
+  </div>
+
+  <div class="publication-grid archive-grid">
+    {% for item in founding_portfolio %}
+    <article class="publication-card discipline-{{ item.discipline|lower }}" id="archive-portfolio-{{ item.slug }}">
+      <div class="publication-card-top">
+        <p>{{ item.discipline }}<span>{{ item.type }}</span>{{ item.status }}</p>
+        <span class="card-index">{{ item.index }}</span>
+      </div>
+
+      <h3>{{ item.title }}</h3>
+      <p class="publication-deck">{{ item.deck }}</p>
+
+      <dl class="publication-signals">
+        <div><dt>Review</dt><dd>{{ item.review }}</dd></div>
+        <div><dt>Sources</dt><dd>{{ item.sources }}</dd></div>
+        <div><dt>Method</dt><dd>{{ item.method }}</dd></div>
+        <div><dt>Status</dt><dd>{{ item.status }}</dd></div>
+      </dl>
+
+      <div class="publication-card-foot">
+        <p>{{ item.author }}<br><span>{{ item.date }} / {{ item.readTime }}</span></p>
+        {% if item.url %}
+          <a href="{{ item.url }}">Read</a>
+        {% else %}
+          <span class="planned-label">Planned commissioning brief</span>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
