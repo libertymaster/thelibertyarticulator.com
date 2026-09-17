@@ -186,10 +186,15 @@ class ResearchArchivePage(Page):
     subpage_types = []
     max_count = 1
     def get_context(self, request, *args, **kwargs):
+        from .portfolio import founding_portfolio
         from .services import archive_response
         context = super().get_context(request, *args, **kwargs)
         result, form = archive_response(request)
-        context.update({"archive_payload": result.model_dump(mode="json"), "archive_form": form})
+        context.update({
+            "archive_payload": result.model_dump(mode="json"),
+            "archive_form": form,
+            "founding_portfolio": founding_portfolio(request),
+        })
         return context
 
 class ChronologyPage(Page):
