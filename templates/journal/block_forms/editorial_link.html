@@ -1,0 +1,19 @@
+{% load wagtailadmin_tags %}
+<div class="{{ classname }}">
+    <div class="w-mb-3">
+        <strong>{{ editor_label }}</strong>
+    </div>
+
+    <div class="w-field" data-field data-contentpath="url">
+        {{ children.url.render_form }}
+    </div>
+
+    <details class="w-mt-3">
+        <summary>Technical details</summary>
+        <div hidden aria-hidden="true">
+            <div data-contentpath="key">{{ children.key.render_form }}</div>
+            <div data-contentpath="label">{{ children.label.render_form }}</div>
+        </div>
+        <p class="help">Internal key: <code>{{ internal_key }}</code>. This key is preserved automatically.</p>
+    </details>
+</div>
