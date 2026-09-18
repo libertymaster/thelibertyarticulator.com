@@ -67,20 +67,20 @@ def editor_label(raw, fallback):
 
 
 def section_editor_label(value):
-    layout = value.get('layout', '') if value else ''
+    layout = ((value.get('layout') if value else '') or '')
     spec = layout_registry().get(layout, {})
     fallback = spec.get('label') or layout or 'Editorial section'
-    texts = value.get('texts', []) if value else []
+    texts = ((value.get('texts') if value else None) or [])
 
     # Prefer a structural heading when the imported source supplied one.
     for heading in ('h1:', 'h2:', 'h3:', 'h4:'):
         for item in texts:
-            raw = item.get('label', '')
+            raw = ((item.get('label') if item else '') or '')
             if raw.startswith(heading):
                 return editor_label(raw, fallback)
 
     for item in texts:
-        label = editor_label(item.get('label', ''), '')
+        label = editor_label(((item.get('label') if item else '') or ''), '')
         if label:
             return label
     return fallback
@@ -98,10 +98,10 @@ class EditorialTextBlock(blocks.StructBlock):
     def get_form_context(self, value, prefix='', errors=None):
         context = super().get_form_context(value, prefix=prefix, errors=errors)
         context['editor_label'] = editor_label(
-            value.get('label', '') if value else '',
+            ((value.get('label') if value else '') or ''),
             'Text',
         )
-        context['internal_key'] = value.get('key', '') if value else ''
+        context['internal_key'] = ((value.get('key') if value else '') or '')
         return context
 
     class Meta:
@@ -122,7 +122,7 @@ class EditorialLinkBlock(blocks.StructBlock):
 
     def get_form_context(self, value, prefix='', errors=None):
         context = super().get_form_context(value, prefix=prefix, errors=errors)
-        raw_label = value.get('label', '') if value else ''
+        raw_label = ((value.get('label') if value else '') or '')
         context['editor_label'] = editor_label(raw_label, 'Link destination')
         context['internal_key'] = value.get('key', '') if value else ''
         return context
@@ -142,7 +142,7 @@ class SourceSectionBlock(blocks.StructBlock):
     def get_form_context(self, value, prefix='', errors=None):
         context = super().get_form_context(value, prefix=prefix, errors=errors)
         context['section_label'] = section_editor_label(value)
-        context['internal_layout'] = value.get('layout', '') if value else ''
+        context['internal_layout'] = ((value.get('layout') if value else '') or '')
         return context
 
     def clean(self, value):
