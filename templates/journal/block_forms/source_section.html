@@ -1,0 +1,30 @@
+{% load wagtailadmin_tags %}
+<div class="{{ classname }}">
+    <div class="w-mb-4">
+        <h3>{{ section_label }}</h3>
+        <p class="help">Edit the wording and destinations below. Structural layout keys are preserved automatically.</p>
+    </div>
+
+    <div hidden aria-hidden="true" data-contentpath="layout">
+        {{ children.layout.render_form }}
+    </div>
+
+    {% if children.texts %}
+        <div class="w-field" data-field data-contentpath="texts">
+            <label class="w-field__label">Text</label>
+            {{ children.texts.render_form }}
+        </div>
+    {% endif %}
+
+    {% if children.links %}
+        <div class="w-field" data-field data-contentpath="links">
+            <label class="w-field__label">Links</label>
+            {{ children.links.render_form }}
+        </div>
+    {% endif %}
+
+    <details class="w-mt-4">
+        <summary>Technical details</summary>
+        <p class="help">Internal layout: <code>{{ internal_layout }}</code>.</p>
+    </details>
+</div>
