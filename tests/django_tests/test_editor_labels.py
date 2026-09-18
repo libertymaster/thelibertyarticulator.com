@@ -33,3 +33,14 @@ def test_section_editor_label_prefers_a_real_heading():
         'links': [],
     }
     assert section_editor_label(value) == 'Heading: A journal measured by what it publishes.'
+
+
+def test_editor_labels_handle_wagtail_empty_defaults():
+    assert editor_label(None, 'Text') == 'Text'
+    assert section_editor_label({
+        'layout': None,
+        'texts': [
+            {'key': None, 'label': None, 'text': None},
+        ],
+        'links': [],
+    }) == 'Editorial section'
